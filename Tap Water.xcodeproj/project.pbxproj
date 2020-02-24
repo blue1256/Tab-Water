@@ -1,0 +1,478 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1EE30B952403E58500AB6DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30B942403E58500AB6DDF /* AppDelegate.swift */; };
+		1EE30B972403E58500AB6DDF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30B962403E58500AB6DDF /* SceneDelegate.swift */; };
+		1EE30B992403E58500AB6DDF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30B982403E58500AB6DDF /* ContentView.swift */; };
+		1EE30B9B2403E58900AB6DDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EE30B9A2403E58900AB6DDF /* Assets.xcassets */; };
+		1EE30B9E2403E58900AB6DDF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EE30B9D2403E58900AB6DDF /* Preview Assets.xcassets */; };
+		1EE30BA12403E58900AB6DDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EE30B9F2403E58900AB6DDF /* LaunchScreen.storyboard */; };
+		1EE30BAC2403E58A00AB6DDF /* Tap_WaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BAB2403E58A00AB6DDF /* Tap_WaterTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1EE30BA82403E58A00AB6DDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1EE30B892403E58500AB6DDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EE30B902403E58500AB6DDF;
+			remoteInfo = "Tap Water";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1EE30B912403E58500AB6DDF /* Tap Water.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tap Water.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EE30B942403E58500AB6DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1EE30B962403E58500AB6DDF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1EE30B982403E58500AB6DDF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1EE30B9A2403E58900AB6DDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1EE30B9D2403E58900AB6DDF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1EE30BA02403E58900AB6DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1EE30BA22403E58900AB6DDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EE30BA72403E58A00AB6DDF /* Tap WaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tap WaterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EE30BAB2403E58A00AB6DDF /* Tap_WaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tap_WaterTests.swift; sourceTree = "<group>"; };
+		1EE30BAD2403E58A00AB6DDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1EE30B8E2403E58500AB6DDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EE30BA42403E58A00AB6DDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1EE30B882403E58500AB6DDF = {
+			isa = PBXGroup;
+			children = (
+				1EE30B932403E58500AB6DDF /* Tap Water */,
+				1EE30BAA2403E58A00AB6DDF /* Tap WaterTests */,
+				1EE30B922403E58500AB6DDF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1EE30B922403E58500AB6DDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1EE30B912403E58500AB6DDF /* Tap Water.app */,
+				1EE30BA72403E58A00AB6DDF /* Tap WaterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1EE30B932403E58500AB6DDF /* Tap Water */ = {
+			isa = PBXGroup;
+			children = (
+				1EE30B942403E58500AB6DDF /* AppDelegate.swift */,
+				1EE30B962403E58500AB6DDF /* SceneDelegate.swift */,
+				1EE30B982403E58500AB6DDF /* ContentView.swift */,
+				1EE30B9A2403E58900AB6DDF /* Assets.xcassets */,
+				1EE30B9F2403E58900AB6DDF /* LaunchScreen.storyboard */,
+				1EE30BA22403E58900AB6DDF /* Info.plist */,
+				1EE30B9C2403E58900AB6DDF /* Preview Content */,
+			);
+			path = "Tap Water";
+			sourceTree = "<group>";
+		};
+		1EE30B9C2403E58900AB6DDF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1EE30B9D2403E58900AB6DDF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1EE30BAA2403E58A00AB6DDF /* Tap WaterTests */ = {
+			isa = PBXGroup;
+			children = (
+				1EE30BAB2403E58A00AB6DDF /* Tap_WaterTests.swift */,
+				1EE30BAD2403E58A00AB6DDF /* Info.plist */,
+			);
+			path = "Tap WaterTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1EE30B902403E58500AB6DDF /* Tap Water */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EE30BB02403E58A00AB6DDF /* Build configuration list for PBXNativeTarget "Tap Water" */;
+			buildPhases = (
+				1EE30B8D2403E58500AB6DDF /* Sources */,
+				1EE30B8E2403E58500AB6DDF /* Frameworks */,
+				1EE30B8F2403E58500AB6DDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tap Water";
+			productName = "Tap Water";
+			productReference = 1EE30B912403E58500AB6DDF /* Tap Water.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1EE30BA62403E58A00AB6DDF /* Tap WaterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EE30BB32403E58A00AB6DDF /* Build configuration list for PBXNativeTarget "Tap WaterTests" */;
+			buildPhases = (
+				1EE30BA32403E58A00AB6DDF /* Sources */,
+				1EE30BA42403E58A00AB6DDF /* Frameworks */,
+				1EE30BA52403E58A00AB6DDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EE30BA92403E58A00AB6DDF /* PBXTargetDependency */,
+			);
+			name = "Tap WaterTests";
+			productName = "Tap WaterTests";
+			productReference = 1EE30BA72403E58A00AB6DDF /* Tap WaterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1EE30B892403E58500AB6DDF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "박종석";
+				TargetAttributes = {
+					1EE30B902403E58500AB6DDF = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					1EE30BA62403E58A00AB6DDF = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 1EE30B902403E58500AB6DDF;
+					};
+				};
+			};
+			buildConfigurationList = 1EE30B8C2403E58500AB6DDF /* Build configuration list for PBXProject "Tap Water" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1EE30B882403E58500AB6DDF;
+			productRefGroup = 1EE30B922403E58500AB6DDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1EE30B902403E58500AB6DDF /* Tap Water */,
+				1EE30BA62403E58A00AB6DDF /* Tap WaterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1EE30B8F2403E58500AB6DDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EE30BA12403E58900AB6DDF /* LaunchScreen.storyboard in Resources */,
+				1EE30B9E2403E58900AB6DDF /* Preview Assets.xcassets in Resources */,
+				1EE30B9B2403E58900AB6DDF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EE30BA52403E58A00AB6DDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1EE30B8D2403E58500AB6DDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EE30B952403E58500AB6DDF /* AppDelegate.swift in Sources */,
+				1EE30B972403E58500AB6DDF /* SceneDelegate.swift in Sources */,
+				1EE30B992403E58500AB6DDF /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EE30BA32403E58A00AB6DDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EE30BAC2403E58A00AB6DDF /* Tap_WaterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1EE30BA92403E58A00AB6DDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EE30B902403E58500AB6DDF /* Tap Water */;
+			targetProxy = 1EE30BA82403E58A00AB6DDF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1EE30B9F2403E58900AB6DDF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EE30BA02403E58900AB6DDF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1EE30BAE2403E58A00AB6DDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1EE30BAF2403E58A00AB6DDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1EE30BB12403E58A00AB6DDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Tap Water/Preview Content\"";
+				DEVELOPMENT_TEAM = S23G35QQ2V;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Tap Water/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "park.Tap-Water";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1EE30BB22403E58A00AB6DDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Tap Water/Preview Content\"";
+				DEVELOPMENT_TEAM = S23G35QQ2V;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Tap Water/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "park.Tap-Water";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1EE30BB42403E58A00AB6DDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S23G35QQ2V;
+				INFOPLIST_FILE = "Tap WaterTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "park.Tap-WaterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tap Water.app/Tap Water";
+			};
+			name = Debug;
+		};
+		1EE30BB52403E58A00AB6DDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S23G35QQ2V;
+				INFOPLIST_FILE = "Tap WaterTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "park.Tap-WaterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tap Water.app/Tap Water";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1EE30B8C2403E58500AB6DDF /* Build configuration list for PBXProject "Tap Water" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EE30BAE2403E58A00AB6DDF /* Debug */,
+				1EE30BAF2403E58A00AB6DDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EE30BB02403E58A00AB6DDF /* Build configuration list for PBXNativeTarget "Tap Water" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EE30BB12403E58A00AB6DDF /* Debug */,
+				1EE30BB22403E58A00AB6DDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EE30BB32403E58A00AB6DDF /* Build configuration list for PBXNativeTarget "Tap WaterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EE30BB42403E58A00AB6DDF /* Debug */,
+				1EE30BB52403E58A00AB6DDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1EE30B892403E58500AB6DDF /* Project object */;
+}
