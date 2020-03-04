@@ -14,6 +14,13 @@
 		1EE30B9E2403E58900AB6DDF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EE30B9D2403E58900AB6DDF /* Preview Assets.xcassets */; };
 		1EE30BA12403E58900AB6DDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EE30B9F2403E58900AB6DDF /* LaunchScreen.storyboard */; };
 		1EE30BAC2403E58A00AB6DDF /* Tap_WaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BAB2403E58A00AB6DDF /* Tap_WaterTests.swift */; };
+		1EE30BB72403EB7000AB6DDF /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BB62403EB7000AB6DDF /* RecordView.swift */; };
+		1EE30BB9240408B100AB6DDF /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BB8240408B100AB6DDF /* SummaryView.swift */; };
+		1EE30BBB240408CE00AB6DDF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BBA240408CE00AB6DDF /* SettingView.swift */; };
+		1EE30BBE240691C500AB6DDF /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BBD240691C500AB6DDF /* UserProfile.swift */; };
+		1EE30BC12406941900AB6DDF /* RecordBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC02406941900AB6DDF /* RecordBackground.swift */; };
+		1EE30BC42406C4E000AB6DDF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC32406C4E000AB6DDF /* Utils.swift */; };
+		1EE30BC62407EF6000AB6DDF /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +45,13 @@
 		1EE30BA72403E58A00AB6DDF /* Tap WaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tap WaterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EE30BAB2403E58A00AB6DDF /* Tap_WaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tap_WaterTests.swift; sourceTree = "<group>"; };
 		1EE30BAD2403E58A00AB6DDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EE30BB62403EB7000AB6DDF /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		1EE30BB8240408B100AB6DDF /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		1EE30BBA240408CE00AB6DDF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		1EE30BBD240691C500AB6DDF /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		1EE30BC02406941900AB6DDF /* RecordBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBackground.swift; sourceTree = "<group>"; };
+		1EE30BC32406C4E000AB6DDF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +93,14 @@
 		1EE30B932403E58500AB6DDF /* Tap Water */ = {
 			isa = PBXGroup;
 			children = (
+				1EE30BBC240691B200AB6DDF /* Models */,
+				1EE30BBF240693EB00AB6DDF /* RecordView */,
+				1EE30BC22406C4C700AB6DDF /* Library */,
+				1EE30B982403E58500AB6DDF /* ContentView.swift */,
+				1EE30BB8240408B100AB6DDF /* SummaryView.swift */,
+				1EE30BBA240408CE00AB6DDF /* SettingView.swift */,
 				1EE30B942403E58500AB6DDF /* AppDelegate.swift */,
 				1EE30B962403E58500AB6DDF /* SceneDelegate.swift */,
-				1EE30B982403E58500AB6DDF /* ContentView.swift */,
 				1EE30B9A2403E58900AB6DDF /* Assets.xcassets */,
 				1EE30B9F2403E58900AB6DDF /* LaunchScreen.storyboard */,
 				1EE30BA22403E58900AB6DDF /* Info.plist */,
@@ -105,6 +124,32 @@
 				1EE30BAD2403E58A00AB6DDF /* Info.plist */,
 			);
 			path = "Tap WaterTests";
+			sourceTree = "<group>";
+		};
+		1EE30BBC240691B200AB6DDF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1EE30BBD240691C500AB6DDF /* UserProfile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1EE30BBF240693EB00AB6DDF /* RecordView */ = {
+			isa = PBXGroup;
+			children = (
+				1EE30BB62403EB7000AB6DDF /* RecordView.swift */,
+				1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */,
+				1EE30BC02406941900AB6DDF /* RecordBackground.swift */,
+			);
+			path = RecordView;
+			sourceTree = "<group>";
+		};
+		1EE30BC22406C4C700AB6DDF /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				1EE30BC32406C4E000AB6DDF /* Utils.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,7 +253,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EE30BC12406941900AB6DDF /* RecordBackground.swift in Sources */,
 				1EE30B952403E58500AB6DDF /* AppDelegate.swift in Sources */,
+				1EE30BC42406C4E000AB6DDF /* Utils.swift in Sources */,
+				1EE30BC62407EF6000AB6DDF /* RecordViewModel.swift in Sources */,
+				1EE30BB72403EB7000AB6DDF /* RecordView.swift in Sources */,
+				1EE30BB9240408B100AB6DDF /* SummaryView.swift in Sources */,
+				1EE30BBE240691C500AB6DDF /* UserProfile.swift in Sources */,
+				1EE30BBB240408CE00AB6DDF /* SettingView.swift in Sources */,
 				1EE30B972403E58500AB6DDF /* SceneDelegate.swift in Sources */,
 				1EE30B992403E58500AB6DDF /* ContentView.swift in Sources */,
 			);

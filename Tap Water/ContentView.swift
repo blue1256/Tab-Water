@@ -9,28 +9,73 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 0
+    @State private var selection = 1
+    
+    var transition: AnyTransition {
+        return AnyTransition.opacity.animation(.easeInOut(duration: 0.14))
+    }
  
     var body: some View {
-        TabView(selection: $selection){
-            Text("First View")
-                .font(.title)
-                .tabItem {
-                    VStack {
-                        Image("first")
-                        Text("First")
-                    }
+        GeometryReader { geometry in
+            VStack {
+                Spacer()
+                if self.selection == 0 {
+                    SummaryView()
+                        .transition(self.transition)
+                } else if self.selection == 1 {
+                    RecordView()
+                        .transition(self.transition)
+                } else if self.selection == 2 {
+                    SettingView()
+                        .transition(self.transition)
                 }
-                .tag(0)
-            Text("Second View")
-                .font(.title)
-                .tabItem {
-                    VStack {
-                        Image("second")
-                        Text("Second")
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            self.selection = 0
+                        }
+                    }) {
+                        Image((self.selection == 0 ? "summary" : "summary-disabled"))
+                            .renderingMode(.original)
+                            .resizable()
+                            .frame(width: 30, height: 30)
                     }
+                    .padding(.trailing, 30)
+                    .padding(.bottom, geometry.safeAreaInsets.bottom)
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            self.selection = 1
+                        }
+                    }) {
+                        Image((self.selection == 1 ? "water" : "water-disabled"))
+                            .renderingMode(.original)
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                    }
+                    .padding(.bottom, geometry.safeAreaInsets.bottom)
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            self.selection = 2
+                        }
+                    }) {
+                        Image((self.selection == 2 ? "setting" : "setting-disabled"))
+                            .renderingMode(.original)
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                    }
+                    .padding(.leading, 30)
+                    .padding(.bottom, geometry.safeAreaInsets.bottom)
+                    Spacer()
                 }
-                .tag(1)
+                .frame(width: geometry.size.width, height: 50 + geometry.safeAreaInsets.bottom)
+                .background(Color.white.shadow(color: .init(white: 0.9), radius: 2, x: 0, y: -3.5))
+                .padding(.top, -5)
+                .padding(.bottom, -geometry.safeAreaInsets.bottom)
+            }
         }
     }
 }
