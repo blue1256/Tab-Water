@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct RecordView: View {
-    @ObservedObject var recordViewModel =  RecordViewModel()
+    @ObservedObject var recordViewModel = RecordViewModel()
     @State var isAnimating = false
     
     var animation: Animation {
@@ -70,8 +70,20 @@ struct RecordView: View {
                     Spacer()
                 }
             }
+            .onAppear(perform: {
+                self.recordViewModel.examineSetting = true
+            })
             .sheet(isPresented: self.$recordViewModel.showCompleted) {
                 Text("목표 달성!")
+            }
+            .alert(isPresented: self.$recordViewModel.showAlert) {
+                Alert(
+                    title: Text("설정 오류"),
+                    message: Text("목표량 또는 속도가 설정되지 않았습니다."),
+                    dismissButton: .default(Text("확인"), action: {
+                        self.recordViewModel.showUserSetting = true
+                    })
+                )
             }
         }
     }

@@ -7,13 +7,34 @@
 //
 
 import Foundation
+import Combine
 
 final class UserProfile: ObservableObject {
     static let shared = UserProfile()
+    let userDefault = UserDefaults.standard
+    private var cancellables = Set<AnyCancellable>()
     
-    private init() {}
+    @Published var drankToday: Double
+    @Published var dailyGoal: Double
+    @Published var speed: Double
     
-    @Published var drankToday: Double = 0.0
-    @Published var dailyGoal: Double = 2.0
-    @Published var speed: Double = 50
+    private init() {
+        drankToday = userDefault.double(forKey: "drankToday")
+        dailyGoal = userDefault.double(forKey: "dailyGoal")
+        speed = userDefault.double(forKey: "speed")
+        
+        self.$dailyGoal
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .sink { [weak self] goal in
+                self?.userDefault.set(goal, forKey: "dailyGoal")
+            }
+            .store(in: &cancellables)
+        
+        self.$speed
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .sink { [weak self] speed in
+                self?.userDefault.set(speed, forKey: "speed")
+            }
+            .store(in: &cancellables)
+    }
 }

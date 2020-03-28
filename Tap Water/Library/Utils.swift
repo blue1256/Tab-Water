@@ -24,4 +24,8 @@ final class Utils {
     func floorDouble(num: Double) -> String {
         return self.numberFormatter.string(from: NSNumber(value: num))!
     }
+    
+    static func saveDefault(value: Any, forKey: String) {
+        UserDefaults.standard.set(value, forKey: forKey)
+    }
 }
