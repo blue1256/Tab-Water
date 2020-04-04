@@ -13,7 +13,7 @@ struct RecordView: View {
     @State var isAnimating = false
     
     var animation: Animation {
-        return Animation.easeInOut(duration: 1.5).repeatForever()
+        return Animation.easeInOut(duration: 2).repeatForever()
     }
 
     var body: some View {
