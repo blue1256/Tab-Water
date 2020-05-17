@@ -3,11 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E01E4C4247150B300459A70 /* CompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E01E4C3247150B300459A70 /* CompletedView.swift */; };
 		1E250B7D241256050058B406 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E250B7C241256050058B406 /* SettingViewModel.swift */; };
+		1E473FAD245EEC8200A6F137 /* SpeedMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E473FAC245EEC8200A6F137 /* SpeedMeasureViewModel.swift */; };
+		1E54699124388106003F1E30 /* DayRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E54699024388106003F1E30 /* DayRecord.swift */; };
+		1EC7372B2438846A00A33EB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */; };
+		1EC7372D2439B8AD00A33EB7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC7372C2439B8AD00A33EB7 /* Networking.swift */; };
 		1EE30B952403E58500AB6DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30B942403E58500AB6DDF /* AppDelegate.swift */; };
 		1EE30B972403E58500AB6DDF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30B962403E58500AB6DDF /* SceneDelegate.swift */; };
 		1EE30B992403E58500AB6DDF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30B982403E58500AB6DDF /* ContentView.swift */; };
@@ -19,13 +24,15 @@
 		1EE30BB9240408B100AB6DDF /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BB8240408B100AB6DDF /* SummaryView.swift */; };
 		1EE30BBB240408CE00AB6DDF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BBA240408CE00AB6DDF /* SettingView.swift */; };
 		1EE30BBE240691C500AB6DDF /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BBD240691C500AB6DDF /* UserProfile.swift */; };
-		1EE30BC12406941900AB6DDF /* RecordBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC02406941900AB6DDF /* RecordBackground.swift */; };
+		1EE30BC12406941900AB6DDF /* WaterBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC02406941900AB6DDF /* WaterBackground.swift */; };
 		1EE30BC42406C4E000AB6DDF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC32406C4E000AB6DDF /* Utils.swift */; };
 		1EE30BC62407EF6000AB6DDF /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */; };
 		1EEFCAF5241E467C00117085 /* UserSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF4241E467C00117085 /* UserSettingView.swift */; };
 		1EEFCAF72425D30900117085 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF62425D30900117085 /* AppState.swift */; };
 		1EEFCAF9242B5B8500117085 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */; };
 		1EEFCAFB242B617900117085 /* SpeedMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */; };
+		36EB161F930D9A3A4F27A3E4 /* Pods_Tap_Water.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8CC06F6439372B7AFBE1BF /* Pods_Tap_Water.framework */; };
+		C83762B564F1C5A46AAFAD08 /* Pods_Tap_WaterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8172D37D7BDEEF9F014AEA /* Pods_Tap_WaterTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +46,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		045CB0D48E83192D44808516 /* Pods-Tap WaterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap WaterTests.release.xcconfig"; path = "Target Support Files/Pods-Tap WaterTests/Pods-Tap WaterTests.release.xcconfig"; sourceTree = "<group>"; };
+		1E01E4C3247150B300459A70 /* CompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedView.swift; sourceTree = "<group>"; };
 		1E250B7C241256050058B406 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		1E473FAC245EEC8200A6F137 /* SpeedMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureViewModel.swift; sourceTree = "<group>"; };
+		1E54699024388106003F1E30 /* DayRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecord.swift; sourceTree = "<group>"; };
+		1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1EC7372C2439B8AD00A33EB7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		1EE30B912403E58500AB6DDF /* Tap Water.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tap Water.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EE30B942403E58500AB6DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EE30B962403E58500AB6DDF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,13 +68,18 @@
 		1EE30BB8240408B100AB6DDF /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		1EE30BBA240408CE00AB6DDF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		1EE30BBD240691C500AB6DDF /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		1EE30BC02406941900AB6DDF /* RecordBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBackground.swift; sourceTree = "<group>"; };
+		1EE30BC02406941900AB6DDF /* WaterBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterBackground.swift; sourceTree = "<group>"; };
 		1EE30BC32406C4E000AB6DDF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		1EEFCAF4241E467C00117085 /* UserSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingView.swift; sourceTree = "<group>"; };
 		1EEFCAF62425D30900117085 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureView.swift; sourceTree = "<group>"; };
+		2466DD2ED9E2FFE868BDE3CC /* Pods-Tap WaterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap WaterTests.debug.xcconfig"; path = "Target Support Files/Pods-Tap WaterTests/Pods-Tap WaterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C22AB8E980866CBE1800320D /* Pods-Tap Water.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap Water.release.xcconfig"; path = "Target Support Files/Pods-Tap Water/Pods-Tap Water.release.xcconfig"; sourceTree = "<group>"; };
+		CF8172D37D7BDEEF9F014AEA /* Pods_Tap_WaterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tap_WaterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D71322B1735AABBD936E5B6B /* Pods-Tap Water.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap Water.debug.xcconfig"; path = "Target Support Files/Pods-Tap Water/Pods-Tap Water.debug.xcconfig"; sourceTree = "<group>"; };
+		ED8CC06F6439372B7AFBE1BF /* Pods_Tap_Water.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tap_Water.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36EB161F930D9A3A4F27A3E4 /* Pods_Tap_Water.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C83762B564F1C5A46AAFAD08 /* Pods_Tap_WaterTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +109,7 @@
 				1EEFCAF4241E467C00117085 /* UserSettingView.swift */,
 				1E250B7C241256050058B406 /* SettingViewModel.swift */,
 				1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */,
+				1E473FAC245EEC8200A6F137 /* SpeedMeasureViewModel.swift */,
 			);
 			path = "Setting View";
 			sourceTree = "<group>";
@@ -99,6 +120,8 @@
 				1EE30B932403E58500AB6DDF /* Tap Water */,
 				1EE30BAA2403E58A00AB6DDF /* Tap WaterTests */,
 				1EE30B922403E58500AB6DDF /* Products */,
+				70FB84D371BB50BE864DA791 /* Pods */,
+				DB502FE00AA666D461FAC85B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +142,7 @@
 				1E250B7B241255EC0058B406 /* Setting View */,
 				1EE30BC22406C4C700AB6DDF /* Library */,
 				1EE30B982403E58500AB6DDF /* ContentView.swift */,
+				1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */,
 				1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */,
 				1EE30BB8240408B100AB6DDF /* SummaryView.swift */,
 				1EE30B942403E58500AB6DDF /* AppDelegate.swift */,
@@ -152,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				1EE30BBD240691C500AB6DDF /* UserProfile.swift */,
+				1E54699024388106003F1E30 /* DayRecord.swift */,
 				1EEFCAF62425D30900117085 /* AppState.swift */,
 			);
 			path = Models;
@@ -162,7 +187,8 @@
 			children = (
 				1EE30BB62403EB7000AB6DDF /* RecordView.swift */,
 				1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */,
-				1EE30BC02406941900AB6DDF /* RecordBackground.swift */,
+				1E01E4C3247150B300459A70 /* CompletedView.swift */,
+				1EE30BC02406941900AB6DDF /* WaterBackground.swift */,
 			);
 			path = RecordView;
 			sourceTree = "<group>";
@@ -171,8 +197,29 @@
 			isa = PBXGroup;
 			children = (
 				1EE30BC32406C4E000AB6DDF /* Utils.swift */,
+				1EC7372C2439B8AD00A33EB7 /* Networking.swift */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		70FB84D371BB50BE864DA791 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D71322B1735AABBD936E5B6B /* Pods-Tap Water.debug.xcconfig */,
+				C22AB8E980866CBE1800320D /* Pods-Tap Water.release.xcconfig */,
+				2466DD2ED9E2FFE868BDE3CC /* Pods-Tap WaterTests.debug.xcconfig */,
+				045CB0D48E83192D44808516 /* Pods-Tap WaterTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DB502FE00AA666D461FAC85B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED8CC06F6439372B7AFBE1BF /* Pods_Tap_Water.framework */,
+				CF8172D37D7BDEEF9F014AEA /* Pods_Tap_WaterTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,9 +229,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1EE30BB02403E58A00AB6DDF /* Build configuration list for PBXNativeTarget "Tap Water" */;
 			buildPhases = (
+				F10BACDDD2F2E8BF131B73E4 /* [CP] Check Pods Manifest.lock */,
 				1EE30B8D2403E58500AB6DDF /* Sources */,
 				1EE30B8E2403E58500AB6DDF /* Frameworks */,
 				1EE30B8F2403E58500AB6DDF /* Resources */,
+				827452552B9FEFFC179BB687 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,9 +248,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1EE30BB32403E58A00AB6DDF /* Build configuration list for PBXNativeTarget "Tap WaterTests" */;
 			buildPhases = (
+				B1A08A4829D5FE4BB42E9829 /* [CP] Check Pods Manifest.lock */,
 				1EE30BA32403E58A00AB6DDF /* Sources */,
 				1EE30BA42403E58A00AB6DDF /* Frameworks */,
 				1EE30BA52403E58A00AB6DDF /* Resources */,
+				1C1C5FEB920E61F03392D1A4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -257,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EE30BA12403E58900AB6DDF /* LaunchScreen.storyboard in Resources */,
+				1EC7372B2438846A00A33EB7 /* GoogleService-Info.plist in Resources */,
 				1EE30B9E2403E58900AB6DDF /* Preview Assets.xcassets in Resources */,
 				1EE30B9B2403E58900AB6DDF /* Assets.xcassets in Resources */,
 			);
@@ -271,22 +323,107 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C1C5FEB920E61F03392D1A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap WaterTests/Pods-Tap WaterTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap WaterTests/Pods-Tap WaterTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tap WaterTests/Pods-Tap WaterTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		827452552B9FEFFC179BB687 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap Water/Pods-Tap Water-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tap Water/Pods-Tap Water-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tap Water/Pods-Tap Water-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1A08A4829D5FE4BB42E9829 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tap WaterTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F10BACDDD2F2E8BF131B73E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tap Water-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1EE30B8D2403E58500AB6DDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1EEFCAF5241E467C00117085 /* UserSettingView.swift in Sources */,
-				1EE30BC12406941900AB6DDF /* RecordBackground.swift in Sources */,
+				1EE30BC12406941900AB6DDF /* WaterBackground.swift in Sources */,
+				1EC7372D2439B8AD00A33EB7 /* Networking.swift in Sources */,
 				1EE30B952403E58500AB6DDF /* AppDelegate.swift in Sources */,
 				1EE30BC42406C4E000AB6DDF /* Utils.swift in Sources */,
 				1EE30BC62407EF6000AB6DDF /* RecordViewModel.swift in Sources */,
 				1EE30BB72403EB7000AB6DDF /* RecordView.swift in Sources */,
 				1EE30BB9240408B100AB6DDF /* SummaryView.swift in Sources */,
+				1E54699124388106003F1E30 /* DayRecord.swift in Sources */,
 				1EE30BBE240691C500AB6DDF /* UserProfile.swift in Sources */,
 				1EEFCAFB242B617900117085 /* SpeedMeasureView.swift in Sources */,
 				1EE30BBB240408CE00AB6DDF /* SettingView.swift in Sources */,
 				1E250B7D241256050058B406 /* SettingViewModel.swift in Sources */,
+				1E01E4C4247150B300459A70 /* CompletedView.swift in Sources */,
+				1E473FAD245EEC8200A6F137 /* SpeedMeasureViewModel.swift in Sources */,
 				1EEFCAF72425D30900117085 /* AppState.swift in Sources */,
 				1EE30B972403E58500AB6DDF /* SceneDelegate.swift in Sources */,
 				1EEFCAF9242B5B8500117085 /* ContentViewModel.swift in Sources */,
@@ -440,6 +577,7 @@
 		};
 		1EE30BB12403E58A00AB6DDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D71322B1735AABBD936E5B6B /* Pods-Tap Water.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,7 +589,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "park.Tap-Water";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.park.Tap-Water";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -460,6 +598,7 @@
 		};
 		1EE30BB22403E58A00AB6DDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C22AB8E980866CBE1800320D /* Pods-Tap Water.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -471,7 +610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "park.Tap-Water";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.park.Tap-Water";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -480,6 +619,7 @@
 		};
 		1EE30BB42403E58A00AB6DDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2466DD2ED9E2FFE868BDE3CC /* Pods-Tap WaterTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +642,7 @@
 		};
 		1EE30BB52403E58A00AB6DDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 045CB0D48E83192D44808516 /* Pods-Tap WaterTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

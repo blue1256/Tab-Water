@@ -1,0 +1,6 @@
+framework module Pods_Tap_Water {
+  umbrella header "Pods-Tap Water-umbrella.h"
+
+  export *
+  module * { export * }
+}

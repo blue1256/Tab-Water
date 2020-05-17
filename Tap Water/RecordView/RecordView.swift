@@ -20,7 +20,7 @@ struct RecordView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack{
-                    RecordBackground(percentage: self.recordViewModel.percentage)
+                    WaterBackground(percentage: self.recordViewModel.percentage)
                 }
                 VStack {
                     Spacer()
@@ -29,6 +29,8 @@ struct RecordView: View {
                             .font(.custom("bold", size: 50))
                             .padding(.bottom)
                             .frame(maxWidth: .infinity)
+                            .foregroundColor(Color.init(red: 52/255, green: 172/255, blue: 221/255))
+                            .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage))
                             .animation(nil)
                         Text("현재: \(Utils.shared.floorDouble(num: self.recordViewModel.drankToday))L")
                             .padding(.bottom, 10)
@@ -38,20 +40,6 @@ struct RecordView: View {
                             .frame(maxWidth: .infinity)
                             .animation(nil)
                     }
-                    .background(
-                        Color.init(red: 125/255, green: 175/255, blue: 235/255)
-                            .frame(
-                                width: geometry.size.width/3,
-                                height: 130
-                            )
-                            .scaleEffect(1.2)
-                            .blur(radius: 60)
-                            .scaleEffect((self.isAnimating ? 0.45 : 1))
-                            .animation(self.animation)
-                            .onAppear{
-                                self.isAnimating.toggle()
-                            }
-                    )
                     Spacer()
                     Button(action: {
                         withAnimation {
@@ -65,16 +53,17 @@ struct RecordView: View {
                             .padding(15)
                     }
                     .background(Color.init(red: 52/255, green: 172/255, blue: 221/255))
-                        .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage))
+                    .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage.truncatingRemainder(dividingBy: 1)))
                     .clipShape(Circle())
                     Spacer()
                 }
             }
             .onAppear(perform: {
                 self.recordViewModel.examineSetting = true
+                self.recordViewModel.today = AppState.shared.today
             })
             .sheet(isPresented: self.$recordViewModel.showCompleted) {
-                Text("목표 달성!")
+                CompletedView(recordViewModel: self.recordViewModel)
             }
             .alert(isPresented: self.$recordViewModel.showAlert) {
                 Alert(

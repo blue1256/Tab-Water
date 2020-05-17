@@ -28,11 +28,23 @@ class RecordViewModel: ObservableObject {
     
     @Published var showUserSetting: Bool = false
     
+    @Published var today: String = ""
+    
     init(){
         timerPublisher.connect().store(in: &cancellables)
-        drankToday = userProfile.drankToday
+        drankToday = userProfile.todayRecord?.drankToday ?? 0
         dailyGoal = userProfile.dailyGoal
         showAlert = (userProfile.dailyGoal == 0) || (userProfile.speed == 0)
+        
+        userProfile.$todayRecord
+            .sink { [weak self] record in
+                let drankToday = record?.drankToday ?? 0
+                self?.drankToday = drankToday
+                if let dailyGoal = self?.dailyGoal {
+                    self?.percentage = drankToday / dailyGoal
+                }
+            }
+            .store(in: &cancellables)
         
         userProfile.$dailyGoal
             .removeDuplicates()
@@ -44,30 +56,26 @@ class RecordViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        userProfile.$drankToday
-            .removeDuplicates()
-            .sink { [weak self] drank in
-                self?.drankToday = drank
-                if let dailyGoal = self?.userProfile.dailyGoal, dailyGoal != 0 {
-                    self?.percentage = drank / dailyGoal
-                }
-            }
-            .store(in: &cancellables)
-        
         self.$isDrinking
             .combineLatest(timerPublisher)
             .map { return $0.0 }
             .filter{ $0 }
             .sink { [weak self] _ in
-                self!.userProfile.drankToday += 0.3 * self!.userProfile.speed / 1000
+                self?.drankToday += 0.3 * (self?.userProfile.speed ?? 0) / 1000
+                if let drankToday = self?.drankToday, let dailyGoal = self?.userProfile.dailyGoal, dailyGoal != 0 {
+                    self?.percentage = drankToday / dailyGoal
+                    self?.userProfile.todayRecord?.drankToday = drankToday
+                }
+                self?.userProfile.updateRecord = true
             }
             .store(in: &cancellables)
         
         self.$percentage
             .filter { $0 >= 1 }
             .first()
-            .sink { _ in
-                self.completed = true
+            .sink { [weak self] _ in
+                self?.completed = true
+                self?.userProfile.completedToday = true
             }
             .store(in: &cancellables)
         
@@ -75,8 +83,10 @@ class RecordViewModel: ObservableObject {
             .combineLatest(self.$isDrinking)
             .filter { $0 && !$1 }
             .first()
-            .sink { _ in
-                self.showCompleted = true
+            .sink { [weak self] _ in
+                if let alreadyComp = self?.userProfile.completedToday, alreadyComp == false {
+                    self?.showCompleted = true
+                }
             }
             .store(in: &cancellables)
         
@@ -95,5 +105,17 @@ class RecordViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
+        self.$today
+            .dropFirst()
+            .filter{ today in
+                guard let defaultToday = UserDefaults.standard.string(forKey: "today") else {
+                    return false
+                }
+                return defaultToday != today
+            }
+            .sink { [weak self] today in
+                self?.userProfile.getNewRecord(today: today)
+            }
+            .store(in: &cancellables)
     }
 }

@@ -74,8 +74,5 @@ fastlane/test_output
 #
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
-
-iOSInjectionProject/
-Siksha-Release.xcconfig
-Siksha.xcconfig
-Config.plist
+#
+Tap Water/GoogleService-Info.plist
