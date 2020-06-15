@@ -32,9 +32,9 @@ struct WaterBackground: View {
         GeometryReader { geometry in
             Path { path in
                 let width = geometry.size.width
-                let height = geometry.size.height * CGFloat(self.percentage * 1.1)
+                let height = geometry.size.height * CGFloat(self.percentage * 1.05)
                 let waveCount = 1000
-                let waveHeight = (self.percentage == 0 ? 0 : 13) * self.mult[Int(self.heightMult) % 80]
+                let waveHeight = (self.percentage == 0 ? 0 : 8) * self.mult[Int(self.heightMult) % 80]
                 path.move(to: .init(x: 0, y: height))
                 path.addLine(to: .init(x: 0, y: Double(waveHeight) + sin(Double(self.elapsed) * 0.5)))
                 (1...waveCount).forEach { i in
@@ -50,7 +50,7 @@ struct WaterBackground: View {
                 startPoint: .init(x: 0.5, y: 0),
                 endPoint: .init(x: 0.5, y: 1)
             ))
-            .position(x: geometry.size.width/2, y: geometry.size.height*(1.5-CGFloat(self.percentage * 1.1)))
+                .position(x: geometry.size.width/2, y: geometry.size.height*(1.5-CGFloat(self.percentage) * 1.05))
             .transition(.move(edge: .bottom))
             .animation(.easeInOut(duration: 0.5))
             .onReceive(self.timer) { _ in

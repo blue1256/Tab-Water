@@ -24,21 +24,22 @@ struct CompletedView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: geometry.size.width * 0.7)
-                        .padding(.bottom, 50)
+                        .padding(.bottom, 60)
                     HStack {
+                        Spacer()
                         Button(action: {
                             self.recordViewModel.showCompleted = false
                         }) {
                             VStack {
                                 Image(systemName: "checkmark")
-                                    .font(.system(size: 20))
+                                    .font(.system(size: 25))
                                     .foregroundColor(self.waterColor)
                                 Text("확인")
-                                    .font(.system(size: 20))
+                                    .font(.system(size: 25))
                                     .foregroundColor(self.waterColor)
                             }
                         }
-                        .padding(.trailing, 20)
+                        Spacer()
                         Button(action: {
                             AppState.shared.selectedTab = 0
                             self.recordViewModel.showCompleted = false
@@ -46,15 +47,15 @@ struct CompletedView: View {
                             VStack {
                                 Image("summary")
                                     .resizable()
-                                    .frame(width: 15, height: 15)
+                                    .frame(width: 18, height: 18)
                                     .scaleEffect(1.3)
                                     .foregroundColor(self.waterColor)
-                                Text("달력 보기")
-                                    .font(.system(size: 20))
+                                Text("기록 보기")
+                                    .font(.system(size: 25))
                                     .foregroundColor(self.waterColor)
                             }
                         }
-                        .padding(.leading, 20)
+                        Spacer()
                     }
                 }
             }

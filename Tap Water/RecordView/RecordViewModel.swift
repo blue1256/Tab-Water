@@ -66,6 +66,7 @@ class RecordViewModel: ObservableObject {
                     self?.percentage = drankToday / dailyGoal
                     self?.userProfile.todayRecord?.drankToday = drankToday
                 }
+                AppState.shared.updateCalendar = true
                 self?.userProfile.updateRecord = true
             }
             .store(in: &cancellables)
@@ -75,7 +76,6 @@ class RecordViewModel: ObservableObject {
             .first()
             .sink { [weak self] _ in
                 self?.completed = true
-                self?.userProfile.completedToday = true
             }
             .store(in: &cancellables)
         
@@ -86,6 +86,7 @@ class RecordViewModel: ObservableObject {
             .sink { [weak self] _ in
                 if let alreadyComp = self?.userProfile.completedToday, alreadyComp == false {
                     self?.showCompleted = true
+                    self?.userProfile.completedToday = true
                 }
             }
             .store(in: &cancellables)

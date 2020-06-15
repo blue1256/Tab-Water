@@ -8,6 +8,36 @@
 
 import SwiftUI
 
+struct ViewControllerHolder {
+    weak var value: UIViewController?
+}
+
+struct ViewControllerKey: EnvironmentKey {
+    static var defaultValue: ViewControllerHolder {
+        return ViewControllerHolder(value: UIApplication.shared.windows.first?.rootViewController)
+
+    }
+}
+
+extension EnvironmentValues {
+    var viewController: UIViewController? {
+        get { return self[ViewControllerKey.self].value }
+        set { self[ViewControllerKey.self].value = newValue }
+    }
+}
+
+extension UIViewController {
+    func present<Content: View>(style: UIModalPresentationStyle = .automatic, @ViewBuilder builder: () -> Content) {
+        let toPresent = UIHostingController(rootView: AnyView(EmptyView()))
+        toPresent.modalPresentationStyle = style
+        toPresent.rootView = AnyView(
+            builder()
+                .environment(\.viewController, toPresent)
+        )
+        self.present(toPresent, animated: true, completion: nil)
+    }
+}
+
 extension UIApplication {
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -15,8 +45,9 @@ extension UIApplication {
 }
 
 struct SpeedMeasureView: View {
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     @State var isAnimating = false
-    @ObservedObject var settingViewModel: SettingViewModel
+    var settingViewModel: SettingViewModel? = nil
     @ObservedObject var speedMeasureViewModel = SpeedMeasureViewModel()
     
     var animation: Animation {
@@ -136,7 +167,13 @@ struct SpeedMeasureView: View {
                     Button(action: {
                         withAnimation {
                             self.speedMeasureViewModel.saveSpeed = true
-                            self.settingViewModel.showSpeedMeasure = false
+                            if let settingViewModel = self.settingViewModel {
+                                settingViewModel.showSpeedMeasure = false
+                            } else {
+                                self.viewControllerHolder?.present(style: .fullScreen) {
+                                    ContentView()
+                                }
+                            }
                         }
                     }) {
                         Image(systemName: "checkmark")

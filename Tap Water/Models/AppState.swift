@@ -18,7 +18,36 @@ final class AppState: ObservableObject {
         return formatter.string(from: Date())
     }
     
+    var version: String {
+        guard let dictionary = Bundle.main.infoDictionary,
+            let version = dictionary["CFBundleShortVersionString"] as? String else {
+            return ""
+        }
+        return version
+    }
+    
+    var appStoreVersion: String {
+        guard let url = URL(string: "http://itunes.apple.com/lookup?bundleId=com.jongseokpark.Tap-Water"),
+            let data = try? Data(contentsOf: url),
+            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+            let results = json["results"] as? [[String: Any]],
+            results.count > 0,
+            let appStoreVersion = results[0]["version"] as? String
+            else { return "" }
+        return appStoreVersion
+    }
+    
+    func isUpdateAvailable() -> Bool {
+        if self.version == self.appStoreVersion && self.version != "" {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     @Published var showUserSetting: Bool = false
     
     @Published var selectedTab: Int = 1
+    
+    @Published var updateCalendar: Bool = false
 }
