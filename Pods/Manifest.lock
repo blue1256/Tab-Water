@@ -268,6 +268,7 @@ PODS:
     - gRPC-Core/Interface (= 1.21.0)
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
+  - JTAppleCalendar (8.0.3)
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -283,6 +284,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - FirebaseFirestoreSwift
+  - JTAppleCalendar
 
 SPEC REPOS:
   trunk:
@@ -304,6 +306,7 @@ SPEC REPOS:
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
+    - JTAppleCalendar
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -327,10 +330,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
+  JTAppleCalendar: 932cadea40b1051beab10f67843451d48ba16c99
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
-PODFILE CHECKSUM: 430d322cef5b7670a54428ceb224fa5eb10df63b
+PODFILE CHECKSUM: e35a76792d58ac275a2ae29b20800e960ca268ab
 
 COCOAPODS: 1.9.1

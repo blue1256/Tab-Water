@@ -15,11 +15,19 @@ struct SettingView: View {
         NavigationView {
             List {
                 Section {
-                    Text("개발자 정보")
+                    NavigationLink(destination: AppInfoView(settingViewModel: settingViewModel), isActive: $settingViewModel.showAppInfo) {
+                        HStack {
+                            Text("앱 정보")
+                            Spacer()
+                            Text(AppState.shared.isUpdateAvailable() ? "업데이트 가능" : "최신 버전")
+                                .font(.system(size: 15))
+                                .foregroundColor(.gray)
+                        }
+                    }
                 }
                 Section {
                     NavigationLink(destination: UserSettingView(settingViewModel: settingViewModel), isActive: $settingViewModel.showUserSetting) {
-                        Text("사용자 설정")
+                        Text("기록 설정")
                     }
                 }
             }

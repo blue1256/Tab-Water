@@ -24,6 +24,7 @@ struct ContentView: View {
             VStack {
                 if self.contentViewModel.selectedTab == 0 {
                     self.summary
+                        .padding(.bottom, -5)
                         .transition(self.transition)
                 } else if self.contentViewModel.selectedTab == 1 {
                     self.record

@@ -16,6 +16,7 @@ class SettingViewModel: ObservableObject {
     
     // Setting View
     @Published var showUserSetting: Bool = false
+    @Published var showAppInfo: Bool = false
     @Published var showSpeedMeasure: Bool = false
     
     // User Setting View

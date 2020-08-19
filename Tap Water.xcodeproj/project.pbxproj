@@ -31,6 +31,10 @@
 		1EEFCAF72425D30900117085 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF62425D30900117085 /* AppState.swift */; };
 		1EEFCAF9242B5B8500117085 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */; };
 		1EEFCAFB242B617900117085 /* SpeedMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */; };
+		1EF5DA62248C8E2300B39405 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF5DA61248C8E2200B39405 /* SummaryViewModel.swift */; };
+		1EF5DA64248D0CD500B39405 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF5DA63248D0CD400B39405 /* StartView.swift */; };
+		1EF5DA66248D2C8F00B39405 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF5DA65248D2C8F00B39405 /* StartViewModel.swift */; };
+		1EF5DA682493B2DE00B39405 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF5DA672493B2DE00B39405 /* AppInfoView.swift */; };
 		36EB161F930D9A3A4F27A3E4 /* Pods_Tap_Water.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8CC06F6439372B7AFBE1BF /* Pods_Tap_Water.framework */; };
 		C83762B564F1C5A46AAFAD08 /* Pods_Tap_WaterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8172D37D7BDEEF9F014AEA /* Pods_Tap_WaterTests.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +79,10 @@
 		1EEFCAF62425D30900117085 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureView.swift; sourceTree = "<group>"; };
+		1EF5DA61248C8E2200B39405 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
+		1EF5DA63248D0CD400B39405 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		1EF5DA65248D2C8F00B39405 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
+		1EF5DA672493B2DE00B39405 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		2466DD2ED9E2FFE868BDE3CC /* Pods-Tap WaterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap WaterTests.debug.xcconfig"; path = "Target Support Files/Pods-Tap WaterTests/Pods-Tap WaterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C22AB8E980866CBE1800320D /* Pods-Tap Water.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap Water.release.xcconfig"; path = "Target Support Files/Pods-Tap Water/Pods-Tap Water.release.xcconfig"; sourceTree = "<group>"; };
 		CF8172D37D7BDEEF9F014AEA /* Pods_Tap_WaterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tap_WaterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				1EE30BBA240408CE00AB6DDF /* SettingView.swift */,
+				1EF5DA672493B2DE00B39405 /* AppInfoView.swift */,
 				1EEFCAF4241E467C00117085 /* UserSettingView.swift */,
 				1E250B7C241256050058B406 /* SettingViewModel.swift */,
 				1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */,
@@ -144,7 +153,10 @@
 				1EE30B982403E58500AB6DDF /* ContentView.swift */,
 				1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */,
 				1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */,
+				1EF5DA63248D0CD400B39405 /* StartView.swift */,
+				1EF5DA65248D2C8F00B39405 /* StartViewModel.swift */,
 				1EE30BB8240408B100AB6DDF /* SummaryView.swift */,
+				1EF5DA61248C8E2200B39405 /* SummaryViewModel.swift */,
 				1EE30B942403E58500AB6DDF /* AppDelegate.swift */,
 				1EE30B962403E58500AB6DDF /* SceneDelegate.swift */,
 				1EE30B9A2403E58900AB6DDF /* Assets.xcassets */,
@@ -411,15 +423,18 @@
 			files = (
 				1EEFCAF5241E467C00117085 /* UserSettingView.swift in Sources */,
 				1EE30BC12406941900AB6DDF /* WaterBackground.swift in Sources */,
+				1EF5DA682493B2DE00B39405 /* AppInfoView.swift in Sources */,
 				1EC7372D2439B8AD00A33EB7 /* Networking.swift in Sources */,
 				1EE30B952403E58500AB6DDF /* AppDelegate.swift in Sources */,
 				1EE30BC42406C4E000AB6DDF /* Utils.swift in Sources */,
 				1EE30BC62407EF6000AB6DDF /* RecordViewModel.swift in Sources */,
+				1EF5DA64248D0CD500B39405 /* StartView.swift in Sources */,
 				1EE30BB72403EB7000AB6DDF /* RecordView.swift in Sources */,
 				1EE30BB9240408B100AB6DDF /* SummaryView.swift in Sources */,
 				1E54699124388106003F1E30 /* DayRecord.swift in Sources */,
 				1EE30BBE240691C500AB6DDF /* UserProfile.swift in Sources */,
 				1EEFCAFB242B617900117085 /* SpeedMeasureView.swift in Sources */,
+				1EF5DA62248C8E2300B39405 /* SummaryViewModel.swift in Sources */,
 				1EE30BBB240408CE00AB6DDF /* SettingView.swift in Sources */,
 				1E250B7D241256050058B406 /* SettingViewModel.swift in Sources */,
 				1E01E4C4247150B300459A70 /* CompletedView.swift in Sources */,
@@ -428,6 +443,7 @@
 				1EE30B972403E58500AB6DDF /* SceneDelegate.swift in Sources */,
 				1EEFCAF9242B5B8500117085 /* ContentViewModel.swift in Sources */,
 				1EE30B992403E58500AB6DDF /* ContentView.swift in Sources */,
+				1EF5DA66248D2C8F00B39405 /* StartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +605,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.park.Tap-Water";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jongseokpark.Tap-Water";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -610,7 +627,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.park.Tap-Water";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jongseokpark.Tap-Water";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

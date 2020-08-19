@@ -32,6 +32,7 @@ final class UserProfile: ObservableObject {
             } else {
                 userDefault.set(0, forKey: "drankToday")
                 userDefault.set(false, forKey: "completedToday")
+                completedToday = false
             }
         }
         

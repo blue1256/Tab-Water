@@ -8,6 +8,7 @@ target 'Tap Water' do
     pod 'FirebaseFirestoreSwift'
     pod 'Firebase/Analytics'
     pod 'Firebase/Database'
+    pod 'JTAppleCalendar'
 
     target 'Tap WaterTests' do
         inherit! :search_paths
