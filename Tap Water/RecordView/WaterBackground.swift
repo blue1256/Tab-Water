@@ -34,12 +34,12 @@ struct WaterBackground: View {
                 let width = geometry.size.width
                 let height = geometry.size.height * CGFloat(self.percentage * 1.05)
                 let waveCount = 1000
-                let waveHeight = (self.percentage == 0 ? 0 : 8) * self.mult[Int(self.heightMult) % 80]
+                let waveHeight = (self.percentage == 0 ? 0 : 5) * self.mult[Int(self.heightMult) % 80]
                 path.move(to: .init(x: 0, y: height))
                 path.addLine(to: .init(x: 0, y: Double(waveHeight) + sin(Double(self.elapsed) * 0.5)))
                 (1...waveCount).forEach { i in
                     let x = Double(i) / Double(waveCount) * Double(width)
-                    let y = sin((Double(i) + self.elapsed * 5) * 0.01) * Double(waveHeight)
+                    let y = sin((Double(i) + self.elapsed * 5) * 0.006) * Double(waveHeight)
                     path.addLine(to: .init(x: x, y: y))
                 }
                 path.addLine(to: .init(x: width, y: height))

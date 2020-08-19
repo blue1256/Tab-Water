@@ -14,7 +14,7 @@ class SummaryViewModel: ObservableObject {
     var userProfile: UserProfile = UserProfile.shared
     private var cancellables = Set<AnyCancellable>()
     
-    var firstDate = "20200101"
+    var firstDate = AppState.shared.today
     
     var searchedMonth = [String]()
     
