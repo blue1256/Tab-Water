@@ -9,24 +9,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 1
+    @ObservedObject var contentViewModel = ContentViewModel()
     
     var transition: AnyTransition {
         return AnyTransition.opacity.animation(.easeInOut(duration: 0.14))
     }
+    
+    var summary = SummaryView()
+    var record = RecordView()
+    var setting = SettingView()
  
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
-                if self.selection == 0 {
-                    SummaryView()
+                if self.contentViewModel.selectedTab == 0 {
+                    self.summary
                         .transition(self.transition)
-                } else if self.selection == 1 {
-                    RecordView()
+                } else if self.contentViewModel.selectedTab == 1 {
+                    self.record
+                        .padding(.bottom, -5)
                         .transition(self.transition)
-                } else if self.selection == 2 {
-                    SettingView()
+                } else if self.contentViewModel.selectedTab == 2 {
+                    self.setting
                         .transition(self.transition)
                 }
                 Spacer()
@@ -34,10 +38,10 @@ struct ContentView: View {
                     Spacer()
                     Button(action: {
                         withAnimation {
-                            self.selection = 0
+                            self.contentViewModel.selectedTab = 0
                         }
                     }) {
-                        Image((self.selection == 0 ? "summary" : "summary-disabled"))
+                        Image((self.contentViewModel.selectedTab == 0 ? "summary" : "summary-disabled"))
                             .renderingMode(.original)
                             .resizable()
                             .frame(width: 30, height: 30)
@@ -47,10 +51,10 @@ struct ContentView: View {
                     Spacer()
                     Button(action: {
                         withAnimation {
-                            self.selection = 1
+                            self.contentViewModel.selectedTab = 1
                         }
                     }) {
-                        Image((self.selection == 1 ? "water" : "water-disabled"))
+                        Image((self.contentViewModel.selectedTab == 1 ? "water" : "water-disabled"))
                             .renderingMode(.original)
                             .resizable()
                             .frame(width: 30, height: 30)
@@ -59,10 +63,10 @@ struct ContentView: View {
                     Spacer()
                     Button(action: {
                         withAnimation {
-                            self.selection = 2
+                            self.contentViewModel.selectedTab = 2
                         }
                     }) {
-                        Image((self.selection == 2 ? "setting" : "setting-disabled"))
+                        Image((self.contentViewModel.selectedTab == 2 ? "setting" : "setting-disabled"))
                             .renderingMode(.original)
                             .resizable()
                             .frame(width: 30, height: 30)
