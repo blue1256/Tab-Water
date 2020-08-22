@@ -12,7 +12,7 @@ import Combine
 class RecordViewModel: ObservableObject {
     var userProfile: UserProfile = UserProfile.shared
     let appState = AppState.shared
-    private let timerPublisher = Timer.TimerPublisher(interval: 0.1, runLoop: .main, mode: .default)
+    private let timerPublisher = Timer.TimerPublisher(interval: 0.2, runLoop: .main, mode: .default)
     private var cancellables = Set<AnyCancellable>()
     
     var drankToday: Double = 0.0
@@ -61,7 +61,7 @@ class RecordViewModel: ObservableObject {
             .map { return $0.0 }
             .filter{ $0 }
             .sink { [weak self] _ in
-                self?.drankToday += 0.1 * (self?.userProfile.speed ?? 0) / 1000
+                self?.drankToday += 0.2 * (self?.userProfile.speed ?? 0) / 1000
                 if let drankToday = self?.drankToday, let dailyGoal = self?.userProfile.dailyGoal, dailyGoal != 0 {
                     self?.percentage = drankToday / dailyGoal
                     self?.userProfile.todayRecord?.drankToday = drankToday

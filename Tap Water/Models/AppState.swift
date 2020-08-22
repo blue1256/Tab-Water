@@ -50,4 +50,6 @@ final class AppState: ObservableObject {
     @Published var selectedTab: Int = 1
     
     @Published var updateCalendar: Bool = false
+    
+    @Published var deleteCalendar: Bool = false
 }

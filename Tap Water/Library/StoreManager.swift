@@ -47,4 +47,18 @@ class StoreManager {
             .filter("date LIKE '\(month+"*")'")
         return Array(monthRecords.map { $0.copy() as! DayRecord })
     }
+    
+    func deleteAll() {
+        try! realm.write {
+            let allRecords = realm.objects(DayRecord.self)
+            realm.delete(allRecords)
+            
+            let userDefault = UserDefaults.standard
+            userDefault.set("", forKey: "today")
+            userDefault.set(0, forKey: "drankToday")
+            userDefault.set(false, forKey: "completedToday")
+            
+            UserProfile.shared.getNewRecord(today: AppState.shared.today)
+        }
+    }
 }

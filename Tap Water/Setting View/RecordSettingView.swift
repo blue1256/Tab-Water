@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct UserSettingView: View {
+struct RecordSettingView: View {
     @ObservedObject var settingViewModel: SettingViewModel
     
     var body: some View {
@@ -63,7 +63,7 @@ struct UserSettingView: View {
                 }
             }
         }
-        .navigationBarTitle(Text("사용자 설정"), displayMode: .inline)
+        .navigationBarTitle(Text("기록 설정"), displayMode: .inline)
         .alert(isPresented: $settingViewModel.showGoalAlert) {
             Alert(title: Text("목표 설정"),
                   message: Text("목표가 변경되었습니다."),
@@ -78,6 +78,6 @@ struct UserSettingView: View {
 
 struct UserSettingView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSettingView(settingViewModel: SettingViewModel())
+        RecordSettingView(settingViewModel: SettingViewModel())
     }
 }

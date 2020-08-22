@@ -69,7 +69,7 @@ class SummaryViewModel: ObservableObject {
                 formatter.locale = Locale(identifier: "ko_KR")
                 formatter.dateFormat = "yyyyMMdd"
             
-                if let record = StoreManager.shared.getTodayRecord() {
+                if let record = UserProfile.shared.todayRecord {
                     if let target = self.records.firstIndex(where: { $0.date == AppState.shared.today }) {
                         self.records.remove(at: target)
                     }
@@ -80,6 +80,16 @@ class SummaryViewModel: ObservableObject {
                     }
                 }
                 AppState.shared.updateCalendar = false
+            }
+            .store(in: &cancellables)
+        
+        AppState.shared.$deleteCalendar
+            .filter { $0 }
+            .debounce(for: 1, scheduler: RunLoop.main)
+            .sink{ [weak self] _ in
+                guard let self = self else { return }
+                self.records.removeAll()
+                AppState.shared.deleteCalendar = false
             }
             .store(in: &cancellables)
     }

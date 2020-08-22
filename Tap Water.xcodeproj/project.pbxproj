@@ -28,7 +28,7 @@
 		1EE30BC12406941900AB6DDF /* WaterBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC02406941900AB6DDF /* WaterBackground.swift */; };
 		1EE30BC42406C4E000AB6DDF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC32406C4E000AB6DDF /* Utils.swift */; };
 		1EE30BC62407EF6000AB6DDF /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */; };
-		1EEFCAF5241E467C00117085 /* UserSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF4241E467C00117085 /* UserSettingView.swift */; };
+		1EEFCAF5241E467C00117085 /* RecordSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF4241E467C00117085 /* RecordSettingView.swift */; };
 		1EEFCAF72425D30900117085 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF62425D30900117085 /* AppState.swift */; };
 		1EEFCAF9242B5B8500117085 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */; };
 		1EEFCAFB242B617900117085 /* SpeedMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */; };
@@ -75,7 +75,7 @@
 		1EE30BC02406941900AB6DDF /* WaterBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterBackground.swift; sourceTree = "<group>"; };
 		1EE30BC32406C4E000AB6DDF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
-		1EEFCAF4241E467C00117085 /* UserSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingView.swift; sourceTree = "<group>"; };
+		1EEFCAF4241E467C00117085 /* RecordSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSettingView.swift; sourceTree = "<group>"; };
 		1EEFCAF62425D30900117085 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureView.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 			children = (
 				1EE30BBA240408CE00AB6DDF /* SettingView.swift */,
 				1EF5DA672493B2DE00B39405 /* AppInfoView.swift */,
-				1EEFCAF4241E467C00117085 /* UserSettingView.swift */,
+				1EEFCAF4241E467C00117085 /* RecordSettingView.swift */,
 				1E250B7C241256050058B406 /* SettingViewModel.swift */,
 				1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */,
 				1E473FAC245EEC8200A6F137 /* SpeedMeasureViewModel.swift */,
@@ -383,7 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EEFCAF5241E467C00117085 /* UserSettingView.swift in Sources */,
+				1EEFCAF5241E467C00117085 /* RecordSettingView.swift in Sources */,
 				1EE30BC12406941900AB6DDF /* WaterBackground.swift in Sources */,
 				1EF5DA682493B2DE00B39405 /* AppInfoView.swift in Sources */,
 				1EC7372D2439B8AD00A33EB7 /* Networking.swift in Sources */,
