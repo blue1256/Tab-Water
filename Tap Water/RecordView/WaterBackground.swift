@@ -54,7 +54,7 @@ struct WaterBackground: View {
             .transition(.move(edge: .bottom))
             .animation(.easeInOut(duration: 0.5))
             .onReceive(self.timer) { _ in
-                self.elapsed += 1
+                self.elapsed += 3
             }
             .onReceive(self.HTimer) { _ in
                 self.heightMult += 1

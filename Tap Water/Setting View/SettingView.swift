@@ -26,14 +26,27 @@ struct SettingView: View {
                     }
                 }
                 Section {
-                    NavigationLink(destination: UserSettingView(settingViewModel: settingViewModel), isActive: $settingViewModel.showUserSetting) {
+                    NavigationLink(destination: RecordSettingView(settingViewModel: settingViewModel), isActive: $settingViewModel.showUserSetting) {
                         Text("기록 설정")
+                    }
+                    Button(action: {
+                        self.settingViewModel.showRecordDeletionSheet = true
+                    }) {
+                        Text("기록 삭제")
                     }
                 }
             }
             .listStyle(GroupedListStyle())
             .environment(\.defaultMinListRowHeight, 50)
             .navigationBarTitle(Text("설정"), displayMode: .large)
+            .actionSheet(isPresented: $settingViewModel.showRecordDeletionSheet) {
+                let delete = ActionSheet.Button.destructive(Text("기록 삭제")) {
+                    self.settingViewModel.deleteAllRecord = true
+                }
+                let cancel = ActionSheet.Button.cancel(Text("취소"))
+                let sheet = ActionSheet(title: Text(""), message: Text("현재까지의 모든 물 기록량을 삭제합니다."), buttons: [delete, cancel])
+                return sheet
+            }
         }
     }
 }

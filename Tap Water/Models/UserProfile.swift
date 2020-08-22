@@ -26,21 +26,14 @@ final class UserProfile: ObservableObject {
     func getNewRecord(today: String) {
         let drankToday = userDefault.double(forKey: "drankToday")
         
-        if let defaultDate = userDefault.string(forKey: "today") {
-            if defaultDate == today {
-                todayRecord = DayRecord(drankToday: drankToday, dailyGoal: dailyGoal, date: today)
-            } else {
-                userDefault.set(0, forKey: "drankToday")
-                userDefault.set(false, forKey: "completedToday")
-                completedToday = false
-            }
+        if let defaultDate = userDefault.string(forKey: "today"), defaultDate != today {
+            userDefault.set(0, forKey: "drankToday")
+            userDefault.set(false, forKey: "completedToday")
+            completedToday = false
         }
+        todayRecord = DayRecord(drankToday: drankToday, dailyGoal: dailyGoal, date: today)
         
         userDefault.set(today, forKey: "today")
-        
-        Networking.shared.getTodayRecord { [weak self] record in
-            self?.todayRecord = record ?? DayRecord(drankToday: 0, dailyGoal: self?.dailyGoal ?? 0, date: today)
-        }
     }
     
     private init() {
@@ -70,7 +63,7 @@ final class UserProfile: ObservableObject {
             .debounce(for: 1, scheduler: RunLoop.main)
             .sink { [weak self] _ in
                 if let record = self?.todayRecord {
-                    Networking.shared.setTodayRecord(record)
+                    StoreManager.shared.setTodayRecord(record)
                     self?.userDefault.set(record.drankToday, forKey: "drankToday")
                 }
                 self?.updateRecord = false
