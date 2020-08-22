@@ -37,10 +37,6 @@ final class UserProfile: ObservableObject {
         }
         
         userDefault.set(today, forKey: "today")
-        
-        Networking.shared.getTodayRecord { [weak self] record in
-            self?.todayRecord = record ?? DayRecord(drankToday: 0, dailyGoal: self?.dailyGoal ?? 0, date: today)
-        }
     }
     
     private init() {
@@ -70,7 +66,7 @@ final class UserProfile: ObservableObject {
             .debounce(for: 1, scheduler: RunLoop.main)
             .sink { [weak self] _ in
                 if let record = self?.todayRecord {
-                    Networking.shared.setTodayRecord(record)
+                    StoreManager.shared.setTodayRecord(record)
                     self?.userDefault.set(record.drankToday, forKey: "drankToday")
                 }
                 self?.updateRecord = false
