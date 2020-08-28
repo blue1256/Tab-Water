@@ -24,6 +24,7 @@ final class UserProfile: ObservableObject {
     @Published var speed: Double
     @Published var enabledNotification: Bool = true
     @Published var remindingTime: Int = 1
+    @Published var launchedBefore: Bool = true
     
     @objc func dateChange(){
         self.getNewRecord(today: AppState.shared.today)
@@ -49,6 +50,7 @@ final class UserProfile: ObservableObject {
         completedToday = userDefault.bool(forKey: "completedToday")
         enabledNotification = !userDefault.bool(forKey: "notification")
         remindingTime = userDefault.integer(forKey: "remindingTime") == 0 ? 1 : userDefault.integer(forKey: "remindingTime")
+        launchedBefore = userDefault.bool(forKey: "launchedBefore")
         
         let today = AppState.shared.today
         
@@ -104,6 +106,13 @@ final class UserProfile: ObservableObject {
             .sink { [weak self] time in
                 guard let self = self else { return }
                 self.userDefault.set(time, forKey: "remindingTime")
+            }
+            .store(in: &cancellables)
+        
+        self.$launchedBefore
+            .sink { [weak self] launched in
+                guard let self = self else { return }
+                self.userDefault.set(launched, forKey: "launchedBefore")
             }
             .store(in: &cancellables)
     }
