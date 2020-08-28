@@ -87,6 +87,13 @@ class CalendarDelegate: NSObject, JTACMonthViewDelegate, JTACMonthViewDataSource
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "YYYY년 M월"
         
+        let cal = Calendar(identifier: .gregorian)
+        let rangeYear = cal.component(.year, from: range.start)
+        let todayYear = cal.component(.year, from: Date())
+        if rangeYear == todayYear {
+            formatter.dateFormat = "M월"
+        }
+        
         let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: DateHeader.reuseID, for: indexPath) as! DateHeader
         header.monthTitle.text = formatter.string(from: range.start)
         return header
@@ -129,7 +136,7 @@ class DateHeader: JTACMonthReusableView {
         
         monthTitle.textAlignment = .center
         monthTitle.translatesAutoresizingMaskIntoConstraints = false
-        monthTitle.font = .boldSystemFont(ofSize: 25)
+        monthTitle.font = .boldSystemFont(ofSize: 30)
         
         for i in 0..<7 {
             self.addSubview(weekDay[i])
@@ -147,7 +154,7 @@ class DateHeader: JTACMonthReusableView {
         
         weekDay[6].trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
-        monthTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        monthTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
         monthTitle.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10).isActive = true
     }
 

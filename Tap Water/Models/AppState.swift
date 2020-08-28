@@ -7,10 +7,21 @@
 //
 
 import Foundation
+import UserNotifications
 
 final class AppState: ObservableObject {
     static let shared = AppState()
     let userDefault = UserDefaults.standard
+    let notificationCenter = UNUserNotificationCenter.current()
+    
+    @Published var showUserSetting: Bool = false
+    
+    @Published var selectedTab: Int = 1
+    
+    @Published var updateCalendar: Bool = false
+    
+    @Published var deleteCalendar: Bool = false
+    
     var today: String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
@@ -27,7 +38,7 @@ final class AppState: ObservableObject {
     }
     
     var appStoreVersion: String {
-        guard let url = URL(string: "http://itunes.apple.com/lookup?bundleId=com.jongseokpark.Tap-Water"),
+        guard let url = URL(string: "http://itunes.apple.com/lookup?bundleId=com.park.Tap-Water"),
             let data = try? Data(contentsOf: url),
             let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
             let results = json["results"] as? [[String: Any]],
@@ -45,11 +56,31 @@ final class AppState: ObservableObject {
         }
     }
     
-    @Published var showUserSetting: Bool = false
+    func requestNotification(){
+        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
+        
+        self.notificationCenter.requestAuthorization(options: authOptions) { (success, error) in
+            if let error = error {
+                print(error)
+            }
+        }
+    }
     
-    @Published var selectedTab: Int = 1
-    
-    @Published var updateCalendar: Bool = false
-    
-    @Published var deleteCalendar: Bool = false
+    func sendNotification(){
+        let content = UNMutableNotificationContent()
+        content.title = "물 마시기"
+        content.body = "오늘 목표량을 아직 다 못 마셨어요!"
+        content.sound = .default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(UserProfile.shared.remindingTime * 3600), repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        notificationCenter.removeAllPendingNotificationRequests()
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                print(error)
+            }
+        }
+    }
 }

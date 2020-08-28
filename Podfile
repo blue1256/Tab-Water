@@ -4,6 +4,7 @@ target 'Tap Water' do
     use_frameworks!
 
     pod 'Firebase/Core'
+    pod 'Firebase/Crashlytics'
     pod 'Firebase/Analytics'
     pod 'JTAppleCalendar'
     pod 'RealmSwift'

@@ -28,6 +28,8 @@
 		1EE30BC12406941900AB6DDF /* WaterBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC02406941900AB6DDF /* WaterBackground.swift */; };
 		1EE30BC42406C4E000AB6DDF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC32406C4E000AB6DDF /* Utils.swift */; };
 		1EE30BC62407EF6000AB6DDF /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */; };
+		1EE8433E24F28F3400D4F71C /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EE8433D24F28F3400D4F71C /* GoogleService-Info-dev.plist */; };
+		1EE8434624F7B40700D4F71C /* ReminderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE8434524F7B40700D4F71C /* ReminderSettingView.swift */; };
 		1EEFCAF5241E467C00117085 /* RecordSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF4241E467C00117085 /* RecordSettingView.swift */; };
 		1EEFCAF72425D30900117085 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF62425D30900117085 /* AppState.swift */; };
 		1EEFCAF9242B5B8500117085 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */; };
@@ -55,7 +57,7 @@
 		1E35C29A24ED0FCB0032CBC7 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		1E473FAC245EEC8200A6F137 /* SpeedMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureViewModel.swift; sourceTree = "<group>"; };
 		1E54699024388106003F1E30 /* DayRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecord.swift; sourceTree = "<group>"; };
-		1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EC7372C2439B8AD00A33EB7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		1EE30B912403E58500AB6DDF /* Tap Water.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tap Water.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EE30B942403E58500AB6DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,8 @@
 		1EE30BC02406941900AB6DDF /* WaterBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterBackground.swift; sourceTree = "<group>"; };
 		1EE30BC32406C4E000AB6DDF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		1EE8433D24F28F3400D4F71C /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info-dev.plist"; path = "Tap Water/GoogleService-Info-dev.plist"; sourceTree = SOURCE_ROOT; };
+		1EE8434524F7B40700D4F71C /* ReminderSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingView.swift; sourceTree = "<group>"; };
 		1EEFCAF4241E467C00117085 /* RecordSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSettingView.swift; sourceTree = "<group>"; };
 		1EEFCAF62425D30900117085 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 		1EF5DA63248D0CD400B39405 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		1EF5DA65248D2C8F00B39405 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		1EF5DA672493B2DE00B39405 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
+		48F309F91F5B6DE2309E52D8 /* Pods-Tap Water.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap Water.staging.xcconfig"; path = "Target Support Files/Pods-Tap Water/Pods-Tap Water.staging.xcconfig"; sourceTree = "<group>"; };
 		C22AB8E980866CBE1800320D /* Pods-Tap Water.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap Water.release.xcconfig"; path = "Target Support Files/Pods-Tap Water/Pods-Tap Water.release.xcconfig"; sourceTree = "<group>"; };
 		D71322B1735AABBD936E5B6B /* Pods-Tap Water.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tap Water.debug.xcconfig"; path = "Target Support Files/Pods-Tap Water/Pods-Tap Water.debug.xcconfig"; sourceTree = "<group>"; };
 		ED8CC06F6439372B7AFBE1BF /* Pods_Tap_Water.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tap_Water.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +117,7 @@
 			children = (
 				1EE30BBA240408CE00AB6DDF /* SettingView.swift */,
 				1EF5DA672493B2DE00B39405 /* AppInfoView.swift */,
+				1EE8434524F7B40700D4F71C /* ReminderSettingView.swift */,
 				1EEFCAF4241E467C00117085 /* RecordSettingView.swift */,
 				1E250B7C241256050058B406 /* SettingViewModel.swift */,
 				1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */,
@@ -157,16 +163,16 @@
 				1EE30BBF240693EB00AB6DDF /* RecordView */,
 				1E250B7B241255EC0058B406 /* Setting View */,
 				1EE30BC22406C4C700AB6DDF /* Library */,
+				1EE8433C24F28C1800D4F71C /* Supporting Files */,
 				1EE30B982403E58500AB6DDF /* ContentView.swift */,
-				1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */,
 				1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */,
 				1EF5DA63248D0CD400B39405 /* StartView.swift */,
 				1EF5DA65248D2C8F00B39405 /* StartViewModel.swift */,
+				1EE30BA22403E58900AB6DDF /* Info.plist */,
 				1EE30B942403E58500AB6DDF /* AppDelegate.swift */,
 				1EE30B962403E58500AB6DDF /* SceneDelegate.swift */,
 				1EE30B9A2403E58900AB6DDF /* Assets.xcassets */,
 				1EE30B9F2403E58900AB6DDF /* LaunchScreen.storyboard */,
-				1EE30BA22403E58900AB6DDF /* Info.plist */,
 				1EE30B9C2403E58900AB6DDF /* Preview Content */,
 			);
 			path = "Tap Water";
@@ -220,11 +226,21 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		1EE8433C24F28C1800D4F71C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */,
+				1EE8433D24F28F3400D4F71C /* GoogleService-Info-dev.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		70FB84D371BB50BE864DA791 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				D71322B1735AABBD936E5B6B /* Pods-Tap Water.debug.xcconfig */,
 				C22AB8E980866CBE1800320D /* Pods-Tap Water.release.xcconfig */,
+				48F309F91F5B6DE2309E52D8 /* Pods-Tap Water.staging.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -249,6 +265,7 @@
 				1EE30B8E2403E58500AB6DDF /* Frameworks */,
 				1EE30B8F2403E58500AB6DDF /* Resources */,
 				827452552B9FEFFC179BB687 /* [CP] Embed Pods Frameworks */,
+				1EE8434224F297FA00D4F71C /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -321,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EE30BA12403E58900AB6DDF /* LaunchScreen.storyboard in Resources */,
+				1EE8433E24F28F3400D4F71C /* GoogleService-Info-dev.plist in Resources */,
 				1EC7372B2438846A00A33EB7 /* GoogleService-Info.plist in Resources */,
 				1EE30B9E2403E58900AB6DDF /* Preview Assets.xcassets in Resources */,
 				1EE30B9B2403E58900AB6DDF /* Assets.xcassets in Resources */,
@@ -337,6 +355,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1EE8434224F297FA00D4F71C /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		827452552B9FEFFC179BB687 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EE8434624F7B40700D4F71C /* ReminderSettingView.swift in Sources */,
 				1EEFCAF5241E467C00117085 /* RecordSettingView.swift in Sources */,
 				1EE30BC12406941900AB6DDF /* WaterBackground.swift in Sources */,
 				1EF5DA682493B2DE00B39405 /* AppInfoView.swift in Sources */,
@@ -560,6 +597,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Tap Water/Preview Content\"";
 				DEVELOPMENT_TEAM = S23G35QQ2V;
 				ENABLE_PREVIEWS = YES;
@@ -569,9 +607,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.park.Tap-Water";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.park.Tap-Water-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				TAPWATER_BUNDLE_IDENTIFIER = "com.park.Tap-Water-dev";
+				TAPWATER_BUNDLE_NAME = "Tap Water-debug";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -594,6 +634,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.park.Tap-Water";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				TAPWATER_BUNDLE_IDENTIFIER = "com.park.Tap-Water";
+				TAPWATER_BUNDLE_NAME = "Tap Water";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -642,6 +684,114 @@
 			};
 			name = Release;
 		};
+		1EE8433924F289E500D4F71C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Staging;
+		};
+		1EE8433A24F289E500D4F71C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48F309F91F5B6DE2309E52D8 /* Pods-Tap Water.staging.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"Tap Water/Preview Content\"";
+				DEVELOPMENT_TEAM = S23G35QQ2V;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Tap Water/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.park.Tap-Water-dev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TAPWATER_BUNDLE_IDENTIFIER = "com.park.Tap-Water-dev";
+				TAPWATER_BUNDLE_NAME = "Tap Water-staging";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		1EE8433B24F289E500D4F71C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S23G35QQ2V;
+				INFOPLIST_FILE = "Tap WaterTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "park.Tap-WaterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tap Water.app/Tap Water";
+			};
+			name = Staging;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -649,6 +799,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EE30BAE2403E58A00AB6DDF /* Debug */,
+				1EE8433924F289E500D4F71C /* Staging */,
 				1EE30BAF2403E58A00AB6DDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -658,6 +809,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EE30BB12403E58A00AB6DDF /* Debug */,
+				1EE8433A24F289E500D4F71C /* Staging */,
 				1EE30BB22403E58A00AB6DDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -667,6 +819,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EE30BB42403E58A00AB6DDF /* Debug */,
+				1EE8433B24F289E500D4F71C /* Staging */,
 				1EE30BB52403E58A00AB6DDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

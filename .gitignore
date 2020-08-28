@@ -76,3 +76,4 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 #
 Tap Water/GoogleService-Info.plist
+Tap Water/GoogleService-Info-dev.plist

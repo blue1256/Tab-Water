@@ -43,8 +43,7 @@ class StoreManager {
     }
     
     func getMonthRecord(month: String) -> [DayRecord] {
-        let monthRecords = realm.objects(DayRecord.self)
-            .filter("date LIKE '\(month+"*")'")
+        let monthRecords = realm.objects(DayRecord.self).filter("date LIKE '\(month+"*")'")
         return Array(monthRecords.map { $0.copy() as! DayRecord })
     }
     

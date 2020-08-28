@@ -16,19 +16,30 @@ class SettingViewModel: ObservableObject {
     
     // Setting View
     @Published var showUserSetting: Bool = false
+    @Published var showReminderSetting: Bool = false
     @Published var showAppInfo: Bool = false
     @Published var showSpeedMeasure: Bool = false
     @Published var showRecordDeletionSheet: Bool = false
     @Published var deleteAllRecord: Bool = false
+    @Published var notification: Bool = false
     
     // Record Setting View
     @Published var goalPickerValue: Int = 0
-    @Published var showSaveButton: Bool = false
-    @Published var showPicker: Bool = false
+    @Published var showGoalSaveButton: Bool = false
+    @Published var showGoalPicker: Bool = false
     @Published var showGoalAlert: Bool = false
+    
+    // Reminder  Setting View
+    @Published var timePickerValue: Int = 0
+    @Published var showTimePicker: Bool = false
+    @Published var showTimeSaveButton: Bool = false
+    @Published var showTimeAlert: Bool = false
     
     init() {
         goalPickerValue = Int(userProfile.dailyGoal*10)
+        timePickerValue = userProfile.remindingTime - 1
+        
+        notification = UserProfile.shared.enabledNotification
         
         appState.$showUserSetting
             .sink { [weak self] show in
@@ -42,15 +53,14 @@ class SettingViewModel: ObservableObject {
             .sink{ [weak self] val in
                 guard let self = self else { return }
                 if self.userProfile.dailyGoal != Double(val) / 10.0 {
-                    self.showSaveButton = true
+                    self.showGoalSaveButton = true
                 } else {
-                    self.showSaveButton = false
+                    self.showGoalSaveButton = false
                 }
             }
             .store(in: &cancellables)
             
-        
-        self.$showPicker
+        self.$showGoalPicker
             .filter { !$0 }
             .dropFirst()
             .sink { [weak self] _ in
@@ -59,7 +69,7 @@ class SettingViewModel: ObservableObject {
                     self.showGoalAlert = true
                 }
                 self.userProfile.dailyGoal = Double(self.goalPickerValue) / 10.0
-                self.showSaveButton = false
+                self.showGoalSaveButton = false
             }
             .store(in: &cancellables)
         
@@ -70,6 +80,38 @@ class SettingViewModel: ObservableObject {
                 StoreManager.shared.deleteAll()
                 AppState.shared.deleteCalendar = true
                 self.deleteAllRecord = false
+            }
+            .store(in: &cancellables)
+        
+        self.$notification
+            .debounce(for: 1, scheduler: RunLoop.main)
+            .sink { notification in
+                UserProfile.shared.enabledNotification = notification
+            }
+            .store(in: &cancellables)
+        
+        self.$timePickerValue
+            .debounce(for: 0.1, scheduler: RunLoop.main)
+            .sink { [weak self] val in
+                guard let self = self else { return }
+                if self.userProfile.remindingTime != val+1 {
+                    self.showTimeSaveButton = true
+                } else {
+                    self.showTimeSaveButton = false
+                }
+            }
+            .store(in: &cancellables)
+        
+        self.$showTimePicker
+            .filter{ !$0 }
+            .dropFirst()
+            .sink{ [weak self] _ in
+                guard let self = self else { return }
+                if self.userProfile.remindingTime != self.timePickerValue+1 {
+                    self.showTimeAlert = true
+                }
+                self.userProfile.remindingTime = self.timePickerValue+1
+                self.showTimeSaveButton = false
             }
             .store(in: &cancellables)
     }
