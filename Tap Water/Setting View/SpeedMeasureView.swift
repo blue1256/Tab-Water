@@ -184,8 +184,9 @@ struct SpeedMeasureView: View {
                     }
                     .padding(.bottom, 10)
                 } else {
-                    Text("빈 컵을 눌러 측정을 시작해주세요")
+                    Text("빈 컵을 누르는 동시에 물을 마시며\n속도 측정을 시작해주세요")
                         .padding(.bottom, 10)
+                        .multilineTextAlignment(.center)
                 }
                 
                 Button(action: {

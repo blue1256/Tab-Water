@@ -54,6 +54,13 @@ struct RecordView: View {
                     .background(Color.init(red: 52/255, green: 172/255, blue: 221/255))
                     .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage.truncatingRemainder(dividingBy: 1)))
                     .clipShape(Circle())
+                    if !self.recordViewModel.launchedBefore {
+                        Text("물을 마시기 시작하며 버튼을 누르고\n다 마신 뒤 버튼을 다시 눌러주세요.")
+                            .font(.system(size: 15))
+                            .foregroundColor(.gray)
+                            .padding(.top, 20)
+                            .multilineTextAlignment(.center)
+                    }
                     Spacer()
                 }
             }

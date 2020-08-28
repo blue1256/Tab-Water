@@ -72,7 +72,7 @@ final class AppState: ObservableObject {
         content.body = "오늘 목표량을 아직 다 못 마셨어요!"
         content.sound = .default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(UserProfile.shared.remindingTime), repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(UserProfile.shared.remindingTime * 3600), repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         

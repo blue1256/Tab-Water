@@ -28,11 +28,14 @@ class RecordViewModel: ObservableObject {
     
     @Published var showUserSetting: Bool = false
     
+    @Published var launchedBefore: Bool = true
+    
     init(){
         timerPublisher.connect().store(in: &cancellables)
         drankToday = userProfile.todayRecord?.drankToday ?? 0
         dailyGoal = userProfile.dailyGoal
         showAlert = (userProfile.dailyGoal == 0) || (userProfile.speed == 0)
+        launchedBefore = userProfile.launchedBefore
         
         userProfile.$todayRecord
             .sink { [weak self] record in
@@ -59,12 +62,19 @@ class RecordViewModel: ObservableObject {
             .map { return $0.0 }
             .filter{ $0 }
             .sink { [weak self] _ in
-                self?.drankToday += 0.2 * (self?.userProfile.speed ?? 0) / 1000
-                if let drankToday = self?.drankToday, let dailyGoal = self?.userProfile.dailyGoal, dailyGoal != 0 {
-                    self?.percentage = drankToday / dailyGoal
-                    self?.userProfile.todayRecord?.drankToday = drankToday
+                guard let self = self else { return }
+                self.drankToday += 0.2 * (self.userProfile.speed) / 1000
+                let drankToday = self.drankToday
+                let dailyGoal = self.userProfile.dailyGoal
+                if dailyGoal != 0 {
+                    self.percentage = drankToday / dailyGoal
+                    self.userProfile.todayRecord?.drankToday = drankToday
                 }
-                self?.userProfile.updateRecord = true
+                if !self.launchedBefore {
+                    self.launchedBefore.toggle()
+                    self.userProfile.launchedBefore.toggle()
+                }
+                self.userProfile.updateRecord = true
                 AppState.shared.updateCalendar = true
             }
             .store(in: &cancellables)
