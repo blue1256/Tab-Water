@@ -24,7 +24,6 @@ struct CompletedView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: geometry.size.width * 0.7)
-                        .padding(.bottom, 60)
                     HStack {
                         Spacer()
                         Button(action: {
