@@ -26,6 +26,11 @@ struct SettingView: View {
                     }
                 }
                 Section {
+                    NavigationLink(destination: ReminderSettingView(settingViewModel: settingViewModel), isActive: $settingViewModel.showReminderSetting) {
+                        Text("리마인더")
+                    }
+                }
+                Section {
                     NavigationLink(destination: RecordSettingView(settingViewModel: settingViewModel), isActive: $settingViewModel.showUserSetting) {
                         Text("기록 설정")
                     }

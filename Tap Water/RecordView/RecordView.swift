@@ -10,7 +10,6 @@ import SwiftUI
 
 struct RecordView: View {
     @ObservedObject var recordViewModel = RecordViewModel()
-    @State var isAnimating = false
     
     var animation: Animation {
         return Animation.easeInOut(duration: 2).repeatForever()
@@ -60,7 +59,7 @@ struct RecordView: View {
             }
             .onAppear(perform: {
                 self.recordViewModel.examineSetting = true
-                self.recordViewModel.today = AppState.shared.today
+                AppState.shared.requestNotification()
             })
             .sheet(isPresented: self.$recordViewModel.showCompleted) {
                 CompletedView(recordViewModel: self.recordViewModel)

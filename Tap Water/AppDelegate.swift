@@ -11,12 +11,19 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
+        #if DEBUG
+        let filePath = Bundle.main.path(forResource: "GoogleService-Info-dev", ofType: "plist")
+        print("debug")
+        #else
+        let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
+        #endif
+        
+        let options = FirebaseOptions(contentsOfFile: filePath!)
+        
+        FirebaseApp.configure(options: options!)
+        
         return true
     }
 

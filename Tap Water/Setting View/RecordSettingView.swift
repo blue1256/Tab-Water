@@ -15,7 +15,7 @@ struct RecordSettingView: View {
         List {
             Button(action: {
                 withAnimation {
-                    self.settingViewModel.showPicker.toggle()
+                    self.settingViewModel.showGoalPicker.toggle()
                 }
             }) {
                 HStack {
@@ -24,19 +24,19 @@ struct RecordSettingView: View {
                     
                     Spacer()
                     
-                    if settingViewModel.showSaveButton {
+                    if settingViewModel.showGoalSaveButton {
                         Text("저장")
                             .foregroundColor(.blue)
                     } else {
                         Image(systemName: "chevron.right")
                             .foregroundColor(Color(red: 196/255, green: 196/255, blue: 196/255))
                             .imageScale(.small)
-                            .rotationEffect(.degrees(settingViewModel.showPicker ? 90 : 0))
+                            .rotationEffect(.degrees(settingViewModel.showGoalPicker ? 90 : 0))
                     }
                 }
             }
             .padding([.top, .bottom], 8)
-            if settingViewModel.showPicker {
+            if settingViewModel.showGoalPicker {
                 Picker(selection: self.$settingViewModel.goalPickerValue, label: Text("")) {
                     ForEach(0..<51) {
                         Text("\(Utils.shared.floorDouble(num: Double($0)/10.0))L")

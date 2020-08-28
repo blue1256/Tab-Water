@@ -15,8 +15,8 @@ class RecordViewModel: ObservableObject {
     private let timerPublisher = Timer.TimerPublisher(interval: 0.2, runLoop: .main, mode: .default)
     private var cancellables = Set<AnyCancellable>()
     
-    var drankToday: Double = 0.0
-    var dailyGoal: Double = 0.0
+    @Published var drankToday: Double = 0.0
+    @Published var dailyGoal: Double = 0.0
    
     @Published var percentage: Double = 0.0
     @Published var showAlert: Bool = false
@@ -27,8 +27,6 @@ class RecordViewModel: ObservableObject {
     @Published var examineSetting: Bool = false
     
     @Published var showUserSetting: Bool = false
-    
-    @Published var today: String = ""
     
     init(){
         timerPublisher.connect().store(in: &cancellables)
@@ -73,21 +71,19 @@ class RecordViewModel: ObservableObject {
         
         self.$percentage
             .filter { $0 >= 1 }
-            .first()
             .sink { [weak self] _ in
-                self?.completed = true
+                if let alreadyComp = self?.userProfile.completedToday, alreadyComp == false {
+                    self?.completed = true
+                    self?.userProfile.completedToday = true
+                }
             }
             .store(in: &cancellables)
         
         self.$completed
             .combineLatest(self.$isDrinking)
             .filter { $0 && !$1 }
-            .first()
             .sink { [weak self] _ in
-                if let alreadyComp = self?.userProfile.completedToday, alreadyComp == false {
-                    self?.showCompleted = true
-                    self?.userProfile.completedToday = true
-                }
+                self?.showCompleted = true
             }
             .store(in: &cancellables)
         
@@ -103,19 +99,6 @@ class RecordViewModel: ObservableObject {
             .filter { $0 }
             .sink { [weak self] _ in
                 self?.showAlert = (self?.userProfile.dailyGoal == 0) || (self?.userProfile.speed == 0)
-            }
-            .store(in: &cancellables)
-        
-        self.$today
-            .dropFirst()
-            .filter{ today in
-                guard let defaultToday = UserDefaults.standard.string(forKey: "today") else {
-                    return false
-                }
-                return defaultToday != today
-            }
-            .sink { [weak self] today in
-                self?.userProfile.getNewRecord(today: today)
             }
             .store(in: &cancellables)
     }
