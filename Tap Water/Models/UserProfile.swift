@@ -38,6 +38,7 @@ final class UserProfile: ObservableObject {
         
         let drankToday = userDefault.double(forKey: "drankToday")
         todayRecord = DayRecord(drankToday: drankToday, dailyGoal: dailyGoal, date: today)
+        completedToday = userDefault.bool(forKey: "completedToday")
         
         userDefault.set(today, forKey: "today")
     }

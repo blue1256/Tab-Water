@@ -71,21 +71,19 @@ class RecordViewModel: ObservableObject {
         
         self.$percentage
             .filter { $0 >= 1 }
-            .first()
             .sink { [weak self] _ in
-                self?.completed = true
+                if let alreadyComp = self?.userProfile.completedToday, alreadyComp == false {
+                    self?.completed = true
+                    self?.userProfile.completedToday = true
+                }
             }
             .store(in: &cancellables)
         
         self.$completed
             .combineLatest(self.$isDrinking)
             .filter { $0 && !$1 }
-            .first()
             .sink { [weak self] _ in
-                if let alreadyComp = self?.userProfile.completedToday, alreadyComp == false {
-                    self?.showCompleted = true
-                    self?.userProfile.completedToday = true
-                }
+                self?.showCompleted = true
             }
             .store(in: &cancellables)
         
