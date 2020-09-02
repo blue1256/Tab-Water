@@ -18,7 +18,7 @@ class SummaryViewModel: ObservableObject {
     
     var searchedMonth = [String]()
     
-    @Published var monthShowing: String
+    @Published var monthShowing: [String] = ["", ""]
     @Published var records = [DayRecord]()
     @Published var selectedDate: Date
     @Published var selectedRecord: DayRecord? = nil
@@ -27,8 +27,8 @@ class SummaryViewModel: ObservableObject {
     
     init() {
         selectedDate = Date()
-        monthShowing = AppState.shared.today
-        monthShowing.removeLast(2)
+        monthShowing[0] = AppState.shared.today
+        monthShowing[0].removeLast(2)
         
         if let firstDate = StoreManager.shared.getRecordDate(.first) {
             self.firstDate = firstDate
@@ -36,13 +36,15 @@ class SummaryViewModel: ObservableObject {
         
         self.$monthShowing
             .removeDuplicates()
-            .sink { [weak self] month in
-                if !(self?.searchedMonth.contains(month) ?? true) {
-                    let newRecords = StoreManager.shared.getMonthRecord(month: month)
-                    self?.records.append(contentsOf: newRecords)
-                    self?.calendar?.reloadData()
-                    self?.searchedMonth.append(month)
+            .sink { [weak self] months in
+                months.forEach { month in
+                    if !(self?.searchedMonth.contains(month) ?? true) {
+                        let newRecords = StoreManager.shared.getMonthRecord(month: month)
+                        self?.records.append(contentsOf: newRecords)
+                        self?.searchedMonth.append(month)
+                    }
                 }
+                self?.calendar?.reloadData()
             }
             .store(in: &cancellables)
         

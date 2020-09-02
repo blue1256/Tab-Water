@@ -21,7 +21,10 @@ class CalendarDelegate: NSObject, JTACMonthViewDelegate, JTACMonthViewDataSource
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyyMM"
-        summaryViewModel.monthShowing = formatter.string(from: visibleDates.monthDates[0].date)
+        summaryViewModel.monthShowing[0] = formatter.string(from: visibleDates.monthDates[0].date)
+        if visibleDates.indates.count > 0 {
+            summaryViewModel.monthShowing[1] = formatter.string(from: visibleDates.indates[0].date)
+        }
     }
     
     func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
