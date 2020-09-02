@@ -60,17 +60,30 @@ struct SpeedMeasureView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                TextField("마실 양(ml)", text: self.$speedMeasureViewModel.fieldInput)
-                    .textFieldStyle(DefaultTextFieldStyle())
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.decimalPad)
-                    .frame(width: 200)
-                    .font(.custom("", size: 30))
-                    .padding(.top, 30)
-                    .disabled(self.speedMeasureViewModel.measuredCups > 0)
+                HStack {
+                    TextField("마실 양(ml)", text: self.$speedMeasureViewModel.fieldInput)
+                        .textFieldStyle(DefaultTextFieldStyle())
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                        .frame(width: 200)
+                        .font(.custom("", size: 30))
+                        .disabled(self.speedMeasureViewModel.measuredCups > 0)
+                    
+                    Button(action: {
+                        self.speedMeasureViewModel.showPopover = true
+                        print(self.speedMeasureViewModel.showPopover)
+                    }) {
+                        Image(systemName: "info.circle")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 20))
+                            .frame(width: 30, height: 30)
+                    }
+                }
+                .padding(.top, 30)
+                
                 
                 Divider()
-                    .frame(width: 200)
+                    .frame(width: 250)
                 
                 Spacer()
                 
@@ -219,6 +232,9 @@ struct SpeedMeasureView: View {
                     }
                 }).foregroundColor(self.waterColor)
             )
+            .sheet(isPresented: self.$speedMeasureViewModel.showPopover) {
+                SpeedMeasureHelpView()
+            }
             .gesture(DragGesture()
                 .onChanged {gesture in
                     if gesture.startLocation.x < 100 && gesture.location.x > 100 {

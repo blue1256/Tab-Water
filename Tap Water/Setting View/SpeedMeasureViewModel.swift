@@ -21,6 +21,7 @@ class SpeedMeasureViewModel: ObservableObject {
     @Published var measuredCups: Int = 0
     @Published var speed: Double = 0
     @Published var startTime: Date? = nil
+    @Published var showPopover: Bool = false
     
     init(){
         self.$saveSpeed
