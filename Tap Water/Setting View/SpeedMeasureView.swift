@@ -46,6 +46,7 @@ extension UIApplication {
 
 struct SpeedMeasureView: View {
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
+    @Environment(\.presentationMode) private var presentationMode
     @State var isAnimating = false
     var settingViewModel: SettingViewModel? = nil
     @ObservedObject var speedMeasureViewModel = SpeedMeasureViewModel()
@@ -184,7 +185,7 @@ struct SpeedMeasureView: View {
                     }
                     .padding(.bottom, 10)
                 } else {
-                    Text("빈 컵을 누르는 동시에 물을 마시며\n속도 측정을 시작해주세요")
+                    Text("마실 양을 입력 후 빈 컵을 누르는 동시에\n물을 마시며 속도 측정을 시작해주세요")
                         .padding(.bottom, 10)
                         .multilineTextAlignment(.center)
                 }
@@ -206,6 +207,25 @@ struct SpeedMeasureView: View {
             .background(Color.white.onTapGesture {
                 UIApplication.shared.endEditing()
             })
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    HStack {
+                        Image(systemName: "arrow.left.circle")
+                            .font(.system(size: 22))
+                        Text("목표 설정")
+                    }
+                }).foregroundColor(self.waterColor)
+            )
+            .gesture(DragGesture()
+                .onChanged {gesture in
+                    if gesture.startLocation.x < 100 && gesture.location.x > 100 {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            )
         }
     }
 }

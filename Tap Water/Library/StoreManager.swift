@@ -38,7 +38,7 @@ class StoreManager {
     }
     
     func getRecordDate(_ type: DateType) -> String? {
-        let firstRecord = realm.objects(DayRecord.self).sorted(byKeyPath: "date", ascending: type == .last).first
+        let firstRecord = realm.objects(DayRecord.self).sorted(byKeyPath: "date", ascending: type == .first).first
         return firstRecord?.date
     }
     

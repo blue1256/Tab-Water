@@ -38,7 +38,7 @@ final class AppState: ObservableObject {
     }
     
     var appStoreVersion: String {
-        guard let url = URL(string: "http://itunes.apple.com/lookup?bundleId=com.park.Tap-Water"),
+        guard let url = URL(string: "http://itunes.apple.com/lookup?id=1528884225"),
             let data = try? Data(contentsOf: url),
             let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
             let results = json["results"] as? [[String: Any]],

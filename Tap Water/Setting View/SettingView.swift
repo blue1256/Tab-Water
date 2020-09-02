@@ -19,7 +19,7 @@ struct SettingView: View {
                         HStack {
                             Text("앱 정보")
                             Spacer()
-                            Text(AppState.shared.isUpdateAvailable() ? "업데이트 가능" : "최신 버전")
+                            Text(AppState.shared.isUpdateAvailable() ? "업데이트 가능" : "")
                                 .font(.system(size: 15))
                                 .foregroundColor(.gray)
                         }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "스크린샷 2020-08-29 오전 12.38.39-3.png",
+      "filename" : "InfoIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "스크린샷 2020-08-29 오전 12.38.39-4.png",
+      "filename" : "InfoIcon-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "스크린샷 2020-08-29 오전 12.38.39-2.png",
+      "filename" : "InfoIcon-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
