@@ -20,11 +20,11 @@ struct SpeedMeasureHelpView: View {
                     .padding(.top, 20)
                 
                 Text("속도 측정을 위해 앱의 첫 실행 시에 사용자가 마실 정확한 양을 알아야 합니다.\n\n속도 평균을 내기 위해 세 번에 걸쳐 마시게 되므로 부담이 되지 않는 양으로 설정해주세요.")
+                    .font(.system(size: 15))
                     .padding(.top, 15)
                 
                 Text("유용한 각종 컵 용량 정보")
                     .font(.headline)
-                    .foregroundColor(waterColor)
                     .padding(.top, 30)
                 
                 HStack(alignment: .bottom) {

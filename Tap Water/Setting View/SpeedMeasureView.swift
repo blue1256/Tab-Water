@@ -71,7 +71,6 @@ struct SpeedMeasureView: View {
                     
                     Button(action: {
                         self.speedMeasureViewModel.showPopover = true
-                        print(self.speedMeasureViewModel.showPopover)
                     }) {
                         Image(systemName: "info.circle")
                             .foregroundColor(.gray)
