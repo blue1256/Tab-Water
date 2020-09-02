@@ -75,8 +75,7 @@ final class AppState: ObservableObject {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(UserProfile.shared.remindingTime * 3600), repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
-        notificationCenter.removeAllPendingNotificationRequests()
+
         if !UserProfile.shared.completedToday {
             notificationCenter.add(request) { (error) in
                 if let error = error {
