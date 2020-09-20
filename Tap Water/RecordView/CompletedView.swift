@@ -8,6 +8,47 @@
 
 import SwiftUI
 
+private extension CompletedView {
+    var completeText: some View {
+        Text("목표 달성!")
+            .font(.system(size: 30))
+            .fontWeight(.bold)
+    }
+    
+    var confirmButton: some View {
+        Button(action: {
+            self.recordViewModel.showCompleted = false
+        }) {
+            VStack {
+                Image(systemName: "checkmark")
+                    .font(.system(size: 25))
+                    .foregroundColor(self.waterColor)
+                Text("확인")
+                    .font(.system(size: 25))
+                    .foregroundColor(self.waterColor)
+            }
+        }
+    }
+    
+    var summaryButton: some View {
+        Button(action: {
+            AppState.shared.selectedTab = 0
+            self.recordViewModel.showCompleted = false
+        }) {
+            VStack {
+                Image("summary")
+                    .resizable()
+                    .frame(width: 18, height: 18)
+                    .scaleEffect(1.3)
+                    .foregroundColor(self.waterColor)
+                Text("기록 보기")
+                    .font(.system(size: 25))
+                    .foregroundColor(self.waterColor)
+            }
+        }
+    }
+}
+
 struct CompletedView: View {
     @ObservedObject var recordViewModel: RecordViewModel
     let waterColor = Color.init(red: 125/255, green: 175/255, blue: 235/255)
@@ -17,43 +58,22 @@ struct CompletedView: View {
             ZStack {
                 Color.init(red: 216/255, green: 236/255, blue: 233/255)
                 VStack {
-                    Text("목표 달성!")
-                        .font(.system(size: 30))
-                        .fontWeight(.bold)
+                    completeText
+                    
                     Image("trophy")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: geometry.size.width * 0.7)
+                    
                     HStack {
                         Spacer()
-                        Button(action: {
-                            self.recordViewModel.showCompleted = false
-                        }) {
-                            VStack {
-                                Image(systemName: "checkmark")
-                                    .font(.system(size: 25))
-                                    .foregroundColor(self.waterColor)
-                                Text("확인")
-                                    .font(.system(size: 25))
-                                    .foregroundColor(self.waterColor)
-                            }
-                        }
+                        
+                        confirmButton
+                        
                         Spacer()
-                        Button(action: {
-                            AppState.shared.selectedTab = 0
-                            self.recordViewModel.showCompleted = false
-                        }) {
-                            VStack {
-                                Image("summary")
-                                    .resizable()
-                                    .frame(width: 18, height: 18)
-                                    .scaleEffect(1.3)
-                                    .foregroundColor(self.waterColor)
-                                Text("기록 보기")
-                                    .font(.system(size: 25))
-                                    .foregroundColor(self.waterColor)
-                            }
-                        }
+                        
+                        summaryButton
+                        
                         Spacer()
                     }
                 }

@@ -232,7 +232,39 @@ struct CalendarView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<CalendarView>) {}
 }
 
-
+private extension SummaryView {
+    var dayInfoSection: some View {
+        GeometryReader { geometry in
+            HStack {
+                Text("\(self.summaryViewModel.selectedDateInString)")
+                    .frame(width: geometry.size.width*0.25)
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(.white)
+                Divider()
+                VStack(alignment: .leading) {
+                    if self.summaryViewModel.selectedRecord != nil {
+                        Text("마신 양: \(Utils.shared.floorDouble(num: self.summaryViewModel.selectedRecord!.drankToday))L")
+                            .foregroundColor(.white)
+                            .padding(.bottom, 2)
+                        Text("목표치: \(Utils.shared.floorDouble(num: self.summaryViewModel.selectedRecord!.dailyGoal))L")
+                            .foregroundColor(.white)
+                    } else {
+                        Text("정보가 없습니다.")
+                            .foregroundColor(.white)
+                            .padding(.bottom, 2)
+                        Text("다른 날짜를 선택해주세요.")
+                            .font(.system(size: 12))
+                            .foregroundColor(.white)
+                    }
+                }
+                Spacer()
+            }
+            .background(
+                Color.init(red: 125/255, green: 175/255, blue: 235/255)
+            )
+        }
+    }
+}
 
 struct SummaryView: View {
     @ObservedObject var summaryViewModel = SummaryViewModel()
@@ -245,33 +277,8 @@ struct SummaryView: View {
                 CalendarView(summaryViewModel: self.summaryViewModel)
                     .frame(height: geometry.size.height*0.75)
                     .padding(.top, 10)
-                HStack {
-                    Text("\(self.summaryViewModel.selectedDateInString)")
-                        .frame(width: geometry.size.width*0.25)
-                        .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.white)
-                    Divider()
-                    VStack(alignment: .leading) {
-                        if self.summaryViewModel.selectedRecord != nil {
-                            Text("마신 양: \(Utils.shared.floorDouble(num: self.summaryViewModel.selectedRecord!.drankToday))L")
-                                .foregroundColor(.white)
-                                .padding(.bottom, 2)
-                            Text("목표치: \(Utils.shared.floorDouble(num: self.summaryViewModel.selectedRecord!.dailyGoal))L")
-                                .foregroundColor(.white)
-                        } else {
-                            Text("정보가 없습니다.")
-                                .foregroundColor(.white)
-                                .padding(.bottom, 2)
-                            Text("다른 날짜를 선택해주세요.")
-                                .font(.system(size: 12))
-                                .foregroundColor(.white)
-                        }
-                    }
-                    Spacer()
-                }
-                .background(
-                    Color.init(red: 125/255, green: 175/255, blue: 235/255)
-                )
+                
+                dayInfoSection
             }
         }
     }

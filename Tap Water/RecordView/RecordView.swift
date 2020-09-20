@@ -8,6 +8,51 @@
 
 import SwiftUI
 
+private extension RecordView {
+    var mainInfoText: some View {
+        VStack {
+            Text("\(Utils.shared.floorDouble(num: self.recordViewModel.percentage*100))%")
+                .font(.custom("bold", size: 50))
+                .padding(.bottom)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(Color.init(red: 52/255, green: 172/255, blue: 221/255))
+                .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage))
+                .animation(nil)
+            Text("현재: \(Utils.shared.floorDouble(num: self.recordViewModel.drankToday))L")
+                .padding(.bottom, 10)
+                .frame(maxWidth: .infinity)
+                .animation(nil)
+            Text("목표: \(Utils.shared.floorDouble(num: self.recordViewModel.dailyGoal))L")
+                .frame(maxWidth: .infinity)
+                .animation(nil)
+        }
+    }
+    
+    var drinkButton: some View {
+        Button(action: {
+            withAnimation {
+                self.recordViewModel.isDrinking.toggle()
+            }
+        }) {
+            Image(
+                systemName: (self.recordViewModel.isDrinking ? "stop.fill" : "plus"))
+                .foregroundColor(.white)
+                .font(.custom("", size: 30))
+                .padding(15)
+        }
+        .background(Color.init(red: 52/255, green: 172/255, blue: 221/255))
+        .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage.truncatingRemainder(dividingBy: 1)))
+        .clipShape(Circle())
+    }
+    
+    var guideText: some View {
+        Text("물을 마시기 시작하며 버튼을 누르고\n다 마신 뒤 버튼을 다시 눌러주세요.")
+            .font(.system(size: 15))
+            .foregroundColor(.gray)
+            .multilineTextAlignment(.center)
+    }
+}
+
 struct RecordView: View {
     @ObservedObject var recordViewModel = RecordViewModel()
     
@@ -16,70 +61,41 @@ struct RecordView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                VStack{
-                    WaterBackground(percentage: self.recordViewModel.percentage)
+        ZStack {
+            VStack{
+                WaterBackground(percentage: self.recordViewModel.percentage)
+            }
+            VStack {
+                Spacer()
+                
+                mainInfoText
+                
+                Spacer()
+                
+                drinkButton
+                
+                if !self.recordViewModel.launchedBefore {
+                    guideText.padding(.top, 20)
                 }
-                VStack {
-                    Spacer()
-                    VStack {
-                        Text("\(Utils.shared.floorDouble(num: self.recordViewModel.percentage*100))%")
-                            .font(.custom("bold", size: 50))
-                            .padding(.bottom)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(Color.init(red: 52/255, green: 172/255, blue: 221/255))
-                            .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage))
-                            .animation(nil)
-                        Text("현재: \(Utils.shared.floorDouble(num: self.recordViewModel.drankToday))L")
-                            .padding(.bottom, 10)
-                            .frame(maxWidth: .infinity)
-                            .animation(nil)
-                        Text("목표: \(Utils.shared.floorDouble(num: self.recordViewModel.dailyGoal))L")
-                            .frame(maxWidth: .infinity)
-                            .animation(nil)
-                    }
-                    Spacer()
-                    Button(action: {
-                        withAnimation {
-                            self.recordViewModel.isDrinking.toggle()
-                        }
-                    }) {
-                        Image(
-                            systemName: (self.recordViewModel.isDrinking ? "stop.fill" : "plus"))
-                            .foregroundColor(.white)
-                            .font(.custom("", size: 30))
-                            .padding(15)
-                    }
-                    .background(Color.init(red: 52/255, green: 172/255, blue: 221/255))
-                    .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage.truncatingRemainder(dividingBy: 1)))
-                    .clipShape(Circle())
-                    if !self.recordViewModel.launchedBefore {
-                        Text("물을 마시기 시작하며 버튼을 누르고\n다 마신 뒤 버튼을 다시 눌러주세요.")
-                            .font(.system(size: 15))
-                            .foregroundColor(.gray)
-                            .padding(.top, 20)
-                            .multilineTextAlignment(.center)
-                    }
-                    Spacer()
-                }
+                
+                Spacer()
             }
-            .onAppear(perform: {
-                self.recordViewModel.examineSetting = true
-                AppState.shared.requestNotification()
-            })
-            .sheet(isPresented: self.$recordViewModel.showCompleted) {
-                CompletedView(recordViewModel: self.recordViewModel)
-            }
-            .alert(isPresented: self.$recordViewModel.showAlert) {
-                Alert(
-                    title: Text("설정 오류"),
-                    message: Text("목표량 또는 속도가 설정되지 않았습니다."),
-                    dismissButton: .default(Text("확인"), action: {
-                        self.recordViewModel.showUserSetting = true
-                    })
-                )
-            }
+        }
+        .onAppear(perform: {
+            self.recordViewModel.examineSetting = true
+            AppState.shared.requestNotification()
+        })
+        .sheet(isPresented: self.$recordViewModel.showCompleted) {
+            CompletedView(recordViewModel: self.recordViewModel)
+        }
+        .alert(isPresented: self.$recordViewModel.showAlert) {
+            Alert(
+                title: Text("설정 오류"),
+                message: Text("목표량 또는 속도가 설정되지 않았습니다."),
+                dismissButton: .default(Text("확인"), action: {
+                    self.recordViewModel.showUserSetting = true
+                })
+            )
         }
     }
 }

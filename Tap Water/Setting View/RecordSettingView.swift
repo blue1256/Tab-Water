@@ -8,61 +8,75 @@
 
 import SwiftUI
 
+private extension RecordSettingView {
+    var goalPickerButton: some View {
+        Button(action: {
+            withAnimation {
+                self.settingViewModel.showGoalPicker.toggle()
+            }
+        }) {
+            HStack {
+                Text("하루 목표 설정")
+                    .foregroundColor(.black)
+                
+                Spacer()
+                
+                if settingViewModel.showGoalSaveButton {
+                    Text("저장")
+                        .foregroundColor(.blue)
+                } else {
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(Color(red: 196/255, green: 196/255, blue: 196/255))
+                        .imageScale(.small)
+                        .rotationEffect(.degrees(settingViewModel.showGoalPicker ? 90 : 0))
+                }
+            }
+        }
+    }
+    
+    var goalPicker: some View {
+        Picker(selection: self.$settingViewModel.goalPickerValue, label: Text("")) {
+            ForEach(0..<51) {
+                Text("\(Utils.shared.floorDouble(num: Double($0)/10.0))L")
+            }
+        }
+        .labelsHidden()
+        .frame(maxWidth: .infinity)
+        .pickerStyle(WheelPickerStyle())
+    }
+    
+    var speedMeasureButton: some View {
+        Button(action: {
+            withAnimation {
+                self.settingViewModel.showSpeedMeasure = true
+            }
+        }) {
+            HStack {
+                Text("속도 재설정")
+                    .foregroundColor(.black)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundColor(Color(red: 196/255, green: 196/255, blue: 196/255))
+                    .imageScale(.small)
+            }
+        }
+    }
+}
+
 struct RecordSettingView: View {
     @ObservedObject var settingViewModel: SettingViewModel
     
     var body: some View {
         List {
-            Button(action: {
-                withAnimation {
-                    self.settingViewModel.showGoalPicker.toggle()
-                }
-            }) {
-                HStack {
-                    Text("하루 목표 설정")
-                        .foregroundColor(.black)
-                    
-                    Spacer()
-                    
-                    if settingViewModel.showGoalSaveButton {
-                        Text("저장")
-                            .foregroundColor(.blue)
-                    } else {
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(Color(red: 196/255, green: 196/255, blue: 196/255))
-                            .imageScale(.small)
-                            .rotationEffect(.degrees(settingViewModel.showGoalPicker ? 90 : 0))
-                    }
-                }
-            }
-            .padding([.top, .bottom], 8)
+            goalPickerButton
             if settingViewModel.showGoalPicker {
-                Picker(selection: self.$settingViewModel.goalPickerValue, label: Text("")) {
-                    ForEach(0..<51) {
-                        Text("\(Utils.shared.floorDouble(num: Double($0)/10.0))L")
-                    }
-                }
-                .labelsHidden()
-                .frame(maxWidth: .infinity)
-                .pickerStyle(WheelPickerStyle())
+                goalPicker
             }
             
-            
-            Button(action: {
-                withAnimation {
-                    self.settingViewModel.showSpeedMeasure = true
-                }
-            }) {
-                HStack {
-                    Text("속도 재설정")
-                        .foregroundColor(.black)
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(Color(red: 196/255, green: 196/255, blue: 196/255))
-                        .imageScale(.small)
-                }
-            }
+            speedMeasureButton
         }
+        .listStyle(GroupedListStyle())
+        .environment(\.defaultMinListRowHeight, 50)
         .navigationBarTitle(Text("기록 설정"), displayMode: .inline)
         .alert(isPresented: $settingViewModel.showGoalAlert) {
             Alert(title: Text("목표 설정"),

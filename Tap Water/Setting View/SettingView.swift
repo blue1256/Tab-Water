@@ -8,38 +8,54 @@
 
 import SwiftUI
 
+private extension SettingView {
+    var appInfoSection: some View {
+        Section {
+            NavigationLink(destination: AppInfoView(settingViewModel: settingViewModel), isActive: $settingViewModel.showAppInfo) {
+                HStack {
+                    Text("앱 정보")
+                    Spacer()
+                    Text(settingViewModel.updateAvailable)
+                        .font(.system(size: 15))
+                        .foregroundColor(.gray)
+                }
+            }
+        }
+    }
+    
+    var notificationSection: some View {
+        Section {
+            NavigationLink(destination: NotificationSettingView(settingViewModel: settingViewModel), isActive: $settingViewModel.showReminderSetting) {
+                Text("알림 설정")
+            }
+        }
+    }
+    
+    var recordSection: some View {
+        Section {
+            NavigationLink(destination: RecordSettingView(settingViewModel: settingViewModel), isActive: $settingViewModel.showUserSetting) {
+                Text("기록 설정")
+            }
+            Button(action: {
+                self.settingViewModel.showRecordDeletionSheet = true
+            }) {
+                Text("기록 삭제")
+            }
+        }
+    }
+}
+
 struct SettingView: View {
     @ObservedObject var settingViewModel = SettingViewModel()
     
     var body: some View {
         NavigationView {
             List {
-                Section {
-                    NavigationLink(destination: AppInfoView(settingViewModel: settingViewModel), isActive: $settingViewModel.showAppInfo) {
-                        HStack {
-                            Text("앱 정보")
-                            Spacer()
-                            Text(AppState.shared.isUpdateAvailable() ? "업데이트 가능" : "")
-                                .font(.system(size: 15))
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-                Section {
-                    NavigationLink(destination: ReminderSettingView(settingViewModel: settingViewModel), isActive: $settingViewModel.showReminderSetting) {
-                        Text("리마인더")
-                    }
-                }
-                Section {
-                    NavigationLink(destination: RecordSettingView(settingViewModel: settingViewModel), isActive: $settingViewModel.showUserSetting) {
-                        Text("기록 설정")
-                    }
-                    Button(action: {
-                        self.settingViewModel.showRecordDeletionSheet = true
-                    }) {
-                        Text("기록 삭제")
-                    }
-                }
+                appInfoSection
+                
+                notificationSection
+                
+                recordSection
             }
             .listStyle(GroupedListStyle())
             .environment(\.defaultMinListRowHeight, 50)

@@ -10,11 +10,12 @@ import Foundation
 import Combine
 
 class SettingViewModel: ObservableObject {
-    var userProfile = UserProfile.shared
-    var appState = AppState.shared
+    private var userProfile = UserProfile.shared
+    private var appState = AppState.shared
     private var cancellables = Set<AnyCancellable>()
     
     // Setting View
+    @Published var updateAvailable: String = AppState.shared.isUpdateAvailable() ? "업데이트 가능" : ""
     @Published var showUserSetting: Bool = false
     @Published var showReminderSetting: Bool = false
     @Published var showAppInfo: Bool = false
@@ -36,6 +37,7 @@ class SettingViewModel: ObservableObject {
     @Published var showTimeAlert: Bool = false
     
     init() {
+        print("init setting")
         goalPickerValue = Int(userProfile.dailyGoal*10)
         timePickerValue = userProfile.remindingTime - 1
         

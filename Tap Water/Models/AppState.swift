@@ -22,6 +22,10 @@ final class AppState: ObservableObject {
     
     @Published var deleteCalendar: Bool = false
     
+    var version: String = ""
+    
+    var appStoreVersion: String = ""
+    
     var today: String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
@@ -29,23 +33,28 @@ final class AppState: ObservableObject {
         return formatter.string(from: Date())
     }
     
-    var version: String {
-        guard let dictionary = Bundle.main.infoDictionary,
-            let version = dictionary["CFBundleShortVersionString"] as? String else {
-            return ""
-        }
-        return version
+    private init() {
+        getVersion()
+        getAppStoreVersion()
     }
     
-    var appStoreVersion: String {
+    func getVersion() {
+        guard let dictionary = Bundle.main.infoDictionary,
+            let version = dictionary["CFBundleShortVersionString"] as? String else {
+            return
+        }
+        self.version = version
+    }
+    
+    func getAppStoreVersion() {
         guard let url = URL(string: "http://itunes.apple.com/lookup?id=1528884225"),
             let data = try? Data(contentsOf: url),
             let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
             let results = json["results"] as? [[String: Any]],
             results.count > 0,
             let appStoreVersion = results[0]["version"] as? String
-            else { return "" }
-        return appStoreVersion
+            else { return }
+        self.appStoreVersion = appStoreVersion
     }
     
     func isUpdateAvailable() -> Bool {

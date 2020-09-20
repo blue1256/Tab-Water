@@ -10,8 +10,8 @@ import Foundation
 import Combine
 
 class SpeedMeasureViewModel: ObservableObject {
-    var userProfile = UserProfile.shared
-    var appState = AppState.shared
+    private var userProfile = UserProfile.shared
+    private var appState = AppState.shared
     private var cancellables = Set<AnyCancellable>()
     
     @Published var fieldInput: String = ""
