@@ -78,6 +78,7 @@ struct ContentView: View {
                         .transition(self.transition)
                 } else if self.contentViewModel.selectedTab == 2 {
                     setting
+                        .padding(.bottom, -5)
                         .transition(self.transition)
                 }
                 

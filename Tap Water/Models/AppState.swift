@@ -8,11 +8,14 @@
 
 import Foundation
 import UserNotifications
+import Combine
 
 final class AppState: ObservableObject {
     static let shared = AppState()
     let userDefault = UserDefaults.standard
     let notificationCenter = UNUserNotificationCenter.current()
+    
+    private var cancellables = Set<AnyCancellable>()
     
     @Published var showUserSetting: Bool = false
     
@@ -21,6 +24,11 @@ final class AppState: ObservableObject {
     @Published var updateCalendar: Bool = false
     
     @Published var deleteCalendar: Bool = false
+    
+    @Published var completedToday: Bool = false
+    @Published var enabledNotification: Bool = true
+    @Published var remindingTime: Int = 1
+    @Published var launchedBefore: Bool = true
     
     var version: String = ""
     
@@ -36,6 +44,38 @@ final class AppState: ObservableObject {
     private init() {
         getVersion()
         getAppStoreVersion()
+        
+        completedToday = userDefault.bool(forKey: "completedToday")
+        enabledNotification = !userDefault.bool(forKey: "notification")
+        remindingTime = userDefault.integer(forKey: "remindingTime") == 0 ? 1 : userDefault.integer(forKey: "remindingTime")
+        launchedBefore = userDefault.bool(forKey: "launchedBefore")
+        
+        self.$completedToday
+            .sink{ [weak self] comp in
+                self?.userDefault.set(comp, forKey: "completedToday")
+            }
+            .store(in: &cancellables)
+        
+        self.$enabledNotification
+            .sink{ [weak self] enabled in
+                guard let self = self else { return }
+                self.userDefault.set(!enabled, forKey: "notification")
+            }
+            .store(in: &cancellables)
+        
+        self.$remindingTime
+            .sink { [weak self] time in
+                guard let self = self else { return }
+                self.userDefault.set(time, forKey: "remindingTime")
+            }
+            .store(in: &cancellables)
+        
+        self.$launchedBefore
+            .sink { [weak self] launched in
+                guard let self = self else { return }
+                self.userDefault.set(launched, forKey: "launchedBefore")
+            }
+            .store(in: &cancellables)
     }
     
     func getVersion() {
@@ -81,11 +121,11 @@ final class AppState: ObservableObject {
         content.body = "오늘 목표량을 아직 다 못 마셨어요!"
         content.sound = .default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(UserProfile.shared.remindingTime * 3600), repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(remindingTime * 3600), repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
-        if !UserProfile.shared.completedToday {
+        if !completedToday {
             notificationCenter.add(request) { (error) in
                 if let error = error {
                     print(error)

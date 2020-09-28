@@ -62,11 +62,8 @@ class SummaryViewModel: ObservableObject {
         
         AppState.shared.$updateCalendar
             .filter { $0 }
-            .debounce(for: 1, scheduler: RunLoop.main)
             .sink{ [weak self] _ in
-                guard let self = self else {
-                    return
-                }
+                guard let self = self else { return }
                 let formatter = DateFormatter()
                 formatter.locale = Locale(identifier: "ko_KR")
                 formatter.dateFormat = "yyyyMMdd"

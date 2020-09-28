@@ -16,7 +16,7 @@ private extension RecordView {
                 .padding(.bottom)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.init(red: 52/255, green: 172/255, blue: 221/255))
-                .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage))
+                .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage.truncatingRemainder(dividingBy: 1)))
                 .animation(nil)
             Text("현재: \(Utils.shared.floorDouble(num: self.recordViewModel.drankToday))L")
                 .padding(.bottom, 10)
@@ -63,7 +63,7 @@ struct RecordView: View {
     var body: some View {
         ZStack {
             VStack{
-                WaterBackground(percentage: self.recordViewModel.percentage)
+                WaterBackground(percentage: min(self.recordViewModel.percentage, 1))
             }
             VStack {
                 Spacer()

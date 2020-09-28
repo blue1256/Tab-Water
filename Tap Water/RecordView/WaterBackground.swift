@@ -50,7 +50,7 @@ struct WaterBackground: View {
                 startPoint: .init(x: 0.5, y: 0),
                 endPoint: .init(x: 0.5, y: 1)
             ))
-                .position(x: geometry.size.width/2, y: geometry.size.height*(1.5-CGFloat(self.percentage) * 1.05))
+            .position(x: geometry.size.width/2, y: geometry.size.height*(1.5-CGFloat(self.percentage) * 1.05))
             .transition(.move(edge: .bottom))
             .animation(.easeInOut(duration: 0.5))
             .onReceive(self.timer) { _ in

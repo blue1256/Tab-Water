@@ -18,13 +18,9 @@ final class UserProfile: ObservableObject {
     
     @Published var todayRecord: DayRecord? = nil
     
-    @Published var completedToday: Bool = false
     @Published var updateRecord: Bool = false
     @Published var dailyGoal: Double
     @Published var speed: Double
-    @Published var enabledNotification: Bool = true
-    @Published var remindingTime: Int = 1
-    @Published var launchedBefore: Bool = true
     
     @objc func dateChange(){
         self.getNewRecord(today: AppState.shared.today)
@@ -34,12 +30,12 @@ final class UserProfile: ObservableObject {
         if let defaultDate = userDefault.string(forKey: "today"), defaultDate != today {
             userDefault.set(0, forKey: "drankToday")
             userDefault.set(false, forKey: "completedToday")
-            completedToday = false
+            AppState.shared.completedToday = false
         }
         
         let drankToday = userDefault.double(forKey: "drankToday")
         todayRecord = DayRecord(drankToday: drankToday, dailyGoal: dailyGoal, date: today)
-        completedToday = userDefault.bool(forKey: "completedToday")
+        AppState.shared.completedToday = userDefault.bool(forKey: "completedToday")
         
         userDefault.set(today, forKey: "today")
     }
@@ -47,10 +43,7 @@ final class UserProfile: ObservableObject {
     private init() {
         speed = userDefault.double(forKey: "speed")
         dailyGoal = userDefault.double(forKey: "dailyGoal")
-        completedToday = userDefault.bool(forKey: "completedToday")
-        enabledNotification = !userDefault.bool(forKey: "notification")
-        remindingTime = userDefault.integer(forKey: "remindingTime") == 0 ? 1 : userDefault.integer(forKey: "remindingTime")
-        launchedBefore = userDefault.bool(forKey: "launchedBefore")
+        
         
         let today = AppState.shared.today
         
@@ -86,33 +79,6 @@ final class UserProfile: ObservableObject {
                     self?.userDefault.set(record.drankToday, forKey: "drankToday")
                 }
                 self?.updateRecord = false
-            }
-            .store(in: &cancellables)
-        
-        self.$completedToday
-            .sink{ [weak self] comp in
-                self?.userDefault.set(comp, forKey: "completedToday")
-            }
-            .store(in: &cancellables)
-        
-        self.$enabledNotification
-            .sink{ [weak self] enabled in
-                guard let self = self else { return }
-                self.userDefault.set(!enabled, forKey: "notification")
-            }
-            .store(in: &cancellables)
-        
-        self.$remindingTime
-            .sink { [weak self] time in
-                guard let self = self else { return }
-                self.userDefault.set(time, forKey: "remindingTime")
-            }
-            .store(in: &cancellables)
-        
-        self.$launchedBefore
-            .sink { [weak self] launched in
-                guard let self = self else { return }
-                self.userDefault.set(launched, forKey: "launchedBefore")
             }
             .store(in: &cancellables)
     }

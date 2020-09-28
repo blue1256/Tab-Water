@@ -10,8 +10,6 @@ import Foundation
 import Combine
 
 class SettingViewModel: ObservableObject {
-    private var userProfile = UserProfile.shared
-    private var appState = AppState.shared
     private var cancellables = Set<AnyCancellable>()
     
     // Setting View
@@ -38,12 +36,12 @@ class SettingViewModel: ObservableObject {
     
     init() {
         print("init setting")
-        goalPickerValue = Int(userProfile.dailyGoal*10)
-        timePickerValue = userProfile.remindingTime - 1
+        goalPickerValue = Int(UserProfile.shared.dailyGoal*10)
+        timePickerValue = AppState.shared.remindingTime - 1
         
-        notification = UserProfile.shared.enabledNotification
+        notification = AppState.shared.enabledNotification
         
-        appState.$showUserSetting
+        AppState.shared.$showUserSetting
             .sink { [weak self] show in
                 guard let self = self else { return }
                 self.showUserSetting = show
@@ -54,7 +52,7 @@ class SettingViewModel: ObservableObject {
             .debounce(for: 0.1, scheduler: RunLoop.main)
             .sink{ [weak self] val in
                 guard let self = self else { return }
-                if self.userProfile.dailyGoal != Double(val) / 10.0 {
+                if UserProfile.shared.dailyGoal != Double(val) / 10.0 {
                     self.showGoalSaveButton = true
                 } else {
                     self.showGoalSaveButton = false
@@ -67,10 +65,10 @@ class SettingViewModel: ObservableObject {
             .dropFirst()
             .sink { [weak self] _ in
                 guard let self = self else { return }
-                if self.userProfile.dailyGoal != Double(self.goalPickerValue) / 10.0 {
+                if UserProfile.shared.dailyGoal != Double(self.goalPickerValue) / 10.0 {
                     self.showGoalAlert = true
                 }
-                self.userProfile.dailyGoal = Double(self.goalPickerValue) / 10.0
+                UserProfile.shared.dailyGoal = Double(self.goalPickerValue) / 10.0
                 self.showGoalSaveButton = false
             }
             .store(in: &cancellables)
@@ -88,7 +86,7 @@ class SettingViewModel: ObservableObject {
         self.$notification
             .debounce(for: 1, scheduler: RunLoop.main)
             .sink { notification in
-                UserProfile.shared.enabledNotification = notification
+                AppState.shared.enabledNotification = notification
             }
             .store(in: &cancellables)
         
@@ -96,7 +94,7 @@ class SettingViewModel: ObservableObject {
             .debounce(for: 0.1, scheduler: RunLoop.main)
             .sink { [weak self] val in
                 guard let self = self else { return }
-                if self.userProfile.remindingTime != val+1 {
+                if AppState.shared.remindingTime != val+1 {
                     self.showTimeSaveButton = true
                 } else {
                     self.showTimeSaveButton = false
@@ -109,10 +107,10 @@ class SettingViewModel: ObservableObject {
             .dropFirst()
             .sink{ [weak self] _ in
                 guard let self = self else { return }
-                if self.userProfile.remindingTime != self.timePickerValue+1 {
+                if AppState.shared.remindingTime != self.timePickerValue+1 {
                     self.showTimeAlert = true
                 }
-                self.userProfile.remindingTime = self.timePickerValue+1
+                AppState.shared.remindingTime = self.timePickerValue+1
                 self.showTimeSaveButton = false
             }
             .store(in: &cancellables)
