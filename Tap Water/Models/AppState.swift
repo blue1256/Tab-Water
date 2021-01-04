@@ -36,7 +36,7 @@ final class AppState: ObservableObject {
     
     var today: String {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = .autoupdatingCurrent
         formatter.dateFormat = "yyyyMMdd"
         return formatter.string(from: Date())
     }
@@ -121,7 +121,7 @@ final class AppState: ObservableObject {
         content.body = "오늘 목표량을 아직 다 못 마셨어요!"
         content.sound = .default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(remindingTime * 3600), repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(remindingTime * 3600), repeats: true)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 

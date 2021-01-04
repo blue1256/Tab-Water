@@ -27,6 +27,7 @@ class SettingViewModel: ObservableObject {
     @Published var showGoalSaveButton: Bool = false
     @Published var showGoalPicker: Bool = false
     @Published var showGoalAlert: Bool = false
+    var dailyGoal: Double = 0.0
     
     // Reminder  Setting View
     @Published var timePickerValue: Int = 0
@@ -36,7 +37,8 @@ class SettingViewModel: ObservableObject {
     
     init() {
         print("init setting")
-        goalPickerValue = Int(UserProfile.shared.dailyGoal*10)
+        dailyGoal = UserDefaults.standard.double(forKey: "dailyGoal")
+        goalPickerValue = Int(dailyGoal*10)
         timePickerValue = AppState.shared.remindingTime - 1
         
         notification = AppState.shared.enabledNotification
@@ -52,7 +54,7 @@ class SettingViewModel: ObservableObject {
             .debounce(for: 0.1, scheduler: RunLoop.main)
             .sink{ [weak self] val in
                 guard let self = self else { return }
-                if UserProfile.shared.dailyGoal != Double(val) / 10.0 {
+                if self.dailyGoal != Double(val) / 10.0 {
                     self.showGoalSaveButton = true
                 } else {
                     self.showGoalSaveButton = false
@@ -65,10 +67,16 @@ class SettingViewModel: ObservableObject {
             .dropFirst()
             .sink { [weak self] _ in
                 guard let self = self else { return }
-                if UserProfile.shared.dailyGoal != Double(self.goalPickerValue) / 10.0 {
+                if self.dailyGoal != Double(self.goalPickerValue) / 10.0 {
                     self.showGoalAlert = true
                 }
-                UserProfile.shared.dailyGoal = Double(self.goalPickerValue) / 10.0
+                let todayRecord = StoreManager.shared.getTodayRecord()
+                if let record = todayRecord {
+                    record.dailyGoal = Double(self.goalPickerValue) / 10.0
+                    StoreManager.shared.setTodayRecord(record)
+                }
+                UserDefaults.standard.set(Double(self.goalPickerValue) / 10.0, forKey: "dailyGoal")
+                self.dailyGoal = Double(self.goalPickerValue) / 10.0
                 self.showGoalSaveButton = false
             }
             .store(in: &cancellables)

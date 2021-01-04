@@ -15,6 +15,15 @@ class StoreManager {
     var realm: Realm
     
     private init(){
+        let config = Realm.Configuration(schemaVersion: 1) { (migration, oldSchemaVersion) in
+            migration.enumerateObjects(ofType: DayRecord.className()) { (oldObject, newObject) in
+                if oldSchemaVersion < 1 {
+                }
+            }
+        }
+        
+        Realm.Configuration.defaultConfiguration = config
+        
         self.realm = try! Realm()
     }
     
@@ -29,11 +38,10 @@ class StoreManager {
     
     func setTodayRecord(_ record: DayRecord) {
         try! realm.write {
-            if let savedRecord = realm.objects(DayRecord.self).filter("date == %@", AppState.shared.today).first {
-                realm.delete(savedRecord)
-            }
+//            if let savedRecord = realm.objects(DayRecord.self).filter("date == %@", AppState.shared.today).first {
+//            }
             let copy = record.copy() as! DayRecord
-            realm.add(copy)
+            realm.add(copy, update: .modified)
         }
     }
     
@@ -56,8 +64,6 @@ class StoreManager {
             userDefault.set("", forKey: "today")
             userDefault.set(0, forKey: "drankToday")
             userDefault.set(false, forKey: "completedToday")
-            
-            UserProfile.shared.getNewRecord(today: AppState.shared.today)
         }
     }
 }

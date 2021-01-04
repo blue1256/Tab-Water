@@ -21,6 +21,10 @@ class DayRecord: Object, NSCopying, Codable {
         self.date = date
     }
     
+    override class func primaryKey() -> String? {
+        return "date"
+    }
+    
     func copy(with zone: NSZone? = nil) -> Any {
         return DayRecord(drankToday: self.drankToday, dailyGoal: self.dailyGoal, date: self.date)
     }

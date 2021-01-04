@@ -12,12 +12,15 @@ import Combine
 
 class SummaryViewModel: ObservableObject {
     var userProfile: UserProfile = UserProfile.shared
+    private let formatter = DateFormatter()
     private var cancellables = Set<AnyCancellable>()
     
     var firstDate = AppState.shared.today
     
     var searchedMonth = [String]()
     
+    
+    @Published var monthTitle: String = ""
     @Published var monthShowing: [String] = ["", ""]
     @Published var records = [DayRecord]()
     @Published var selectedDate: Date
@@ -26,6 +29,7 @@ class SummaryViewModel: ObservableObject {
     @Published var calendar: JTACMonthView? = nil
     
     init() {
+        formatter.timeZone = .autoupdatingCurrent
         selectedDate = Date()
         monthShowing[0] = AppState.shared.today
         monthShowing[0].removeLast(2)
@@ -37,48 +41,26 @@ class SummaryViewModel: ObservableObject {
         self.$monthShowing
             .removeDuplicates()
             .sink { [weak self] months in
+                guard let self = self else { return }
                 months.forEach { month in
-                    if !(self?.searchedMonth.contains(month) ?? true) {
+                    if !self.searchedMonth.contains(month) && month != "" {
                         let newRecords = StoreManager.shared.getMonthRecord(month: month)
-                        self?.records.append(contentsOf: newRecords)
-                        self?.searchedMonth.append(month)
+                        self.records.append(contentsOf: newRecords)
+                        self.searchedMonth.append(month)
                     }
                 }
-                self?.calendar?.reloadData()
+                self.calendar?.reloadData()
             }
             .store(in: &cancellables)
         
         self.$selectedDate
             .sink { [weak self] (date) in
-                let formatter = DateFormatter()
-                formatter.locale = Locale(identifier: "ko_KR")
-                formatter.dateFormat = "yyyyMMdd"
-                self?.selectedRecord = self?.records.first { $0.date == formatter.string(from: date) }
-                
-                formatter.dateFormat = "yyyy년\nM월 d일"
-                self?.selectedDateInString = formatter.string(from: date)
-            }
-            .store(in: &cancellables)
-        
-        AppState.shared.$updateCalendar
-            .filter { $0 }
-            .sink{ [weak self] _ in
                 guard let self = self else { return }
-                let formatter = DateFormatter()
-                formatter.locale = Locale(identifier: "ko_KR")
-                formatter.dateFormat = "yyyyMMdd"
-            
-                if let record = UserProfile.shared.todayRecord {
-                    if let target = self.records.firstIndex(where: { $0.date == AppState.shared.today }) {
-                        self.records.remove(at: target)
-                    }
-                    self.records.append(record)
-                    let strDate = formatter.string(from: self.selectedDate)
-                    if strDate == AppState.shared.today {
-                        self.selectedRecord = record
-                    }
-                }
-                AppState.shared.updateCalendar = false
+                self.formatter.dateFormat = "yyyyMMdd"
+                self.selectedRecord = self.records.first { $0.date == self.formatter.string(from: date) }
+                
+                self.formatter.dateFormat = "yyyy년\nM월 d일"
+                self.selectedDateInString = self.formatter.string(from: date)
             }
             .store(in: &cancellables)
         
@@ -91,5 +73,17 @@ class SummaryViewModel: ObservableObject {
                 AppState.shared.deleteCalendar = false
             }
             .store(in: &cancellables)
+    }
+    
+    func refreshToday() {
+        if let todayIndex = records.firstIndex(where: {  $0.date == AppState.shared.today }) {
+            records.remove(at: todayIndex)
+        }
+        if let todayRecord = StoreManager.shared.getTodayRecord() {
+            records.append(todayRecord)
+            if selectedRecord?.date == todayRecord.date {
+                selectedRecord = todayRecord
+            }
+        }
     }
 }

@@ -9,14 +9,14 @@
 import SwiftUI
 
 private extension RecordView {
+    
     var mainInfoText: some View {
         VStack {
             Text("\(Utils.shared.floorDouble(num: self.recordViewModel.percentage*100))%")
                 .font(.custom("bold", size: 50))
                 .padding(.bottom)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(Color.init(red: 52/255, green: 172/255, blue: 221/255))
-                .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage.truncatingRemainder(dividingBy: 1)))
+                .foregroundColor(Color.init(red: 125/255, green: 175/255, blue: 235/255))
                 .animation(nil)
             Text("현재: \(Utils.shared.floorDouble(num: self.recordViewModel.drankToday))L")
                 .padding(.bottom, 10)
@@ -40,8 +40,7 @@ private extension RecordView {
                 .font(.custom("", size: 30))
                 .padding(15)
         }
-        .background(Color.init(red: 52/255, green: 172/255, blue: 221/255))
-        .hueRotation(Angle(degrees: 90 * self.recordViewModel.percentage.truncatingRemainder(dividingBy: 1)))
+        .background(Color.init(red: 125/255, green: 175/255, blue: 235/255))
         .clipShape(Circle())
     }
     
@@ -83,6 +82,7 @@ struct RecordView: View {
         }
         .onAppear(perform: {
             self.recordViewModel.examineSetting = true
+            self.recordViewModel.initializeRecord()
             AppState.shared.requestNotification()
         })
         .sheet(isPresented: self.$recordViewModel.showCompleted) {

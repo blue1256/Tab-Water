@@ -10,21 +10,41 @@ import SwiftUI
 import JTAppleCalendar
 
 class CalendarDelegate: NSObject, JTACMonthViewDelegate, JTACMonthViewDataSource {
+    let formatter = DateFormatter()
     @ObservedObject var summaryViewModel: SummaryViewModel
     
     init(_ summaryViewModel: SummaryViewModel){
         self.summaryViewModel = summaryViewModel
+        formatter.timeZone = .autoupdatingCurrent
+        
         super.init()
     }
     
-    func calendar(_ calendar: JTACMonthView, willScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
+    func setMonthTitle(_ visibleDates: DateSegmentInfo) {
         formatter.dateFormat = "yyyyMM"
         summaryViewModel.monthShowing[0] = formatter.string(from: visibleDates.monthDates[0].date)
         if visibleDates.indates.count > 0 {
             summaryViewModel.monthShowing[1] = formatter.string(from: visibleDates.indates[0].date)
         }
+        
+        formatter.dateFormat = "YYYY년 M월"
+        
+        let cal = Calendar(identifier: .gregorian)
+        let rangeYear = cal.component(.year, from: visibleDates.monthDates[0].date)
+        let todayYear = cal.component(.year, from: Date())
+        if rangeYear == todayYear {
+            formatter.dateFormat = "M월"
+        }
+        
+        summaryViewModel.monthTitle = formatter.string(from: visibleDates.monthDates[0].date)
+    }
+    
+    func calendar(_ calendar: JTACMonthView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        setMonthTitle(visibleDates)
+    }
+
+    func calendar(_ calendar: JTACMonthView, willScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        setMonthTitle(visibleDates)
     }
     
     func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
@@ -38,8 +58,10 @@ class CalendarDelegate: NSObject, JTACMonthViewDelegate, JTACMonthViewDataSource
             let dateCell = cell as! DateCell
             configureCell(cell: dateCell, cellState: cellState)
             summaryViewModel.selectedDate = date
+            if(cellState.dateBelongsTo != .thisMonth) {
+                calendar.scrollToDate(cellState.date)
+            }
         }
-
     }
     
     func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
@@ -73,8 +95,6 @@ class CalendarDelegate: NSObject, JTACMonthViewDelegate, JTACMonthViewDataSource
     func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         let cell = cell as! DateCell
         cell.dateLabel.text = cellState.text
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyyMMdd"
         
         let percentage = summaryViewModel.records
@@ -86,29 +106,16 @@ class CalendarDelegate: NSObject, JTACMonthViewDelegate, JTACMonthViewDataSource
     }
     
     func calendar(_ calendar: JTACMonthView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTACMonthReusableView {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "YYYY년 M월"
-        
-        let cal = Calendar(identifier: .gregorian)
-        let rangeYear = cal.component(.year, from: range.start)
-        let todayYear = cal.component(.year, from: Date())
-        if rangeYear == todayYear {
-            formatter.dateFormat = "M월"
-        }
-        
         let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: DateHeader.reuseID, for: indexPath) as! DateHeader
-        header.monthTitle.text = formatter.string(from: range.start)
+
         return header
     }
     
     func calendarSizeForMonths(_ calendar: JTACMonthView?) -> MonthSize? {
-        return MonthSize(defaultSize: 50)
+        return MonthSize(defaultSize: 10)
     }
     
     func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyyMMdd"
         let startDate = formatter.date(from: summaryViewModel.firstDate)!
         let endDate = Date()
@@ -119,33 +126,22 @@ class CalendarDelegate: NSObject, JTACMonthViewDelegate, JTACMonthViewDataSource
 class DateHeader: JTACMonthReusableView {
     static let reuseID = "dateHeader"
 
-    var monthTitle: UILabel
-
     override init(frame: CGRect) {
-        let monthSize = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
-        monthTitle = UILabel(frame: monthSize)
+        super.init(frame: frame)
         
         var weekDay = [UILabel]()
         let dayName = ["일", "월", "화", "수", "목", "금", "토"]
         for i in 0..<7 {
             weekDay.append(UILabel())
             weekDay[i].text = dayName[i]
-            weekDay[i].textColor = .gray
-            weekDay[i].font = .systemFont(ofSize: 12)
+            weekDay[i].textColor = .darkGray
+            weekDay[i].font = .boldSystemFont(ofSize: 12)
         }
-        
-        super.init(frame: frame)
-        self.addSubview(monthTitle)
-        
-        monthTitle.textAlignment = .center
-        monthTitle.translatesAutoresizingMaskIntoConstraints = false
-        monthTitle.font = .boldSystemFont(ofSize: 30)
         
         for i in 0..<7 {
             self.addSubview(weekDay[i])
             weekDay[i].textAlignment = .center
             weekDay[i].translatesAutoresizingMaskIntoConstraints = false
-            monthTitle.bottomAnchor.constraint(equalTo: weekDay[i].topAnchor, constant: -10).isActive = true
         }
         
         weekDay[0].leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
@@ -156,9 +152,6 @@ class DateHeader: JTACMonthReusableView {
         }
         
         weekDay[6].trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        
-        monthTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
-        monthTitle.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -225,6 +218,9 @@ struct CalendarView: UIViewRepresentable {
         calendar.scrollToDate(selection, animateScroll: false)
         calendar.selectDates([selection])
         
+        context.coordinator.formatter.dateFormat = "M월"
+        summaryViewModel.monthTitle = context.coordinator.formatter.string(from: selection)
+        
         summaryViewModel.calendar = calendar
         return calendar
     }
@@ -233,35 +229,56 @@ struct CalendarView: UIViewRepresentable {
 }
 
 private extension SummaryView {
+    var upperBanner: some View {
+        HStack {
+            Text("\(self.summaryViewModel.monthTitle)")
+                .font(.system(size: 30, weight: .semibold))
+                .padding()
+            Spacer()
+            Button(action: {
+                
+            }, label: {
+                Image(systemName: "chart.bar.fill")
+                    .foregroundColor(.gray)
+            })
+            .padding()
+        }
+    }
+    
     var dayInfoSection: some View {
         GeometryReader { geometry in
             HStack {
                 Text("\(self.summaryViewModel.selectedDateInString)")
+                    .multilineTextAlignment(.leading)
                     .frame(width: geometry.size.width*0.25)
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.white)
+                    .font(.system(size: 18, weight: .semibold))
+                    .padding(.trailing, -8)
                 Divider()
                 VStack(alignment: .leading) {
-                    if self.summaryViewModel.selectedRecord != nil {
-                        Text("마신 양: \(Utils.shared.floorDouble(num: self.summaryViewModel.selectedRecord!.drankToday))L")
-                            .foregroundColor(.white)
-                            .padding(.bottom, 2)
-                        Text("목표치: \(Utils.shared.floorDouble(num: self.summaryViewModel.selectedRecord!.dailyGoal))L")
-                            .foregroundColor(.white)
+                    if let selectedRecord = self.summaryViewModel.selectedRecord, selectedRecord.drankToday != 0.0 {
+                        let drankToday = selectedRecord.drankToday
+                        let dailyGoal = selectedRecord.dailyGoal
+                        
+                        Text("\(Utils.shared.floorDouble(num: drankToday / dailyGoal * 100))%")
+                            .font(.system(size: 20, weight: .semibold))
+                            .foregroundColor(waterColor)
+                            .padding(.bottom, 1)
+                        Text("마신 양: \(Utils.shared.floorDouble(num: drankToday))L")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 14))
+                        Text("목표: \(Utils.shared.floorDouble(num: dailyGoal))L")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 14))
                     } else {
-                        Text("정보가 없습니다.")
-                            .foregroundColor(.white)
+                        Text("정보가 없습니다")
                             .padding(.bottom, 2)
-                        Text("다른 날짜를 선택해주세요.")
+                        Text("다른 날짜를 선택해주세요")
                             .font(.system(size: 12))
-                            .foregroundColor(.white)
+                            .foregroundColor(.gray)
                     }
                 }
                 Spacer()
             }
-            .background(
-                Color.init(red: 125/255, green: 175/255, blue: 235/255)
-            )
         }
     }
 }
@@ -274,12 +291,19 @@ struct SummaryView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
+                upperBanner
+                
                 CalendarView(summaryViewModel: self.summaryViewModel)
-                    .frame(height: geometry.size.height*0.75)
-                    .padding(.top, 10)
+                    .frame(height: geometry.size.height*0.65)
+                
+                Divider()
                 
                 dayInfoSection
+                    .padding(.bottom, 10)
             }
+        }
+        .onAppear {
+            summaryViewModel.refreshToday()
         }
     }
 }

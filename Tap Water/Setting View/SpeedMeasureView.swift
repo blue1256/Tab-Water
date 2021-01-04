@@ -108,7 +108,7 @@ private extension SpeedMeasureView {
                 .onAppear{
                     self.isAnimating.toggle()
             }
-            Text("물을 마시세요")
+            Text("물을 마시세요!")
                 .font(.custom("", size: 25))
                 .foregroundColor(.white)
         }
@@ -117,7 +117,7 @@ private extension SpeedMeasureView {
     }
     
     var speedIndicatorText: some View {
-        Text("초당 \(Utils.shared.floorDouble(num: self.speedMeasureViewModel.speed))mL")
+        Text("초당 \(Utils.shared.floorDouble(num: self.speedMeasureViewModel.speed))ml")
             .font(.custom("", size: 20))
     }
     
@@ -156,6 +156,7 @@ private extension SpeedMeasureView {
     
     var guideText: some View {
         Text("마실 양을 입력 후 빈 컵을 누르는 동시에\n물을 마시며 속도 측정을 시작해주세요")
+            .foregroundColor(.init(white: 117/256))
             .multilineTextAlignment(.center)
     }
     

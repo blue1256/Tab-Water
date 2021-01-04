@@ -41,7 +41,7 @@ private extension CompletedView {
                     .frame(width: 18, height: 18)
                     .scaleEffect(1.3)
                     .foregroundColor(self.waterColor)
-                Text("기록 보기")
+                Text("달력 보기")
                     .font(.system(size: 25))
                     .foregroundColor(self.waterColor)
             }
