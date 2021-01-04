@@ -19,7 +19,8 @@ class StartViewModel: ObservableObject {
         self.$saveGoal
             .filter { $0 }
             .sink { [weak self] _ in
-                UserProfile.shared.dailyGoal = Double(self!.goalPickerValue) / 10.0
+                guard let self = self else { return }
+                UserDefaults.standard.set(Double(self.goalPickerValue) / 10.0, forKey: "dailyGoal")
             }
             .store(in: &cancellables)
     }

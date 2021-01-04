@@ -10,8 +10,8 @@ import Foundation
 import Combine
 
 class SpeedMeasureViewModel: ObservableObject {
-    var userProfile = UserProfile.shared
-    var appState = AppState.shared
+    private var userProfile = UserProfile.shared
+    private var appState = AppState.shared
     private var cancellables = Set<AnyCancellable>()
     
     @Published var fieldInput: String = ""
@@ -21,15 +21,16 @@ class SpeedMeasureViewModel: ObservableObject {
     @Published var measuredCups: Int = 0
     @Published var speed: Double = 0
     @Published var startTime: Date? = nil
+    @Published var showPopover: Bool = false
     
     init(){
         self.$saveSpeed
             .filter{ $0 }
             .sink { [weak self] _ in
                 if let speed = self?.speed, speed != 0 {
-                    self?.userProfile.speed = speed
+                    UserDefaults.standard.set(speed, forKey: "speed")
                 } else {
-                    self?.userProfile.speed = 20.0
+                    UserDefaults.standard.set(20, forKey: "speed")
                 }
             }
             .store(in: &cancellables)

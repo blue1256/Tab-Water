@@ -23,9 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
-            let userProfile = UserProfile.shared
+            let dailyGoal = UserDefaults.standard.double(forKey: "dailyGoal")
+            let speed = UserDefaults.standard.double(forKey: "speed")
             
-            if (userProfile.dailyGoal == 0) || (userProfile.speed == 0) {
+            if (dailyGoal == 0) || (speed == 0) {
                 window.rootViewController = UIHostingController(rootView: StartView())
             } else {
                 window.rootViewController = UIHostingController(rootView: ContentView())
@@ -55,14 +56,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
-        UserProfile.shared.getNewRecord(today: AppState.shared.today)
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-        if UserProfile.shared.enabledNotification {
+        if AppState.shared.enabledNotification {
             AppState.shared.sendNotification()
         }
     }

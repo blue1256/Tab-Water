@@ -8,11 +8,14 @@
 
 import Foundation
 import UserNotifications
+import Combine
 
 final class AppState: ObservableObject {
     static let shared = AppState()
     let userDefault = UserDefaults.standard
     let notificationCenter = UNUserNotificationCenter.current()
+    
+    private var cancellables = Set<AnyCancellable>()
     
     @Published var showUserSetting: Bool = false
     
@@ -22,30 +25,76 @@ final class AppState: ObservableObject {
     
     @Published var deleteCalendar: Bool = false
     
+    @Published var completedToday: Bool = false
+    @Published var enabledNotification: Bool = true
+    @Published var remindingTime: Int = 1
+    @Published var launchedBefore: Bool = true
+    
+    var version: String = ""
+    
+    var appStoreVersion: String = ""
+    
     var today: String {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = .autoupdatingCurrent
         formatter.dateFormat = "yyyyMMdd"
         return formatter.string(from: Date())
     }
     
-    var version: String {
-        guard let dictionary = Bundle.main.infoDictionary,
-            let version = dictionary["CFBundleShortVersionString"] as? String else {
-            return ""
-        }
-        return version
+    private init() {
+        getVersion()
+        getAppStoreVersion()
+        
+        completedToday = userDefault.bool(forKey: "completedToday")
+        enabledNotification = !userDefault.bool(forKey: "notification")
+        remindingTime = userDefault.integer(forKey: "remindingTime") == 0 ? 1 : userDefault.integer(forKey: "remindingTime")
+        launchedBefore = userDefault.bool(forKey: "launchedBefore")
+        
+        self.$completedToday
+            .sink{ [weak self] comp in
+                self?.userDefault.set(comp, forKey: "completedToday")
+            }
+            .store(in: &cancellables)
+        
+        self.$enabledNotification
+            .sink{ [weak self] enabled in
+                guard let self = self else { return }
+                self.userDefault.set(!enabled, forKey: "notification")
+            }
+            .store(in: &cancellables)
+        
+        self.$remindingTime
+            .sink { [weak self] time in
+                guard let self = self else { return }
+                self.userDefault.set(time, forKey: "remindingTime")
+            }
+            .store(in: &cancellables)
+        
+        self.$launchedBefore
+            .sink { [weak self] launched in
+                guard let self = self else { return }
+                self.userDefault.set(launched, forKey: "launchedBefore")
+            }
+            .store(in: &cancellables)
     }
     
-    var appStoreVersion: String {
+    func getVersion() {
+        guard let dictionary = Bundle.main.infoDictionary,
+            let version = dictionary["CFBundleShortVersionString"] as? String else {
+            return
+        }
+        self.version = version
+    }
+    
+    func getAppStoreVersion() {
         guard let url = URL(string: "http://itunes.apple.com/lookup?id=1528884225"),
             let data = try? Data(contentsOf: url),
             let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
             let results = json["results"] as? [[String: Any]],
             results.count > 0,
             let appStoreVersion = results[0]["version"] as? String
-            else { return "" }
-        return appStoreVersion
+            else { return }
+        self.appStoreVersion = appStoreVersion
     }
     
     func isUpdateAvailable() -> Bool {
@@ -72,12 +121,11 @@ final class AppState: ObservableObject {
         content.body = "오늘 목표량을 아직 다 못 마셨어요!"
         content.sound = .default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(UserProfile.shared.remindingTime * 3600), repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(remindingTime * 3600), repeats: true)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
-        notificationCenter.removeAllPendingNotificationRequests()
-        if !UserProfile.shared.completedToday {
+
+        if !completedToday {
             notificationCenter.add(request) { (error) in
                 if let error = error {
                     print(error)

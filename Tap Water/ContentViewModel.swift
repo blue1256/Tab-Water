@@ -15,8 +15,6 @@ class ContentViewModel: ObservableObject {
     
     @Published var selectedTab: Int = 1
     
-    @Published var selectedSettingView = SettingView()
-    
     init() {
         appState.$selectedTab
             .sink { [weak self] tab in

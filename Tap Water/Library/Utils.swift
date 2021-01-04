@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class Utils {
     static let shared = Utils()

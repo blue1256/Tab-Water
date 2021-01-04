@@ -17,12 +17,17 @@ struct AppInfoView: View {
     var body: some View {
         VStack {
             Spacer()
+            
             Text("Tap Water")
                 .font(.system(size: 40, weight: .bold))
                 .foregroundColor(self.waterColor)
+            
             Spacer()
+            
             Image("InfoIcon")
+            
             Spacer()
+            
             Text(updateAvailable ? "최신 버전 업데이트가 가능합니다"
                 : "최신 버전 사용중입니다")
                 .padding(5)
@@ -32,6 +37,7 @@ struct AppInfoView: View {
             Text("최신 버전: \(AppState.shared.appStoreVersion)")
                 .font(.system(size: 15))
                 .foregroundColor(.gray)
+            
             Spacer()
         }
         .navigationBarTitle("앱 정보", displayMode: .inline)
