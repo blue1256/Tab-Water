@@ -13,16 +13,16 @@ private extension RecordView {
     var mainInfoText: some View {
         VStack {
             Text("\(Utils.shared.floorDouble(num: self.recordViewModel.percentage*100))%")
-                .font(.custom("bold", size: 50))
-                .padding(.bottom)
+                .font(.custom("bold", size: 55))
+                .padding(.bottom, 8)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.init(red: 125/255, green: 175/255, blue: 235/255))
                 .animation(nil)
-            Text("현재: \(Utils.shared.floorDouble(num: self.recordViewModel.drankToday))L")
-                .padding(.bottom, 10)
+            Text("\("Current".localized): \(Utils.shared.floorDouble(num: self.recordViewModel.drankToday))L")
+                .padding(.bottom, 8)
                 .frame(maxWidth: .infinity)
                 .animation(nil)
-            Text("목표: \(Utils.shared.floorDouble(num: self.recordViewModel.dailyGoal))L")
+            Text("\("Goal".localized): \(Utils.shared.floorDouble(num: self.recordViewModel.dailyGoal))L")
                 .frame(maxWidth: .infinity)
                 .animation(nil)
         }
@@ -45,7 +45,7 @@ private extension RecordView {
     }
     
     var guideText: some View {
-        Text("물을 마시기 시작하며 버튼을 누르고\n다 마신 뒤 버튼을 다시 눌러주세요.")
+        Text("RecordHelp".localized)
             .font(.system(size: 15))
             .foregroundColor(.gray)
             .multilineTextAlignment(.center)
@@ -54,10 +54,6 @@ private extension RecordView {
 
 struct RecordView: View {
     @ObservedObject var recordViewModel = RecordViewModel()
-    
-    var animation: Animation {
-        return Animation.easeInOut(duration: 2).repeatForever()
-    }
 
     var body: some View {
         ZStack {
@@ -90,9 +86,9 @@ struct RecordView: View {
         }
         .alert(isPresented: self.$recordViewModel.showAlert) {
             Alert(
-                title: Text("설정 오류"),
-                message: Text("목표량 또는 속도가 설정되지 않았습니다."),
-                dismissButton: .default(Text("확인"), action: {
+                title: Text("RecordSettingsError".localized),
+                message: Text("RecordSettingsErrorContent".localized),
+                dismissButton: .default(Text("Confirm".localized), action: {
                     self.recordViewModel.showUserSetting = true
                 })
             )

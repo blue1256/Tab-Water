@@ -19,7 +19,7 @@ struct WaterBackground: View {
         GeometryReader { geometry in
             Path { path in
                 let width = geometry.size.width
-                let height = geometry.size.height * CGFloat(self.percentage * 1.05)
+                let height = geometry.size.height * CGFloat(max(1, self.percentage)) * 1.05
                 let waveCount = 5
                 let waveHeight = (self.percentage == 0 ? 0.0 : 5.0)
                 path.move(to: .init(x: 0, y: height))

@@ -57,3 +57,14 @@ public extension UIApplication {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+public extension String {
+    var localized: String {
+        NSLocalizedString(self, tableName: "Localizable", value: self, comment: "")
+    }
+    
+    func localized(_ arguments: CVarArg) -> String {
+        let format = NSLocalizedString(self, comment: "")
+        return String.localizedStringWithFormat(format, arguments)
+    }
+}

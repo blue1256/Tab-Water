@@ -27,13 +27,13 @@ class CalendarDelegate: NSObject, JTACMonthViewDelegate, JTACMonthViewDataSource
             summaryViewModel.monthShowing[1] = formatter.string(from: visibleDates.indates[0].date)
         }
         
-        formatter.dateFormat = "YYYY년 M월"
+        formatter.dateFormat = "MonthFormat".localized
         
         let cal = Calendar(identifier: .gregorian)
         let rangeYear = cal.component(.year, from: visibleDates.monthDates[0].date)
         let todayYear = cal.component(.year, from: Date())
         if rangeYear == todayYear {
-            formatter.dateFormat = "M월"
+            formatter.dateFormat = "MonthFormatShortened".localized
         }
         
         summaryViewModel.monthTitle = formatter.string(from: visibleDates.monthDates[0].date)
@@ -130,7 +130,13 @@ class DateHeader: JTACMonthReusableView {
         super.init(frame: frame)
         
         var weekDay = [UILabel]()
-        let dayName = ["일", "월", "화", "수", "목", "금", "토"]
+        let dayName = ["Sun".localized,
+                       "Mon".localized,
+                       "Tue".localized,
+                       "Wed".localized,
+                       "Thu".localized,
+                       "Fri".localized,
+                       "Sat".localized]
         for i in 0..<7 {
             weekDay.append(UILabel())
             weekDay[i].text = dayName[i]
@@ -218,7 +224,7 @@ struct CalendarView: UIViewRepresentable {
         calendar.scrollToDate(selection, animateScroll: false)
         calendar.selectDates([selection])
         
-        context.coordinator.formatter.dateFormat = "M월"
+        context.coordinator.formatter.dateFormat = "MonthFormatShortened".localized
         summaryViewModel.monthTitle = context.coordinator.formatter.string(from: selection)
         
         summaryViewModel.calendar = calendar
@@ -263,16 +269,16 @@ private extension SummaryView {
                             .font(.system(size: 20, weight: .semibold))
                             .foregroundColor(waterColor)
                             .padding(.bottom, 1)
-                        Text("마신 양: \(Utils.shared.floorDouble(num: drankToday))L")
+                        Text("\("Drank".localized): \(Utils.shared.floorDouble(num: drankToday))L")
                             .foregroundColor(.gray)
                             .font(.system(size: 14))
-                        Text("목표: \(Utils.shared.floorDouble(num: dailyGoal))L")
+                        Text("\("Goal".localized): \(Utils.shared.floorDouble(num: dailyGoal))L")
                             .foregroundColor(.gray)
                             .font(.system(size: 14))
                     } else {
-                        Text("정보가 없습니다")
+                        Text("NoRecord".localized)
                             .padding(.bottom, 2)
-                        Text("다른 날짜를 선택해주세요")
+                        Text("NoRecordContent".localized)
                             .font(.system(size: 12))
                             .foregroundColor(.gray)
                     }

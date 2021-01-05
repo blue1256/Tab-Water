@@ -21,12 +21,12 @@ private extension SpeedMeasureView {
     var inputField: some View {
         VStack {
             HStack {
-                TextField("마실 양(ml)", text: self.$speedMeasureViewModel.fieldInput)
+                TextField("VolumeToDrink".localized, text: self.$speedMeasureViewModel.fieldInput)
                     .textFieldStyle(DefaultTextFieldStyle())
                     .multilineTextAlignment(.center)
                     .keyboardType(.decimalPad)
                     .frame(width: 200)
-                    .font(.custom("", size: 30))
+                    .font(.custom("", size: 22))
                     .disabled(self.speedMeasureViewModel.measuredCups > 0)
                 
                 Button(action: {
@@ -108,7 +108,7 @@ private extension SpeedMeasureView {
                 .onAppear{
                     self.isAnimating.toggle()
             }
-            Text("물을 마시세요!")
+            Text("DrinkWater".localized)
                 .font(.custom("", size: 25))
                 .foregroundColor(.white)
         }
@@ -117,8 +117,9 @@ private extension SpeedMeasureView {
     }
     
     var speedIndicatorText: some View {
-        Text("초당 \(Utils.shared.floorDouble(num: self.speedMeasureViewModel.speed))ml")
-            .font(.custom("", size: 20))
+        Text("SpeedFormat".localized(self.speedMeasureViewModel.speed))
+            .font(.custom("", size: 24))
+            .foregroundColor(.init(white: 117/256))
     }
     
     var stopMeasureButton: some View {
@@ -127,7 +128,7 @@ private extension SpeedMeasureView {
                 self.speedMeasureViewModel.measuring = false
             }
         }) {
-            Text("완료")
+            Text("Done".localized)
                 .font(.custom("", size: 20))
                 .foregroundColor(self.waterColor)
         }
@@ -148,16 +149,16 @@ private extension SpeedMeasureView {
         }) {
             Image(systemName: "checkmark")
                 .foregroundColor(self.waterColor)
-            Text("측정 완료")
+            Text("MeasuringComplete".localized)
                 .font(.custom("", size: 20))
                 .foregroundColor(self.waterColor)
         }
     }
     
     var guideText: some View {
-        Text("마실 양을 입력 후 빈 컵을 누르는 동시에\n물을 마시며 속도 측정을 시작해주세요")
+        Text("MeasureGuideText".localized)
             .foregroundColor(.init(white: 117/256))
-            .multilineTextAlignment(.center)
+            .multilineTextAlignment(.leading)
     }
     
     var resetButton: some View {
@@ -167,7 +168,7 @@ private extension SpeedMeasureView {
             HStack{
                 Image(systemName: "arrow.clockwise")
                     .foregroundColor(self.waterColor)
-                Text("다시 측정")
+                Text("MeasureAgain".localized)
                     .font(.custom("", size: 20))
                     .foregroundColor(self.waterColor)
                     .padding(.top, 5)
@@ -182,7 +183,7 @@ private extension SpeedMeasureView {
             HStack {
                 Image(systemName: "arrow.left.circle")
                     .font(.system(size: 22))
-                Text("목표 설정")
+                Text("Goal".localized)
             }
         }).foregroundColor(self.waterColor)
     }

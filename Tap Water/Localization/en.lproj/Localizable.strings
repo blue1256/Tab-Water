@@ -1,0 +1,71 @@
+/* 
+  Localizable.strings
+  Tap Water
+
+  Created by 박종석 on 2021/01/04.
+  Copyright © 2021 박종석. All rights reserved.
+*/
+
+/* ---- General ---- */
+"Confirm" = "Confirm";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Goal" = "Goal";
+
+/* ---- Record View ---- */
+"Current" = "Current";
+"RecordHelp" = "Please press the button as you start to drink water\nand press again as you finish drinking.";
+"RecordSettingsError" = "Settings Error";
+"RecordSettingsErrorContent" = "Goal or speed hasn\'t been set.";
+
+/* ---- Settings View ---- */
+"Settings" = "Settings";
+"AppInfo" = "App Info";
+"UpdateAvailable" = "Update Available";
+"AboutCategory" = "About";
+
+"NotificationCategory" = "Notification";
+"Reminder" = "Reminder";
+"Interval" = "Interval";
+"IntervalSetContent" = "Interval has been saved.";
+
+"RecordCategory" = "Record";
+"DailyGoal" = "Daily Goal";
+"DrinkingSpeed" = "Drinking Speed";
+"ClearRecords" = "Clear Records";
+"ClearRecordsContent" = "This will remove all the records up until now.";
+"GoalSetContent" = "Goal has been saved.";
+
+/* ---- App Info View ---- */
+"UpdateIsAvailable" = "Update is Available";
+"UpToDate" = "App is up to date";
+"CurrentVersion" = "Current Version";
+"LatestVersion" = "Latest Version";
+
+/* ---- Speed Measure View ---- */
+"VolumeToDrink" = "Volume to Drink(ml)";
+"DrinkWater" = "Drink Water!";
+"SpeedFormat" = "%.0lfml/sec";
+"Done" = "Done";
+"MeasuringComplete" = "Measuring Complete";
+"MeasureAgain" = "Measure Again";
+"MeasureGuideText" = "Step 1: Enter volume\nStep 2: Touch the empty cup\nStep 3: Drink water to measure drinking speed";
+
+/* ---- Summary View ---- */
+"Mon" = "Mon";
+"Tue" = "Tue";
+"Wed" = "Wed";
+"Thu" = "Thu";
+"Fri" = "Fri";
+"Sat" = "Sat";
+"Sun" = "Sun";
+"MonthFormat" = "MMMM, yyyy";
+"MonthFormatShortened" = "MMMM";
+"Drank" = "Drank";
+"NoRecord" = "No Record";
+"NoRecordContent" = "Please select the other date";
+"SelectionDateFormat" = "MMM dd\nyyyy";
+
+/* ---- Notification ---- */
+"DrinkWaterNotiTitle" = "Drink Water";
+"DrinkWaterNotiContent" = "You haven\'t achieved the amount you set today yet!";

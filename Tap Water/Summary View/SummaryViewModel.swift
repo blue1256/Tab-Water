@@ -19,7 +19,6 @@ class SummaryViewModel: ObservableObject {
     
     var searchedMonth = [String]()
     
-    
     @Published var monthTitle: String = ""
     @Published var monthShowing: [String] = ["", ""]
     @Published var records = [DayRecord]()
@@ -59,7 +58,7 @@ class SummaryViewModel: ObservableObject {
                 self.formatter.dateFormat = "yyyyMMdd"
                 self.selectedRecord = self.records.first { $0.date == self.formatter.string(from: date) }
                 
-                self.formatter.dateFormat = "yyyy년\nM월 d일"
+                self.formatter.dateFormat = "SelectionDateFormat".localized
                 self.selectedDateInString = self.formatter.string(from: date)
             }
             .store(in: &cancellables)

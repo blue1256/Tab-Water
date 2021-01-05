@@ -1,0 +1,72 @@
+/* 
+  Localizable.strings
+  Tap Water
+
+  Created by 박종석 on 2021/01/04.
+  Copyright © 2021 박종석. All rights reserved.
+*/
+
+/* ---- General ---- */
+"Confirm" = "확인";
+"Cancel" = "취소";
+"Save" = "저장";
+"Goal" = "목표";
+
+/* ---- Record View ---- */
+"Current" = "현재";
+"RecordHelp" = "물을 마시기 시작하며 버튼을 누르고\n다 마신 뒤 버튼을 다시 눌러주세요.";
+"RecordSettingsError" = "설정 오류";
+"RecordSettingsErrorContent" = "목표량 또는 속도가 설정되지 않았습니다.";
+
+/* ---- Settings View ---- */
+"Settings" = "설정";
+"AppInfo" = "앱 정보";
+"UpdateAvailable" = "업데이트 가능";
+"AboutCategory" = "정보";
+
+"NotificationCategory" = "알림 설정";
+"Reminder" = "리마인더";
+"Interval" = "시간 설정";
+"IntervalSetContent" = "시간이 설정되었습니다.";
+
+"RecordCategory" = "기록 설정";
+"DailyGoal" = "하루 목표 설정";
+"DrinkingSpeed" = "속도 설정";
+"ClearRecords" = "기록 전체 삭제";
+"ClearRecordsContent" = "현재까지의 모든 물 기록량을 삭제합니다.";
+"GoalSet" = "목표 설정";
+"GoalSetContent" = "목표가 설정되었습니다.";
+
+/* ---- App Info View ---- */
+"UpdateIsAvailable" = "최신 버전 업데이트가 가능합니다";
+"UpToDate" = "최신 버전 사용 중입니다.";
+"CurrentVersion" = "현재 버전";
+"LatestVersion" = "최신 버전";
+
+/* ---- Speed Measure View ---- */
+"VolumeToDrink" = "마실 양(ml)";
+"DrinkWater" = "물을 마시세요!";
+"SpeedFormat" = "초당 %.0lfml";
+"Done" = "완료";
+"MeasuringComplete" = "측정 완료";
+"MeasureAgain" = "다시 측정";
+"MeasureGuideText" = "1단계: 마실 양을 입력해주세요\n2단계: 빈 컵을 눌러주세요\n3단계: 물을 마시며 속도를 측정해주세요";
+
+/* ---- Summary View ---- */
+"Mon" = "월";
+"Tue" = "화";
+"Wed" = "수";
+"Thu" = "목";
+"Fri" = "금";
+"Sat" = "토";
+"Sun" = "일";
+"MonthFormat" = "yyyy년 MM월";
+"MonthFormatShortened" = "M월";
+"Drank" = "마신 양";
+"NoRecord" = "기록이 없습니다";
+"NoRecordContent" = "다른 날짜를 선택해주세요";
+"SelectionDateFormat" = "yyyy년\nM월 d일";
+
+/* ---- Notification ---- */
+"DrinkWaterNotiTitle" = "물 마시기";
+"DrinkWaterNotiContent" = "오늘 목표량을 아직 다 못 마셨어요!";
