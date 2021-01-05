@@ -13,6 +13,8 @@
 		1E35C29B24ED0FCB0032CBC7 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E35C29A24ED0FCB0032CBC7 /* StoreManager.swift */; };
 		1E473FAD245EEC8200A6F137 /* SpeedMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E473FAC245EEC8200A6F137 /* SpeedMeasureViewModel.swift */; };
 		1E54699124388106003F1E30 /* DayRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E54699024388106003F1E30 /* DayRecord.swift */; };
+		1E69DAC525A35DAC00ACCCC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E69DAC725A35DAC00ACCCC9 /* Localizable.strings */; };
+		1E69DAD725A3657D00ACCCC9 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 1E69DAD925A3657D00ACCCC9 /* Localizable.stringsdict */; };
 		1EBC271524FFB11A008F2ED1 /* SpeedMeasureHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBC271424FFB11A008F2ED1 /* SpeedMeasureHelpView.swift */; };
 		1EC7372B2438846A00A33EB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */; };
 		1EC7372D2439B8AD00A33EB7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC7372C2439B8AD00A33EB7 /* Networking.swift */; };
@@ -31,8 +33,6 @@
 		1EE30BC42406C4E000AB6DDF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC32406C4E000AB6DDF /* Utils.swift */; };
 		1EE30BC62407EF6000AB6DDF /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */; };
 		1EE8433E24F28F3400D4F71C /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EE8433D24F28F3400D4F71C /* GoogleService-Info-dev.plist */; };
-		1EE8434624F7B40700D4F71C /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE8434524F7B40700D4F71C /* NotificationSettingView.swift */; };
-		1EEFCAF5241E467C00117085 /* RecordSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF4241E467C00117085 /* RecordSettingView.swift */; };
 		1EEFCAF72425D30900117085 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF62425D30900117085 /* AppState.swift */; };
 		1EEFCAF9242B5B8500117085 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */; };
 		1EEFCAFB242B617900117085 /* SpeedMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */; };
@@ -60,6 +60,12 @@
 		1E35C29A24ED0FCB0032CBC7 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		1E473FAC245EEC8200A6F137 /* SpeedMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureViewModel.swift; sourceTree = "<group>"; };
 		1E54699024388106003F1E30 /* DayRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecord.swift; sourceTree = "<group>"; };
+		1E69DAC625A35DAC00ACCCC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1E69DACC25A35E9A00ACCCC9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1E69DACD25A35E9B00ACCCC9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1E69DAD025A35FEA00ACCCC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1E69DAD825A3657D00ACCCC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		1E69DADC25A3658000ACCCC9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ko; path = ko.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		1EBC271424FFB11A008F2ED1 /* SpeedMeasureHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureHelpView.swift; sourceTree = "<group>"; };
 		1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EC7372C2439B8AD00A33EB7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -82,8 +88,6 @@
 		1EE30BC32406C4E000AB6DDF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		1EE8433D24F28F3400D4F71C /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info-dev.plist"; path = "Tap Water/GoogleService-Info-dev.plist"; sourceTree = SOURCE_ROOT; };
-		1EE8434524F7B40700D4F71C /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
-		1EEFCAF4241E467C00117085 /* RecordSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSettingView.swift; sourceTree = "<group>"; };
 		1EEFCAF62425D30900117085 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1EEFCAF8242B5B8500117085 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureView.swift; sourceTree = "<group>"; };
@@ -121,8 +125,6 @@
 			children = (
 				1EE30BBA240408CE00AB6DDF /* SettingView.swift */,
 				1EF5DA672493B2DE00B39405 /* AppInfoView.swift */,
-				1EE8434524F7B40700D4F71C /* NotificationSettingView.swift */,
-				1EEFCAF4241E467C00117085 /* RecordSettingView.swift */,
 				1E250B7C241256050058B406 /* SettingViewModel.swift */,
 				1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */,
 				1EBC271424FFB11A008F2ED1 /* SpeedMeasureHelpView.swift */,
@@ -138,6 +140,15 @@
 				1EF5DA61248C8E2200B39405 /* SummaryViewModel.swift */,
 			);
 			path = "Summary View";
+			sourceTree = "<group>";
+		};
+		1E69DABE25A35D9500ACCCC9 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				1E69DAC725A35DAC00ACCCC9 /* Localizable.strings */,
+				1E69DAD925A3657D00ACCCC9 /* Localizable.stringsdict */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		1EE30B882403E58500AB6DDF = {
@@ -163,6 +174,7 @@
 		1EE30B932403E58500AB6DDF /* Tap Water */ = {
 			isa = PBXGroup;
 			children = (
+				1E69DABE25A35D9500ACCCC9 /* Localization */,
 				1EE30BBC240691B200AB6DDF /* Models */,
 				1E27A72B24EE9FD60097B7D2 /* Summary View */,
 				1EE30BBF240693EB00AB6DDF /* RecordView */,
@@ -326,6 +338,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 1EE30B882403E58500AB6DDF;
 			productRefGroup = 1EE30B922403E58500AB6DDF /* Products */;
@@ -344,10 +357,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EE30BA12403E58900AB6DDF /* LaunchScreen.storyboard in Resources */,
+				1E69DAC525A35DAC00ACCCC9 /* Localizable.strings in Resources */,
 				1EE8433E24F28F3400D4F71C /* GoogleService-Info-dev.plist in Resources */,
 				1EC7372B2438846A00A33EB7 /* GoogleService-Info.plist in Resources */,
 				1EE30B9E2403E58900AB6DDF /* Preview Assets.xcassets in Resources */,
 				1EE30B9B2403E58900AB6DDF /* Assets.xcassets in Resources */,
+				1E69DAD725A3657D00ACCCC9 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,8 +440,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EE8434624F7B40700D4F71C /* NotificationSettingView.swift in Sources */,
-				1EEFCAF5241E467C00117085 /* RecordSettingView.swift in Sources */,
 				1EE30BC12406941900AB6DDF /* WaterBackground.swift in Sources */,
 				1EF5DA682493B2DE00B39405 /* AppInfoView.swift in Sources */,
 				1EC7372D2439B8AD00A33EB7 /* Networking.swift in Sources */,
@@ -474,10 +487,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1E69DAC725A35DAC00ACCCC9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E69DAC625A35DAC00ACCCC9 /* en */,
+				1E69DACD25A35E9B00ACCCC9 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		1E69DAD925A3657D00ACCCC9 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E69DAD825A3657D00ACCCC9 /* en */,
+				1E69DADC25A3658000ACCCC9 /* ko */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
 		1EE30B9F2403E58900AB6DDF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1EE30BA02403E58900AB6DDF /* Base */,
+				1E69DACC25A35E9A00ACCCC9 /* ko */,
+				1E69DAD025A35FEA00ACCCC9 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -489,6 +522,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -549,6 +583,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -698,6 +733,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

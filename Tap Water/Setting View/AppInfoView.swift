@@ -28,19 +28,18 @@ struct AppInfoView: View {
             
             Spacer()
             
-            Text(updateAvailable ? "최신 버전 업데이트가 가능합니다"
-                : "최신 버전 사용중입니다")
+            Text(updateAvailable ? "UpdateIsAvailable".localized : "UpToDate".localized)
                 .padding(5)
-            Text("현재 버전: \(AppState.shared.version)")
+            Text("\("CurrentVersion".localized): \(AppState.shared.version)")
                 .font(.system(size: 15))
                 .foregroundColor(.gray)
-            Text("최신 버전: \(AppState.shared.appStoreVersion)")
+            Text("\("LatestVersion".localized): \(AppState.shared.appStoreVersion)")
                 .font(.system(size: 15))
                 .foregroundColor(.gray)
             
             Spacer()
         }
-        .navigationBarTitle("앱 정보", displayMode: .inline)
+        .navigationBarTitle(Text("AppInfo".localized), displayMode: .inline)
     }
 }
 

@@ -117,8 +117,8 @@ final class AppState: ObservableObject {
     
     func sendNotification(){
         let content = UNMutableNotificationContent()
-        content.title = "물 마시기"
-        content.body = "오늘 목표량을 아직 다 못 마셨어요!"
+        content.title = "DrinkWaterNotiTitle".localized
+        content.body = "DrinkWaterNotiContent".localized
         content.sound = .default
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(remindingTime * 3600), repeats: true)

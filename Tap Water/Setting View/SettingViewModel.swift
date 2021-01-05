@@ -13,9 +13,7 @@ class SettingViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     // Setting View
-    @Published var updateAvailable: String = AppState.shared.isUpdateAvailable() ? "업데이트 가능" : ""
-    @Published var showUserSetting: Bool = false
-    @Published var showReminderSetting: Bool = false
+    @Published var updateAvailable: String = AppState.shared.isUpdateAvailable() ? "UpdateAvailable".localized : ""
     @Published var showAppInfo: Bool = false
     @Published var showSpeedMeasure: Bool = false
     @Published var showRecordDeletionSheet: Bool = false
@@ -42,13 +40,6 @@ class SettingViewModel: ObservableObject {
         timePickerValue = AppState.shared.remindingTime - 1
         
         notification = AppState.shared.enabledNotification
-        
-        AppState.shared.$showUserSetting
-            .sink { [weak self] show in
-                guard let self = self else { return }
-                self.showUserSetting = show
-            }
-            .store(in: &cancellables)
         
         self.$goalPickerValue
             .debounce(for: 0.1, scheduler: RunLoop.main)
