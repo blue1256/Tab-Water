@@ -89,10 +89,16 @@ private extension SettingView {
                         Text("Save".localized)
                             .foregroundColor(.blue)
                     } else {
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(Color(red: 196/255, green: 196/255, blue: 196/255))
-                            .imageScale(.small)
-                            .rotationEffect(.degrees(settingViewModel.showGoalPicker ? 90 : 0))
+                        HStack {
+                            if !settingViewModel.showGoalPicker {
+                                Text(Utils.shared.floorDouble(num: Double(settingViewModel.goalPickerValue) / 10.0) + "L")
+                                    .foregroundColor(.gray)
+                            }
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(Color(red: 196/255, green: 196/255, blue: 196/255))
+                                .imageScale(.small)
+                                .rotationEffect(.degrees(settingViewModel.showTimePicker ? 90 : 0))
+                        }
                     }
                 }
             }
@@ -117,9 +123,14 @@ private extension SettingView {
                     Text("DrinkingSpeed".localized)
                         .foregroundColor(.black)
                     Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(Color(red: 196/255, green: 196/255, blue: 196/255))
-                        .imageScale(.small)
+                    HStack {
+                        Text("SpeedFormat".localized( settingViewModel.speed))
+                            .foregroundColor(.gray)
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Color(red: 196/255, green: 196/255, blue: 196/255))
+                            .imageScale(.small)
+                    }
+                    
                 }
             }
             

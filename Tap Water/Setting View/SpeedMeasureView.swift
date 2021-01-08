@@ -25,8 +25,8 @@ private extension SpeedMeasureView {
                     .textFieldStyle(DefaultTextFieldStyle())
                     .multilineTextAlignment(.center)
                     .keyboardType(.decimalPad)
-                    .frame(width: 200)
-                    .font(.custom("", size: 22))
+                    .frame(width: 250)
+                    .font(.custom("", size: 24))
                     .disabled(self.speedMeasureViewModel.measuredCups > 0)
                 
                 Button(action: {
@@ -140,6 +140,7 @@ private extension SpeedMeasureView {
                 self.speedMeasureViewModel.saveSpeed = true
                 if let settingViewModel = self.settingViewModel {
                     settingViewModel.showSpeedMeasure = false
+                    settingViewModel.speed = speedMeasureViewModel.speed
                 } else {
                     self.viewControllerHolder?.present(style: .fullScreen) {
                         ContentView()
@@ -194,53 +195,48 @@ struct SpeedMeasureView: View {
     @Environment(\.presentationMode) private var presentationMode
     @State var isAnimating = false
     var settingViewModel: SettingViewModel? = nil
+    var onNavigation: Bool = false
     @ObservedObject var speedMeasureViewModel = SpeedMeasureViewModel()
     
     var bodyWithSafeArea: some View {
-        VStack(alignment: .center) {
-            inputField.padding(.top, 30)
-            
-            Spacer()
-            
-            if !self.speedMeasureViewModel.measuring {
-                cupButtonView
-            } else {
-                waitingView
+        GeometryReader { geometry in
+            VStack(alignment: .center) {
+                inputField.padding(.top, 30)
+                
+                Spacer()
+                
+                if !self.speedMeasureViewModel.measuring {
+                    cupButtonView
+                } else {
+                    waitingView
+                }
+                
+                Spacer()
+                
+                if !self.speedMeasureViewModel.measuring && self.speedMeasureViewModel.speed != 0  {
+                    speedIndicatorText.padding(.bottom, 20)
+                }
+                
+                if self.speedMeasureViewModel.measuring {
+                    stopMeasureButton.padding(.bottom, 10)
+                } else if self.speedMeasureViewModel.measuredCups == 3 {
+                    measureCompleteButton.padding(.bottom, 10)
+                } else {
+                    guideText.padding(.bottom, 10)
+                }
+                
+                resetButton.padding(.bottom)
             }
-            
-            Spacer()
-            
-            if !self.speedMeasureViewModel.measuring && self.speedMeasureViewModel.speed != 0  {
-                speedIndicatorText.padding(.bottom, 20)
+            .sheet(isPresented: self.$speedMeasureViewModel.showPopover, title: "HelpTitle".localized, height: 380)  {
+                SpeedMeasureHelpView(speedMeasureViewModel: self.speedMeasureViewModel)
             }
-            
-            if self.speedMeasureViewModel.measuring {
-                stopMeasureButton.padding(.bottom, 10)
-            } else if self.speedMeasureViewModel.measuredCups == 3 {
-                measureCompleteButton.padding(.bottom, 10)
-            } else {
-                guideText.padding(.bottom, 10)
-            }
-            
-            resetButton.padding(.bottom, 30)
+            .background(Color.white.onTapGesture {
+                UIApplication.shared.endEditing()
+            })
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: backButton)
         }
-        .background(Color.white.onTapGesture {
-            UIApplication.shared.endEditing()
-        })
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                backButton
-        )
-        .sheet(isPresented: self.$speedMeasureViewModel.showPopover) {
-            SpeedMeasureHelpView()
-        }
-        .gesture(DragGesture()
-                    .onChanged {gesture in
-                        if gesture.startLocation.x < 100 && gesture.location.x > 100 {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                    }
-        )
+        
     }
     
     var body: some View {

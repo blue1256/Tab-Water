@@ -72,5 +72,7 @@ class SpeedMeasureViewModel: ObservableObject {
                 self?.measuredCups += 1
             }
             .store(in: &cancellables)
+        
+        
     }
 }

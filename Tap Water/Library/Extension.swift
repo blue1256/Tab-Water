@@ -16,7 +16,6 @@ struct ViewControllerHolder {
 struct ViewControllerKey: EnvironmentKey {
     static var defaultValue: ViewControllerHolder {
         return ViewControllerHolder(value: UIApplication.shared.windows.first?.rootViewController)
-
     }
 }
 
@@ -66,5 +65,30 @@ public extension String {
     func localized(_ arguments: CVarArg) -> String {
         let format = NSLocalizedString(self, comment: "")
         return String.localizedStringWithFormat(format, arguments)
+    }
+}
+
+public extension View {
+    func sheet<Content: View>(isPresented: Binding<Bool>, title: String = "", height: CGFloat, @ViewBuilder content: @escaping () -> Content) -> some View {
+        return ZStack {
+            self
+                .zIndex(0)
+            if isPresented.wrappedValue {
+                BottomModalView(isPresented: isPresented, title: title, height: height, content: content)
+                    .transition(.move(edge: .bottom))
+                    .zIndex(1)
+            }
+        }
+    }
+}
+
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
     }
 }

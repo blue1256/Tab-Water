@@ -38,15 +38,15 @@ struct StartView: View {
                     .labelsHidden()
                     .frame(maxWidth: .infinity)
                     
-                    Text("하루 목표량을 설정해주세요.")
+                    Text("GoalSetHelp".localized)
                         .font(.system(size: 15))
                         .padding(.bottom, 40)
                     
                     Spacer()
                     
-                    NavigationLink(destination: SpeedMeasureView(), isActive: $startViewModel.saveGoal) {
+                    NavigationLink(destination: SpeedMeasureView(onNavigation: true), isActive: $startViewModel.saveGoal) {
                         HStack {
-                            Text("목표 설정 완료")
+                            Text("GoalSetComplete".localized)
                                 .font(.system(size: 22))
                                 .foregroundColor(self.startColor)
                             Image(systemName: "arrow.right.circle")
@@ -54,10 +54,10 @@ struct StartView: View {
                                 .foregroundColor(self.startColor)
                         }
                     }
-                    
                     Spacer()
                 }
             }
+            .navigationBarHidden(true)
         }
     }
 }

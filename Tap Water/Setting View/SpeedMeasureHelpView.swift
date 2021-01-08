@@ -9,74 +9,98 @@
 import SwiftUI
 
 struct SpeedMeasureHelpView: View {
-    let waterColor = Color.init(red: 125/255, green: 175/255, blue: 235/255)
+    @ObservedObject var speedMeasureViewModel: SpeedMeasureViewModel
+    
+    @GestureState private var scrollOffset: CGFloat = 0
+    @State private var scrollPosition: CGFloat = 0
+    
+    struct CupInfo : Identifiable {
+        var id: String
+        
+        var image: String
+        var type: String
+        var volume: String
+        
+        init(_ cupImage: String, _ cupType: String, _ cupVolume: String) {
+            self.image = cupImage
+            self.type = cupType
+            self.volume = cupVolume
+            self.id = cupType
+        }
+    }
+    
+    let cupsInfo: [CupInfo] = [
+        CupInfo("paperbag-cup", "PaperBagCup".localized, "PaperBagCupVolume".localized),
+        CupInfo("soju-cup", "SojuGlass".localized, "SojuGlassVolume".localized),
+        CupInfo("paper-cup", "PaperCup".localized, "PaperCupVolume".localized),
+        CupInfo("home-cup", "TallTeaCup".localized, "TallTeaCupVolume".localized),
+        CupInfo("glass-cup", "BeerGlass".localized, "BeerGlassVolume".localized)
+    ]
     
     var body: some View {
-        HStack {
+        GeometryReader { geometry in
             VStack(alignment: .leading) {
-                Text("마실 양")
-                    .font(.system(size: 30, weight: .bold, design: .default))
-                    .foregroundColor(waterColor)
-                    .padding(.top, 20)
-                
-                Text("속도 측정을 위해 앱의 첫 실행 시에 사용자가 마실 정확한 양을 알아야 합니다.\n\n속도 평균을 내기 위해 세 번에 걸쳐 마시게 되므로 부담이 되지 않는 양으로 설정해주세요.")
+                Text("HelpDetail".localized)
                     .font(.system(size: 15))
-                    .padding(.top, 15)
                 
-                Text("유용한 각종 컵 용량 정보")
+                Text("CupSelector".localized)
                     .font(.headline)
-                    .padding(.top, 30)
+                    .padding(.top, 8)
                 
-                HStack(alignment: .bottom) {
-                    Spacer()
-                    VStack {
-                        Image("paperbag-cup")
-                        Text("종이봉투컵: 45ml")
-                            .font(.system(size: 13))
+                HStack {
+                    ForEach(cupsInfo) { cup in
+                        Button(action: {
+                            self.speedMeasureViewModel.fieldInput = cup.volume
+                            self.speedMeasureViewModel.showPopover = false
+                        }) {
+                            VStack {
+                                Spacer()
+                                Image(cup.image)
+                                Spacer()
+                                Text("\(cup.type)\n\(cup.volume)ml")
+                                    .multilineTextAlignment(.center)
+                                    .padding(.bottom)
+                                    .font(.system(size: 13))
+                                    .foregroundColor(.black)
+                            }
+                            .frame(width: 150, height: 200)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.gray, lineWidth: 3)
+                            )
+                        }
+                        .padding(8)
+                        .highPriorityGesture(
+                            DragGesture()
+                        )
                     }
-                    Spacer()
-                    VStack {
-                        Image("soju-cup")
-                        Text("소주잔: 50ml")
-                            .font(.system(size: 13))
-                    }
-                    Spacer()
-                    VStack {
-                        Image("paper-cup")
-                        Text("일반종이컵: 160ml")
-                            .font(.system(size: 13))
-                    }
-                    Spacer()
+                    .padding(.bottom, 8)
                 }
-                
-                HStack(alignment: .bottom) {
-                    Spacer()
-                    VStack {
-                        Image("home-cup")
-                        Text("가정용 물컵: 190ml")
-                            .font(.system(size: 13))
-                            .padding(.trailing, 20)
+                .offset(x: scrollPosition + scrollOffset)
+                .simultaneousGesture(
+                    DragGesture().updating(self.$scrollOffset, body: { (value, state, transaction) in
+                        state = value.translation.width
+                    })
+                    .onEnded{ value in
+                        let maxPosition = 166.0 * CGFloat(cupsInfo.count) - geometry.size.width + 64
+                        let minPosition = CGFloat(0)
+                        scrollPosition += (value.predictedEndTranslation.width + value.translation.width)/2
+                        if -scrollPosition > maxPosition {
+                            scrollPosition = -maxPosition
+                        }
+                        if -scrollPosition < minPosition { scrollPosition = -minPosition
+                        }
                     }
-                    VStack {
-                        Image("glass-cup")
-                        Text("맥주 글라스: 180ml")
-                            .font(.system(size: 13))
-                    }
-                    Spacer()
-                }
-                Text("각 용량은 가득 채운 것이 아닌 적정 용량을 채운 기준입니다.")
-                    .font(.system(size: 13))
-                    .padding(.top, 30)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                Spacer()
+                )
             }
             .padding()
+            .padding(.bottom, geometry.safeAreaInsets.bottom)
         }
     }
 }
 
 struct SpeedMeasureHelpView_Previews: PreviewProvider {
     static var previews: some View {
-        SpeedMeasureHelpView()
+        SpeedMeasureHelpView(speedMeasureViewModel: SpeedMeasureViewModel())
     }
 }

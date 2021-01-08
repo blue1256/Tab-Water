@@ -12,6 +12,10 @@
 "Save" = "Save";
 "Goal" = "Goal";
 
+/* ---- Start View ---- */
+"GoalSetHelp" = "Please set the amount you want to drink a day.";
+"GoalSetComplete" = "Goal Set";
+
 /* ---- Record View ---- */
 "Current" = "Current";
 "RecordHelp" = "Please press the button as you start to drink water\nand press again as you finish drinking.";
@@ -50,6 +54,21 @@
 "MeasuringComplete" = "Measuring Complete";
 "MeasureAgain" = "Measure Again";
 "MeasureGuideText" = "Step 1: Enter volume\nStep 2: Touch the empty cup\nStep 3: Drink water to measure drinking speed";
+
+/* ---- Speed Measure Help View ---- */
+"HelpTitle" = "Volume";
+"HelpDetail" = "Please enter volume to drink for measurement.\nYou need to drink three times for measurement.";
+"CupSelector" = "Choose by Cup Type";
+"SojuGlass" = "Shot Glass";
+"SojuGlassVolume" = "50";
+"PaperBagCup" = "Paper Bag Cup";
+"PaperBagCupVolume" = "45";
+"PaperCup" = "Paper Cup";
+"PaperCupVolume" = "160";
+"TallTeaCup" = "Tall Tea Cup";
+"TallTeaCupVolume" = "190";
+"BeerGlass" = "Tall Water Glass";
+"BeerGlassVolume" = "220";
 
 /* ---- Summary View ---- */
 "Mon" = "Mon";

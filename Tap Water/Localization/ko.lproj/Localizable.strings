@@ -12,6 +12,10 @@
 "Save" = "저장";
 "Goal" = "목표";
 
+/* ---- Start View ---- */
+"GoalSetHelp" = "하루 목표량을 설정해주세요.";
+"GoalSetComplete" = "목표 설정 완료";
+
 /* ---- Record View ---- */
 "Current" = "현재";
 "RecordHelp" = "물을 마시기 시작하며 버튼을 누르고\n다 마신 뒤 버튼을 다시 눌러주세요.";
@@ -51,6 +55,21 @@
 "MeasuringComplete" = "측정 완료";
 "MeasureAgain" = "다시 측정";
 "MeasureGuideText" = "1단계: 마실 양을 입력해주세요\n2단계: 빈 컵을 눌러주세요\n3단계: 물을 마시며 속도를 측정해주세요";
+
+/* ---- Speed Measure Help View ---- */
+"HelpTitle" = "마실 양";
+"HelpDetail" = "속도 측정을 위해 마실 물의 양을 입력해주세요.\n측정을 위해서 물은 세 번 마셔야합니다.";
+"CupSelector" = "컵 종류로 선택";
+"SojuGlass" = "소주잔";
+"SojuGlassVolume" = "50";
+"PaperBagCup" = "종이봉투컵";
+"PaperBagCupVolume" = "45";
+"PaperCup" = "일반종이컵";
+"PaperCupVolume" = "160";
+"TallTeaCup" = "가정용 물컵";
+"TallTeaCupVolume" = "190";
+"BeerGlass" = "맥주 글라스";
+"BeerGlassVolume" = "220";
 
 /* ---- Summary View ---- */
 "Mon" = "월";
