@@ -51,14 +51,14 @@ struct BottomModalView<Content: View>: View {
             }
             .background(Color(.systemBackground))
             .cornerRadius(10)
-            .frame(width: geometry.size.width, height: self.height + geometry.safeAreaInsets.bottom + 30)
-            .position(x: geometry.size.width/2, y: geometry.size.height - self.height/2 + geometry.safeAreaInsets.bottom)
+            .position(x: geometry.size.width/2, y: geometry.size.height*3/2 - self.height)
             .offset(y: max(self.translation, -5))
-            .animation(.interactiveSpring())
             .shadow(radius: 10)
             .simultaneousGesture(
                 DragGesture().updating($translation) { (value, state, transaction) in
                     state = value.translation.height
+                    transaction.disablesAnimations = true
+                    transaction.animation = .interactiveSpring()
                 }
                 .onEnded { value in
                     let snapDistance = self.height * 0.5

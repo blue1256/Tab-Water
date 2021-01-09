@@ -308,6 +308,9 @@ struct SummaryView: View {
                     .padding(.bottom, 10)
             }
         }
+        .sheet(isPresented: self.$summaryViewModel.showStats) {
+            /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Sheet Content")/*@END_MENU_TOKEN@*/
+        }
         .onAppear {
             summaryViewModel.refreshToday()
         }

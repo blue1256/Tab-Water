@@ -42,59 +42,42 @@ struct SpeedMeasureHelpView: View {
             VStack(alignment: .leading) {
                 Text("HelpDetail".localized)
                     .font(.system(size: 15))
+                    .padding()
                 
                 Text("CupSelector".localized)
                     .font(.headline)
-                    .padding(.top, 8)
+                    .padding([.leading, .trailing])
                 
-                HStack {
-                    ForEach(cupsInfo) { cup in
-                        Button(action: {
-                            self.speedMeasureViewModel.fieldInput = cup.volume
-                            self.speedMeasureViewModel.showPopover = false
-                        }) {
-                            VStack {
-                                Spacer()
-                                Image(cup.image)
-                                Spacer()
-                                Text("\(cup.type)\n\(cup.volume)ml")
-                                    .multilineTextAlignment(.center)
-                                    .padding(.bottom)
-                                    .font(.system(size: 13))
-                                    .foregroundColor(.black)
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(cupsInfo) { cup in
+                            Button(action: {
+                                self.speedMeasureViewModel.fieldInput = cup.volume
+                                self.speedMeasureViewModel.showPopover = false
+                            }) {
+                                VStack {
+                                    Spacer()
+                                    Image(cup.image)
+                                    Spacer()
+                                    Text("\(cup.type)\n\(cup.volume)ml")
+                                        .multilineTextAlignment(.center)
+                                        .padding(.bottom)
+                                        .font(.system(size: 13))
+                                        .foregroundColor(.black)
+                                }
+                                .frame(width: 150, height: 200)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.gray, lineWidth: 3)
+                                )
                             }
-                            .frame(width: 150, height: 200)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.gray, lineWidth: 3)
-                            )
+                            .padding(8)
                         }
-                        .padding(8)
-                        .highPriorityGesture(
-                            DragGesture()
-                        )
+                        .padding(.bottom, 8)
                     }
-                    .padding(.bottom, 8)
                 }
-                .offset(x: scrollPosition + scrollOffset)
-                .simultaneousGesture(
-                    DragGesture().updating(self.$scrollOffset, body: { (value, state, transaction) in
-                        state = value.translation.width
-                    })
-                    .onEnded{ value in
-                        let maxPosition = 166.0 * CGFloat(cupsInfo.count) - geometry.size.width + 64
-                        let minPosition = CGFloat(0)
-                        scrollPosition += (value.predictedEndTranslation.width + value.translation.width)/2
-                        if -scrollPosition > maxPosition {
-                            scrollPosition = -maxPosition
-                        }
-                        if -scrollPosition < minPosition { scrollPosition = -minPosition
-                        }
-                    }
-                )
             }
-            .padding()
-            .padding(.bottom, geometry.safeAreaInsets.bottom)
+            .padding(.bottom)
         }
     }
 }

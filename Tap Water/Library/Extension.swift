@@ -70,15 +70,12 @@ public extension String {
 
 public extension View {
     func sheet<Content: View>(isPresented: Binding<Bool>, title: String = "", height: CGFloat, @ViewBuilder content: @escaping () -> Content) -> some View {
-        return ZStack {
-            self
-                .zIndex(0)
-            if isPresented.wrappedValue {
+        self.overlay(
+            !isPresented.wrappedValue ? nil :
                 BottomModalView(isPresented: isPresented, title: title, height: height, content: content)
-                    .transition(.move(edge: .bottom))
-                    .zIndex(1)
-            }
-        }
+                .transition(AnyTransition.move(edge: .bottom))
+                .animation(.easeInOut)
+        )
     }
 }
 

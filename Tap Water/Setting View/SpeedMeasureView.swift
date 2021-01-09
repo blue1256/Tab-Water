@@ -37,9 +37,10 @@ private extension SpeedMeasureView {
                         .font(.system(size: 20))
                         .frame(width: 30, height: 30)
                 }
+                .disabled(self.speedMeasureViewModel.measuredCups > 0)
             }
             
-            Divider().frame(width: 250)
+            Divider().frame(width: 300)
         }
     }
     
@@ -225,9 +226,9 @@ struct SpeedMeasureView: View {
                     guideText.padding(.bottom, 10)
                 }
                 
-                resetButton.padding(.bottom)
+                resetButton.padding(.bottom, 32)
             }
-            .sheet(isPresented: self.$speedMeasureViewModel.showPopover, title: "HelpTitle".localized, height: 380)  {
+            .sheet(isPresented: self.$speedMeasureViewModel.showPopover, title: "HelpTitle".localized, height: 400)  {
                 SpeedMeasureHelpView(speedMeasureViewModel: self.speedMeasureViewModel)
             }
             .background(Color.white.onTapGesture {

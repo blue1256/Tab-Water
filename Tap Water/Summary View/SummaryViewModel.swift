@@ -26,6 +26,7 @@ class SummaryViewModel: ObservableObject {
     @Published var selectedRecord: DayRecord? = nil
     @Published var selectedDateInString: String = ""
     @Published var calendar: JTACMonthView? = nil
+    @Published var showStats: Bool = false
     
     init() {
         formatter.timeZone = .autoupdatingCurrent

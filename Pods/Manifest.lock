@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - Firebase/Analytics (6.21.0):
     - Firebase/Core
   - Firebase/Core (6.21.0):
@@ -85,6 +88,7 @@ PODS:
     - Realm (= 4.4.0)
 
 DEPENDENCIES:
+  - Charts
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Crashlytics
@@ -93,6 +97,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Charts
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
@@ -112,6 +117,7 @@ SPEC REPOS:
     - RealmSwift
 
 SPEC CHECKSUMS:
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Firebase: f378c80340dd41c0ad0914af740c021eb282a04b
   FirebaseAnalytics: a1a0b3327ceb5cd5b4bacffdb293f6c909aa087d
   FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
@@ -130,6 +136,6 @@ SPEC CHECKSUMS:
   Realm: e125f464884cda953ebefe70c671b75b03b81b9b
   RealmSwift: 33656a42bd300959a081fc13347376bc478071af
 
-PODFILE CHECKSUM: 9568f7b70027d153eeae9cd7a97a598d6cb8ff74
+PODFILE CHECKSUM: 271507fd2a1f485b8d078e64fec6bf49c90f2302
 
 COCOAPODS: 1.9.1

@@ -8,5 +8,6 @@ target 'Tap Water' do
     pod 'Firebase/Analytics'
     pod 'JTAppleCalendar'
     pod 'RealmSwift'
+    pod 'Charts'
 
 end
