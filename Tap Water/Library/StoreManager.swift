@@ -55,6 +55,11 @@ class StoreManager {
         return Array(monthRecords.map { $0.copy() as! DayRecord })
     }
     
+    func getAllRecords() -> [DayRecord] {
+        let records = realm.objects(DayRecord.self)
+        return Array(records.map { $0.copy() as! DayRecord })
+    }
+    
     func deleteAll() {
         try! realm.write {
             let allRecords = realm.objects(DayRecord.self)

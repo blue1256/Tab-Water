@@ -25,7 +25,7 @@ struct BottomModalView<Content: View>: View {
     var topBanner: some View {
         HStack(alignment: .center) {
             Text(title)
-                .font(.title)
+                .font(.system(size: 24, weight: .bold))
             
             Spacer()
             
@@ -47,6 +47,7 @@ struct BottomModalView<Content: View>: View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 topBanner
+                Divider()
                 content
             }
             .background(Color(.systemBackground))

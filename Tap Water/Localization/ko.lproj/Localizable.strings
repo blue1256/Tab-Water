@@ -11,6 +11,7 @@
 "Cancel" = "취소";
 "Save" = "저장";
 "Goal" = "목표";
+"NoRecordsAvailable" = "기록이 없습니다";
 
 /* ---- Start View ---- */
 "GoalSetHelp" = "하루 목표량을 설정해주세요.";
@@ -79,12 +80,26 @@
 "Fri" = "금";
 "Sat" = "토";
 "Sun" = "일";
-"MonthFormat" = "yyyy년 MM월";
+"MonthFormat" = "yyyy년 M월";
 "MonthFormatShortened" = "M월";
 "Drank" = "마신 양";
 "NoRecord" = "기록이 없습니다";
 "NoRecordContent" = "다른 날짜를 선택해주세요";
 "SelectionDateFormat" = "yyyy년\nM월 d일";
+
+/* ---- Stats View ---- */
+"Stats" = "통계";
+"TotalRecords" = "전체 기록";
+"TotalDrank" = "총 마신 양";
+"GoalMet" = "총 목표 달성";
+"TotalGoal" = "총 목표";
+"HighestRecord" = "최고 기록";
+"HighestRecordDate" = "최고 기록일";
+"SummaryChart" = "요약 그래프";
+"MonthSummary" = "월별 요약";
+"StatsMonthFormat" = "yyyy년 M월";
+"StatsDateFormat" = "yyyy년 M월 d일";
+"MonthSummaryDateFormat" = "M월 d일";
 
 /* ---- Notification ---- */
 "DrinkWaterNotiTitle" = "물 마시기";

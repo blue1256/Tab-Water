@@ -11,6 +11,7 @@
 "Cancel" = "Cancel";
 "Save" = "Save";
 "Goal" = "Goal";
+"NoRecordsAvailable" = "No Records Available";
 
 /* ---- Start View ---- */
 "GoalSetHelp" = "Please set the amount you want to drink a day.";
@@ -78,12 +79,26 @@
 "Fri" = "Fri";
 "Sat" = "Sat";
 "Sun" = "Sun";
-"MonthFormat" = "MMMM, yyyy";
+"MonthFormat" = "MMM yyyy";
 "MonthFormatShortened" = "MMMM";
 "Drank" = "Drank";
 "NoRecord" = "No Record";
 "NoRecordContent" = "Please select the other date";
 "SelectionDateFormat" = "MMM dd\nyyyy";
+
+/* ---- Stats View ---- */
+"Stats" = "Stats";
+"TotalRecords" = "Total Records";
+"TotalDrank" = "Total Drank";
+"GoalMet" = "Goal Met";
+"TotalGoal" = "Total Goal";
+"HighestRecord" = "Highest Record";
+"HighestRecordDate" = "Highest Record Date";
+"SummaryChart" = "Summary Chart";
+"MonthSummary" = "Month Summary";
+"StatsMonthFormat" = "MMM yyyy";
+"StatsDateFormat" = "MMMM d, yyyy";
+"MonthSummaryDateFormat" = "MMMM d";
 
 /* ---- Notification ---- */
 "DrinkWaterNotiTitle" = "Drink Water";
