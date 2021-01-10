@@ -11,6 +11,11 @@
 "Cancel" = "Cancel";
 "Save" = "Save";
 "Goal" = "Goal";
+"NoRecordsAvailable" = "No Records Available";
+
+/* ---- Start View ---- */
+"GoalSetHelp" = "Please set the amount you want to drink a day.";
+"GoalSetComplete" = "Goal Set";
 
 /* ---- Record View ---- */
 "Current" = "Current";
@@ -51,6 +56,21 @@
 "MeasureAgain" = "Measure Again";
 "MeasureGuideText" = "Step 1: Enter volume\nStep 2: Touch the empty cup\nStep 3: Drink water to measure drinking speed";
 
+/* ---- Speed Measure Help View ---- */
+"HelpTitle" = "Volume";
+"HelpDetail" = "Please enter volume to drink for measurement.\nYou need to drink three times for measurement.";
+"CupSelector" = "Choose by Cup Type";
+"SojuGlass" = "Shot Glass";
+"SojuGlassVolume" = "50";
+"PaperBagCup" = "Paper Bag Cup";
+"PaperBagCupVolume" = "45";
+"PaperCup" = "Paper Cup";
+"PaperCupVolume" = "160";
+"TallTeaCup" = "Tall Tea Cup";
+"TallTeaCupVolume" = "190";
+"BeerGlass" = "Tall Water Glass";
+"BeerGlassVolume" = "220";
+
 /* ---- Summary View ---- */
 "Mon" = "Mon";
 "Tue" = "Tue";
@@ -59,12 +79,26 @@
 "Fri" = "Fri";
 "Sat" = "Sat";
 "Sun" = "Sun";
-"MonthFormat" = "MMMM, yyyy";
+"MonthFormat" = "MMM yyyy";
 "MonthFormatShortened" = "MMMM";
 "Drank" = "Drank";
 "NoRecord" = "No Record";
 "NoRecordContent" = "Please select the other date";
 "SelectionDateFormat" = "MMM dd\nyyyy";
+
+/* ---- Stats View ---- */
+"Stats" = "Stats";
+"TotalRecords" = "Total Records";
+"TotalDrank" = "Total Drank";
+"GoalMet" = "Goal Met";
+"TotalGoal" = "Total Goal";
+"HighestRecord" = "Highest Record";
+"HighestRecordDate" = "Highest Record Date";
+"SummaryChart" = "Summary Chart";
+"MonthSummary" = "Month Summary";
+"StatsMonthFormat" = "MMM yyyy";
+"StatsDateFormat" = "MMMM d, yyyy";
+"MonthSummaryDateFormat" = "MMMM d";
 
 /* ---- Notification ---- */
 "DrinkWaterNotiTitle" = "Drink Water";

@@ -19,6 +19,7 @@ class SettingViewModel: ObservableObject {
     @Published var showRecordDeletionSheet: Bool = false
     @Published var deleteAllRecord: Bool = false
     @Published var notification: Bool = false
+    @Published var speed: Double = 0.0
     
     // Record Setting View
     @Published var goalPickerValue: Int = 0
@@ -34,8 +35,8 @@ class SettingViewModel: ObservableObject {
     @Published var showTimeAlert: Bool = false
     
     init() {
-        print("init setting")
         dailyGoal = UserDefaults.standard.double(forKey: "dailyGoal")
+        speed = UserDefaults.standard.double(forKey: "speed")
         goalPickerValue = Int(dailyGoal*10)
         timePickerValue = AppState.shared.remindingTime - 1
         

@@ -51,6 +51,8 @@ class RecordViewModel: ObservableObject {
         let timer = Timer(fireAt: date!, interval: 86400, target: self, selector: #selector(getNewRecord), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
         
+        initializeRecord()
+        
         self.$todayRecord
             .sink { [weak self] record in
                 guard let self = self else { return }
@@ -145,9 +147,9 @@ class RecordViewModel: ObservableObject {
         AppState.shared.completedToday = false
         
         drankToday = 0.0
-        todayRecord = DayRecord(drankToday: drankToday, dailyGoal: dailyGoal, date: today)
+        let record = DayRecord(drankToday: drankToday, dailyGoal: dailyGoal, date: today)
         
-        StoreManager.shared.setTodayRecord(todayRecord!)
+        StoreManager.shared.setTodayRecord(record)
         
         userDefault.set(today, forKey: "today")
     }

@@ -11,6 +11,11 @@
 "Cancel" = "취소";
 "Save" = "저장";
 "Goal" = "목표";
+"NoRecordsAvailable" = "기록이 없습니다";
+
+/* ---- Start View ---- */
+"GoalSetHelp" = "하루 목표량을 설정해주세요.";
+"GoalSetComplete" = "목표 설정 완료";
 
 /* ---- Record View ---- */
 "Current" = "현재";
@@ -52,6 +57,21 @@
 "MeasureAgain" = "다시 측정";
 "MeasureGuideText" = "1단계: 마실 양을 입력해주세요\n2단계: 빈 컵을 눌러주세요\n3단계: 물을 마시며 속도를 측정해주세요";
 
+/* ---- Speed Measure Help View ---- */
+"HelpTitle" = "마실 양";
+"HelpDetail" = "속도 측정을 위해 마실 물의 양을 입력해주세요.\n측정을 위해서 물은 세 번 마셔야합니다.";
+"CupSelector" = "컵 종류로 선택";
+"SojuGlass" = "소주잔";
+"SojuGlassVolume" = "50";
+"PaperBagCup" = "종이봉투컵";
+"PaperBagCupVolume" = "45";
+"PaperCup" = "일반종이컵";
+"PaperCupVolume" = "160";
+"TallTeaCup" = "가정용 물컵";
+"TallTeaCupVolume" = "190";
+"BeerGlass" = "맥주 글라스";
+"BeerGlassVolume" = "220";
+
 /* ---- Summary View ---- */
 "Mon" = "월";
 "Tue" = "화";
@@ -60,12 +80,26 @@
 "Fri" = "금";
 "Sat" = "토";
 "Sun" = "일";
-"MonthFormat" = "yyyy년 MM월";
+"MonthFormat" = "yyyy년 M월";
 "MonthFormatShortened" = "M월";
 "Drank" = "마신 양";
 "NoRecord" = "기록이 없습니다";
 "NoRecordContent" = "다른 날짜를 선택해주세요";
 "SelectionDateFormat" = "yyyy년\nM월 d일";
+
+/* ---- Stats View ---- */
+"Stats" = "통계";
+"TotalRecords" = "전체 기록";
+"TotalDrank" = "총 마신 양";
+"GoalMet" = "총 목표 달성";
+"TotalGoal" = "총 목표";
+"HighestRecord" = "최고 기록";
+"HighestRecordDate" = "최고 기록일";
+"SummaryChart" = "요약 그래프";
+"MonthSummary" = "월별 요약";
+"StatsMonthFormat" = "yyyy년 M월";
+"StatsDateFormat" = "yyyy년 M월 d일";
+"MonthSummaryDateFormat" = "M월 d일";
 
 /* ---- Notification ---- */
 "DrinkWaterNotiTitle" = "물 마시기";
