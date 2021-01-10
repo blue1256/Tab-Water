@@ -34,7 +34,7 @@ struct StatsView: View {
                         }
                         .padding([.leading, .trailing], 32)
                         HStack(alignment: .top) {
-                            Text(String(format: "%.2lf", self.statsViewModel.totalDrank))
+                            Text(String(format: "%.2lfL", self.statsViewModel.totalDrank))
                                 .frame(width: 150, alignment: .leading)
                             Spacer()
                             Text("DayFormat".localized(self.statsViewModel.goalMet))
