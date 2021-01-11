@@ -15,6 +15,7 @@ class SettingViewModel: ObservableObject {
     // Setting View
     @Published var updateAvailable: String = AppState.shared.isUpdateAvailable() ? "UpdateAvailable".localized : ""
     @Published var showAppInfo: Bool = false
+    @Published var showOpenSourceLicenses: Bool = false
     @Published var showSpeedMeasure: Bool = false
     @Published var showRecordDeletionSheet: Bool = false
     @Published var deleteAllRecord: Bool = false

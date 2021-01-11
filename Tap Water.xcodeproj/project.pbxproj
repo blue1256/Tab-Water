@@ -26,6 +26,13 @@
 		1EA8273325AADA0300504363 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8273225AADA0300504363 /* PageViewController.swift */; };
 		1EA8273725AB2B9700504363 /* MonthSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8273625AB2B9700504363 /* MonthSummaryView.swift */; };
 		1EA8273B25AB2DFC00504363 /* CirclePercentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8273A25AB2DFC00504363 /* CirclePercentageView.swift */; };
+		1EA8278425AC6EA700504363 /* DrinkLogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8278325AC6EA700504363 /* DrinkLogItem.swift */; };
+		1EA8278825AC718600504363 /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8278725AC718600504363 /* RecordDetailView.swift */; };
+		1EA8278C25AC719D00504363 /* RecordDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8278B25AC719D00504363 /* RecordDetailViewModel.swift */; };
+		1EA8279025AC924F00504363 /* DayLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8278F25AC924F00504363 /* DayLineChart.swift */; };
+		1EA8279425ACA30600504363 /* LogListViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8279325ACA30600504363 /* LogListViewItem.swift */; };
+		1EA8279825ACDAA800504363 /* OpenSourceLicensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8279725ACDAA800504363 /* OpenSourceLicensesView.swift */; };
+		1EA8279C25ACDF0600504363 /* OpenSourceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8279B25ACDF0600504363 /* OpenSourceDetailView.swift */; };
 		1EBC271524FFB11A008F2ED1 /* SpeedMeasureHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBC271424FFB11A008F2ED1 /* SpeedMeasureHelpView.swift */; };
 		1EC7372B2438846A00A33EB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */; };
 		1EC7372D2439B8AD00A33EB7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC7372C2439B8AD00A33EB7 /* Networking.swift */; };
@@ -88,6 +95,13 @@
 		1EA8273225AADA0300504363 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		1EA8273625AB2B9700504363 /* MonthSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryView.swift; sourceTree = "<group>"; };
 		1EA8273A25AB2DFC00504363 /* CirclePercentageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclePercentageView.swift; sourceTree = "<group>"; };
+		1EA8278325AC6EA700504363 /* DrinkLogItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkLogItem.swift; sourceTree = "<group>"; };
+		1EA8278725AC718600504363 /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
+		1EA8278B25AC719D00504363 /* RecordDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewModel.swift; sourceTree = "<group>"; };
+		1EA8278F25AC924F00504363 /* DayLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLineChart.swift; sourceTree = "<group>"; };
+		1EA8279325ACA30600504363 /* LogListViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListViewItem.swift; sourceTree = "<group>"; };
+		1EA8279725ACDAA800504363 /* OpenSourceLicensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLicensesView.swift; sourceTree = "<group>"; };
+		1EA8279B25ACDF0600504363 /* OpenSourceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceDetailView.swift; sourceTree = "<group>"; };
 		1EBC271424FFB11A008F2ED1 /* SpeedMeasureHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureHelpView.swift; sourceTree = "<group>"; };
 		1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EC7372C2439B8AD00A33EB7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -149,6 +163,8 @@
 				1EF5DA672493B2DE00B39405 /* AppInfoView.swift */,
 				1E250B7C241256050058B406 /* SettingViewModel.swift */,
 				1EEFCAFA242B617900117085 /* SpeedMeasureView.swift */,
+				1EA8279725ACDAA800504363 /* OpenSourceLicensesView.swift */,
+				1EA8279B25ACDF0600504363 /* OpenSourceDetailView.swift */,
 				1EBC271424FFB11A008F2ED1 /* SpeedMeasureHelpView.swift */,
 				1E473FAC245EEC8200A6F137 /* SpeedMeasureViewModel.swift */,
 			);
@@ -246,6 +262,7 @@
 				1EE30BBD240691C500AB6DDF /* UserProfile.swift */,
 				1EA8272025A9C61F00504363 /* MonthSummary.swift */,
 				1E54699024388106003F1E30 /* DayRecord.swift */,
+				1EA8278325AC6EA700504363 /* DrinkLogItem.swift */,
 				1EEFCAF62425D30900117085 /* AppState.swift */,
 			);
 			path = Models;
@@ -255,6 +272,10 @@
 			isa = PBXGroup;
 			children = (
 				1EE30BB62403EB7000AB6DDF /* RecordView.swift */,
+				1EA8278725AC718600504363 /* RecordDetailView.swift */,
+				1EA8279325ACA30600504363 /* LogListViewItem.swift */,
+				1EA8278F25AC924F00504363 /* DayLineChart.swift */,
+				1EA8278B25AC719D00504363 /* RecordDetailViewModel.swift */,
 				1EE30BC52407EF5F00AB6DDF /* RecordViewModel.swift */,
 				1E01E4C3247150B300459A70 /* CompletedView.swift */,
 				1EE30BC02406941900AB6DDF /* WaterBackground.swift */,
@@ -492,15 +513,22 @@
 				1E69DB1825A59E5500ACCCC9 /* BottomModalView.swift in Sources */,
 				1EEFCAFB242B617900117085 /* SpeedMeasureView.swift in Sources */,
 				1EF5DA62248C8E2300B39405 /* SummaryViewModel.swift in Sources */,
+				1EA8279C25ACDF0600504363 /* OpenSourceDetailView.swift in Sources */,
+				1EA8279425ACA30600504363 /* LogListViewItem.swift in Sources */,
 				1EE30BBB240408CE00AB6DDF /* SettingView.swift in Sources */,
 				1EA8272F25AAD9BD00504363 /* PageView.swift in Sources */,
+				1EA8279025AC924F00504363 /* DayLineChart.swift in Sources */,
+				1EA8278425AC6EA700504363 /* DrinkLogItem.swift in Sources */,
 				1EBC271524FFB11A008F2ED1 /* SpeedMeasureHelpView.swift in Sources */,
 				1E250B7D241256050058B406 /* SettingViewModel.swift in Sources */,
 				1E14E1102517751700848B3F /* Extension.swift in Sources */,
 				1E01E4C4247150B300459A70 /* CompletedView.swift in Sources */,
 				1EA8273725AB2B9700504363 /* MonthSummaryView.swift in Sources */,
+				1EA8278C25AC719D00504363 /* RecordDetailViewModel.swift in Sources */,
 				1E473FAD245EEC8200A6F137 /* SpeedMeasureViewModel.swift in Sources */,
+				1EA8278825AC718600504363 /* RecordDetailView.swift in Sources */,
 				1EA8273325AADA0300504363 /* PageViewController.swift in Sources */,
+				1EA8279825ACDAA800504363 /* OpenSourceLicensesView.swift in Sources */,
 				1EA8271725A9B30E00504363 /* MonthBarChart.swift in Sources */,
 				1EEFCAF72425D30900117085 /* AppState.swift in Sources */,
 				1EA8271325A9A75600504363 /* CalendarView.swift in Sources */,

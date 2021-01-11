@@ -10,8 +10,15 @@
 "Confirm" = "확인";
 "Cancel" = "취소";
 "Save" = "저장";
+"Drank" = "마신 양";
+"Time" = "시간";
 "Goal" = "목표";
 "NoRecordsAvailable" = "기록이 없습니다";
+"AM" = "오전";
+"PM" = "오후";
+"TimeFormat" = "a h시";
+"ChartTimeFormat" = "%d시";
+"Now" = "현재";
 
 /* ---- Start View ---- */
 "GoalSetHelp" = "하루 목표량을 설정해주세요.";
@@ -28,6 +35,7 @@
 "AppInfo" = "앱 정보";
 "UpdateAvailable" = "업데이트 가능";
 "AboutCategory" = "정보";
+"OpenSourceLicenses" = "오픈소스 라이선스";
 
 "NotificationCategory" = "알림 설정";
 "Reminder" = "리마인더";
@@ -82,7 +90,6 @@
 "Sun" = "일";
 "MonthFormat" = "yyyy년 M월";
 "MonthFormatShortened" = "M월";
-"Drank" = "마신 양";
 "NoRecord" = "기록이 없습니다";
 "NoRecordContent" = "다른 날짜를 선택해주세요";
 "SelectionDateFormat" = "yyyy년\nM월 d일";
@@ -100,6 +107,13 @@
 "StatsMonthFormat" = "yyyy년 M월";
 "StatsDateFormat" = "yyyy년 M월 d일";
 "MonthSummaryDateFormat" = "M월 d일";
+
+/* ---- Record Detail View ---- */
+"Detail" = "상세";
+"AveragePerHour" = "시간 당 평균";
+"PeakTime" = "가장 많이 마신 시간";
+"RemoveRecord" = "기록 삭제";
+"RemoveRecordContent" = "오늘 로그의 가장 최신 기록을 삭제합니다.";
 
 /* ---- Notification ---- */
 "DrinkWaterNotiTitle" = "물 마시기";

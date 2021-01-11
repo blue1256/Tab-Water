@@ -10,8 +10,15 @@
 "Confirm" = "Confirm";
 "Cancel" = "Cancel";
 "Save" = "Save";
+"Drank" = "Drank";
+"Time" = "Time";
 "Goal" = "Goal";
 "NoRecordsAvailable" = "No Records Available";
+"AM" = "AM";
+"PM" = "PM";
+"TimeFormat" = "h a";
+"ChartTimeFormat" = "%d";
+"Now" = "Now";
 
 /* ---- Start View ---- */
 "GoalSetHelp" = "Please set the amount you want to drink a day.";
@@ -28,6 +35,7 @@
 "AppInfo" = "App Info";
 "UpdateAvailable" = "Update Available";
 "AboutCategory" = "About";
+"OpenSourceLicenses" = "Open Source Licenses";
 
 "NotificationCategory" = "Notification";
 "Reminder" = "Reminder";
@@ -81,7 +89,6 @@
 "Sun" = "Sun";
 "MonthFormat" = "MMM yyyy";
 "MonthFormatShortened" = "MMMM";
-"Drank" = "Drank";
 "NoRecord" = "No Record";
 "NoRecordContent" = "Please select the other date";
 "SelectionDateFormat" = "MMM dd\nyyyy";
@@ -97,8 +104,15 @@
 "SummaryChart" = "Summary Chart";
 "MonthSummary" = "Month Summary";
 "StatsMonthFormat" = "MMM yyyy";
-"StatsDateFormat" = "MMMM d, yyyy";
-"MonthSummaryDateFormat" = "MMMM d";
+"StatsDateFormat" = "MMM d, yyyy";
+"MonthSummaryDateFormat" = "MMM d";
+
+/* ---- Record Detail View ---- */
+"Detail" = "Detail";
+"AveragePerHour" = "Average per Hour";
+"PeakTime" = "Peak Time";
+"RemoveRecord" = "Remove Record";
+"RemoveRecordContent" = "This will remove the latest record on today\'s log.";
 
 /* ---- Notification ---- */
 "DrinkWaterNotiTitle" = "Drink Water";

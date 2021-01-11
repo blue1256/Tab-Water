@@ -20,6 +20,12 @@ private extension SettingView {
                         .foregroundColor(.gray)
                 }
             }
+            NavigationLink(destination: OpenSourceLicensesView(), isActive: $settingViewModel.showOpenSourceLicenses) {
+                HStack {
+                    Text("OpenSourceLicenses".localized)
+                    Spacer()
+                }
+            }
         }
     }
     
