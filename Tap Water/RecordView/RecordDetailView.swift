@@ -97,8 +97,10 @@ extension RecordDetailView {
 struct RecordDetailView: View {
     var isToday: Bool = false
     @ObservedObject var viewModel: RecordDetailViewModel
+    var recordViewModel: RecordViewModel?
     
-    init(record: DayRecord, isToday: Bool = false) {
+    init(recordViewModel: RecordViewModel? = nil, record: DayRecord, isToday: Bool = false) {
+        self.recordViewModel = recordViewModel
         viewModel = RecordDetailViewModel(record: record, isToday: true)
         self.isToday = isToday
     }
@@ -158,6 +160,7 @@ struct RecordDetailView: View {
             .actionSheet(isPresented: $viewModel.showRecordDeletionSheet) {
                 let delete = ActionSheet.Button.destructive(Text("RemoveRecord".localized)) {
                     viewModel.removeLastRecord()
+                    recordViewModel?.initializeRecord()
                 }
                 let cancel = ActionSheet.Button.cancel(Text("Cancel".localized))
                 let sheet = ActionSheet(title: Text(""), message: Text("RemoveRecordContent".localized), buttons: [delete, cancel])
@@ -169,6 +172,6 @@ struct RecordDetailView: View {
 
 struct RecordDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecordDetailView(record: DayRecord(drankToday: 0, dailyGoal: 2, date: "20201212"))
+        RecordDetailView(recordViewModel: RecordViewModel(), record: DayRecord(drankToday: 0, dailyGoal: 2, date: "20201212"))
     }
 }

@@ -14,6 +14,7 @@ class RecordDetailViewModel: ObservableObject {
     private let formatter = DateFormatter()
     
     @Published var record: DayRecord
+    @Published var rerenderChart: Bool = false
     @Published var isToday: Bool
     @Published var showChart: Bool = true
     
@@ -34,6 +35,7 @@ class RecordDetailViewModel: ObservableObject {
         StoreManager.shared.setTodayRecord(record)
         
         record = StoreManager.shared.getRecord(date: record.date)
+        rerenderChart = true
     }
     
     init(record: DayRecord, isToday: Bool = false) {
@@ -78,6 +80,8 @@ class RecordDetailViewModel: ObservableObject {
                 }
                 if mostDrankTime > -1 {
                     self.peakTime = "\(Utils.shared.convertTimeFormat(time: mostDrankTime)) - \(Utils.shared.convertTimeFormat(time: mostDrankTime+1))"
+                } else {
+                    self.peakTime = "-"
                 }
             }
             .store(in: &cancellables)

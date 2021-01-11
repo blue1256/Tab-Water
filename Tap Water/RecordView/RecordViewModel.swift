@@ -27,6 +27,7 @@ class RecordViewModel: ObservableObject {
     @Published var isDrinking: Bool = false
     @Published var showCompleted: Bool = false
     @Published var showDetail: Bool = false
+    @Published var showSheet: Bool = false
     
     @Published var examineSetting: Bool = false
     
@@ -153,6 +154,31 @@ class RecordViewModel: ObservableObject {
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 self.initializeRecord()
+            }
+            .store(in: &cancellables)
+        
+        self.$showDetail
+            .filter { $0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showSheet = true
+            }
+            .store(in: &cancellables)
+        
+        self.$showCompleted
+            .filter { $0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showSheet = true
+            }
+            .store(in: &cancellables)
+        
+        self.$showSheet
+            .filter { !$0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showCompleted = false
+                self.showDetail = false
             }
             .store(in: &cancellables)
     }

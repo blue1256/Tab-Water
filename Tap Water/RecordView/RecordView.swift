@@ -92,11 +92,12 @@ struct RecordView: View {
             self.recordViewModel.initializeRecord()
             AppState.shared.requestNotification()
         })
-        .sheet(isPresented: self.$recordViewModel.showCompleted) {
-            CompletedView(recordViewModel: self.recordViewModel)
-        }
-        .sheet(isPresented: self.$recordViewModel.showDetail) {
-            RecordDetailView(record: self.recordViewModel.todayRecord!, isToday: true)
+        .sheet(isPresented: self.$recordViewModel.showSheet) {
+            if recordViewModel.showDetail {
+                RecordDetailView(recordViewModel: self.recordViewModel, record: self.recordViewModel.todayRecord!, isToday: true)
+            } else if recordViewModel.showCompleted {
+                CompletedView(recordViewModel: self.recordViewModel)
+            }
         }
         .alert(isPresented: self.$recordViewModel.showAlert) {
             Alert(

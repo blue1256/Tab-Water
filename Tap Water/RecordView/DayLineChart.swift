@@ -16,12 +16,10 @@ struct DayLineChart: UIViewRepresentable {
 
     var viewModel: RecordDetailViewModel
     var chart = LineChartView()
-    var data: [DrinkLogItem]
     var lastTime: Int
     
     init(viewModel: RecordDetailViewModel) {
         self.viewModel = viewModel
-        self.data = Array(viewModel.record.drinkLog)
         self.lastTime = viewModel.lastTime
     }
     
@@ -57,7 +55,7 @@ struct DayLineChart: UIViewRepresentable {
         yAxis.drawAxisLineEnabled = false
         yAxis.axisMaximum = goal * 1.25
         yAxis.spaceTop = 0.5
-        yAxis.xOffset = 10
+        yAxis.xOffset = 15
         yAxis.valueFormatter = yAxisFormatter
         
         let limit = ChartLimitLine(limit: goal, label: "Goal".localized)
@@ -68,7 +66,7 @@ struct DayLineChart: UIViewRepresentable {
         chart.legend.enabled = false
         chart.chartDescription?.enabled = false
         
-        addData()
+        addData(chart)
         
         if chart.data?.yMax ?? 0 > goal {
             yAxis.resetCustomAxisMax()
@@ -76,13 +74,19 @@ struct DayLineChart: UIViewRepresentable {
         return chart
     }
     
-    func updateUIView(_ uiView: LineChartView, context: Context) {}
+    func updateUIView(_ uiView: LineChartView, context: Context) {
+        if viewModel.rerenderChart {
+            addData(uiView)
+        }
+    }
     
-    func addData() {
+    func addData(_ chart: LineChartView) {
         var values = [ChartDataEntry]()
         (0...lastTime).forEach { index in
             values.append(ChartDataEntry(x: Double(index), y: 0.0))
         }
+        let data = Array(viewModel.record.drinkLog)
+        
         data.forEach { item in
             let endIndex = item.time.index(item.time.startIndex, offsetBy: 1)
             let time = Int(item.time[...endIndex]) ?? Int.max
@@ -112,11 +116,11 @@ struct DayLineChart: UIViewRepresentable {
         let lineData = LineChartData(dataSet: dataSet)
         
         chart.data = lineData
-        chart.notifyDataSetChanged()
         chart.zoom(scaleX: CGFloat(Double(values.count)/6.0), scaleY: 1, x: 0, y: 0)
         chart.moveViewToX(Double(values.count))
         chart.animate(yAxisDuration: 0.5)
         chart.highlightValue(x: Double(lastTime), dataSetIndex: 0)
+        viewModel.rerenderChart = false
     }
     
     class Coordinator: NSObject, ChartViewDelegate {
