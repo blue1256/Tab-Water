@@ -18,6 +18,7 @@ class RecordViewModel: ObservableObject {
     @Published var todayRecord: DayRecord? = nil
     
     @Published var drankToday: Double = 0.0
+    @Published var drankNow: Double = 0.0
     @Published var dailyGoal: Double = 0.0
     @Published var speed: Double = 0.0
    
@@ -25,6 +26,8 @@ class RecordViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var isDrinking: Bool = false
     @Published var showCompleted: Bool = false
+    @Published var showDetail: Bool = false
+    @Published var showSheet: Bool = false
     
     @Published var examineSetting: Bool = false
     
@@ -74,26 +77,47 @@ class RecordViewModel: ObservableObject {
             .store(in: &cancellables)
         
         self.$isDrinking
+            .filter { $0 }
+            .sink { [weak self] _ in
+                guard let self = self, let record = self.todayRecord else { return }
+                if !self.launchedBefore {
+                    self.launchedBefore.toggle()
+                    AppState.shared.launchedBefore.toggle()
+                }
+                
+                StoreManager.shared.setTodayRecord(record)
+            }
+            .store(in: &cancellables)
+        
+        self.$isDrinking
+            .dropFirst()
+            .filter { !$0 }
+            .sink { [weak self] _ in
+                guard let self = self, let record = self.todayRecord else { return }
+                record.drankToday += self.drankNow
+                
+                self.formatter.dateFormat = "HH:mm:ss"
+                record.drinkLog.append(DrinkLogItem(time: self.formatter.string(from: Date()), volume: self.drankNow))
+                
+                self.drankNow = 0
+                StoreManager.shared.setTodayRecord(record)
+                AppState.shared.updateCalendar = true
+            }
+            .store(in: &cancellables)
+        
+        self.$isDrinking
             .combineLatest(timerPublisher)
             .map { return $0.0 }
             .filter{ $0 }
             .sink { [weak self] drinking in
                 guard let self = self else { return }
+                self.drankNow += 0.1 * self.speed / 1000
                 self.drankToday += 0.1 * self.speed / 1000
                 let drankToday = self.drankToday
                 let dailyGoal = self.dailyGoal
                 if dailyGoal != 0 {
                     self.percentage = drankToday / dailyGoal
-                    self.todayRecord?.drankToday = drankToday
                 }
-                if !self.launchedBefore {
-                    self.launchedBefore.toggle()
-                    AppState.shared.launchedBefore.toggle()
-                }
-                if let record = self.todayRecord {
-                    StoreManager.shared.setTodayRecord(record)
-                }
-                AppState.shared.updateCalendar = true
             }
             .store(in: &cancellables)
         
@@ -124,10 +148,44 @@ class RecordViewModel: ObservableObject {
                 self.showAlert = (self.dailyGoal == 0) || (self.speed == 0)
             }
             .store(in: &cancellables)
+        
+        self.$showDetail
+            .filter { !$0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.initializeRecord()
+            }
+            .store(in: &cancellables)
+        
+        self.$showDetail
+            .filter { $0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showSheet = true
+            }
+            .store(in: &cancellables)
+        
+        self.$showCompleted
+            .filter { $0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showSheet = true
+            }
+            .store(in: &cancellables)
+        
+        self.$showSheet
+            .filter { !$0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showCompleted = false
+                self.showDetail = false
+            }
+            .store(in: &cancellables)
     }
     
     func initializeRecord() {
         todayRecord = StoreManager.shared.getTodayRecord()
+        formatter.dateFormat = "yyyyMMdd"
         let today = formatter.string(from: Date())
         
         if let record = todayRecord, today == record.date {
@@ -148,6 +206,7 @@ class RecordViewModel: ObservableObject {
         
         drankToday = 0.0
         let record = DayRecord(drankToday: drankToday, dailyGoal: dailyGoal, date: today)
+        self.todayRecord = record
         
         StoreManager.shared.setTodayRecord(record)
         

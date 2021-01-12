@@ -13,6 +13,7 @@ class DayRecord: Object, NSCopying, Codable {
     @objc dynamic var drankToday: Double = 0.0
     @objc dynamic var dailyGoal: Double = 0.0
     @objc dynamic var date: String = ""
+    var drinkLog = List<DrinkLogItem>()
     
     convenience init(drankToday: Double, dailyGoal: Double, date: String) {
         self.init()
@@ -26,6 +27,10 @@ class DayRecord: Object, NSCopying, Codable {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return DayRecord(drankToday: self.drankToday, dailyGoal: self.dailyGoal, date: self.date)
+        let copy = DayRecord(drankToday: self.drankToday, dailyGoal: self.dailyGoal, date: self.date)
+        self.drinkLog.forEach { (item) in
+            copy.drinkLog.append(item)
+        }
+        return copy
     }
 }

@@ -10,8 +10,16 @@
 "Confirm" = "Confirm";
 "Cancel" = "Cancel";
 "Save" = "Save";
+"Drank" = "Drank";
+"Time" = "Time";
 "Goal" = "Goal";
 "NoRecordsAvailable" = "No Records Available";
+"AM" = "AM";
+"PM" = "PM";
+"TimeFormat" = "h a";
+"ChartTimeFormat" = "%d";
+"Now" = "Now";
+"Next" = "Next";
 
 /* ---- Start View ---- */
 "GoalSetHelp" = "Please set the amount you want to drink a day.";
@@ -28,6 +36,7 @@
 "AppInfo" = "App Info";
 "UpdateAvailable" = "Update Available";
 "AboutCategory" = "About";
+"OpenSourceLicenses" = "Open Source Licenses";
 
 "NotificationCategory" = "Notification";
 "Reminder" = "Reminder";
@@ -48,13 +57,18 @@
 "LatestVersion" = "Latest Version";
 
 /* ---- Speed Measure View ---- */
-"VolumeToDrink" = "Volume to Drink(ml)";
+"SpeedMeasure" = "Speed Measure";
+"SpeedMeasureGuide" = "Tap Water uses drinking speed of the user and time interval to record your water intake. Please enter the volume of cup you want to drink, and then measure speed by drinking water three cups of water. This should be done only once on install.";
+"VolumeToDrink" = "Cup Volume(ml)";
 "DrinkWater" = "Drink Water!";
 "SpeedFormat" = "%.0lfml/sec";
 "Done" = "Done";
 "MeasuringComplete" = "Measuring Complete";
 "MeasureAgain" = "Measure Again";
-"MeasureGuideText" = "Step 1: Enter volume\nStep 2: Touch the empty cup\nStep 3: Drink water to measure drinking speed";
+"MeasureGuideText" = "Drink water as you touch the cup. Tap Water will start measuring time at the same time you touch it. Hit Done as you finish drinking. Tap Water will calculate speed using cup volume and time interval.";
+"VolumeGuide" = "Enter volume of cup you will drink three times. Measurement will be accurate and easy if you enter the appropriate amount; about one cup of paper cup.";
+"SetVolume" = "Set Volume";
+"CupVolume" = "Cup Volume";
 
 /* ---- Speed Measure Help View ---- */
 "HelpTitle" = "Volume";
@@ -70,6 +84,7 @@
 "TallTeaCupVolume" = "190";
 "BeerGlass" = "Tall Water Glass";
 "BeerGlassVolume" = "220";
+"ManualInput" = "Manual Input";
 
 /* ---- Summary View ---- */
 "Mon" = "Mon";
@@ -81,7 +96,6 @@
 "Sun" = "Sun";
 "MonthFormat" = "MMM yyyy";
 "MonthFormatShortened" = "MMMM";
-"Drank" = "Drank";
 "NoRecord" = "No Record";
 "NoRecordContent" = "Please select the other date";
 "SelectionDateFormat" = "MMM dd\nyyyy";
@@ -97,8 +111,15 @@
 "SummaryChart" = "Summary Chart";
 "MonthSummary" = "Month Summary";
 "StatsMonthFormat" = "MMM yyyy";
-"StatsDateFormat" = "MMMM d, yyyy";
-"MonthSummaryDateFormat" = "MMMM d";
+"StatsDateFormat" = "MMM d, yyyy";
+"MonthSummaryDateFormat" = "MMM d";
+
+/* ---- Record Detail View ---- */
+"Detail" = "Detail";
+"AveragePerHour" = "Average per Hour";
+"PeakTime" = "Peak Time";
+"RemoveRecord" = "Remove Record";
+"RemoveRecordContent" = "This will remove the latest record on today\'s log.";
 
 /* ---- Notification ---- */
 "DrinkWaterNotiTitle" = "Drink Water";

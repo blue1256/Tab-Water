@@ -26,6 +26,19 @@ final class Utils {
         return self.numberFormatter.string(from: NSNumber(value: num))!
     }
     
+    func convertTimeFormat(time: Int) -> String {
+        var time = time
+        let formatter = DateFormatter()
+        formatter.locale = .autoupdatingCurrent
+        
+        formatter.dateFormat = "HH"
+        if time == 24 { time = 0 }
+        let d = formatter.date(from: "\(time)")
+        
+        formatter.dateFormat = "TimeFormat".localized
+        return formatter.string(from: d ?? Date())
+    }
+    
     static func saveDefault(value: Any, forKey: String) {
         UserDefaults.standard.set(value, forKey: forKey)
     }

@@ -17,7 +17,7 @@ private extension CompletedView {
     
     var confirmButton: some View {
         Button(action: {
-            self.recordViewModel.showCompleted = false
+            self.recordViewModel.showSheet = false
         }) {
             VStack {
                 Image(systemName: "checkmark")
@@ -33,7 +33,7 @@ private extension CompletedView {
     var summaryButton: some View {
         Button(action: {
             AppState.shared.selectedTab = 0
-            self.recordViewModel.showCompleted = false
+            self.recordViewModel.showSheet = false
         }) {
             VStack {
                 Image("summary")

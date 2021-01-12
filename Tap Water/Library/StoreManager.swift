@@ -15,9 +15,17 @@ class StoreManager {
     var realm: Realm
     
     private init(){
-        let config = Realm.Configuration(schemaVersion: 1) { (migration, oldSchemaVersion) in
+        let config = Realm.Configuration(schemaVersion: 3) { (migration, oldSchemaVersion) in
             migration.enumerateObjects(ofType: DayRecord.className()) { (oldObject, newObject) in
                 if oldSchemaVersion < 1 {
+                }
+                if oldSchemaVersion < 2 {
+                    newObject?["drinkLog"] = []
+                }
+            }
+            migration.enumerateObjects(ofType: DrinkLogItem.className()) { (oldObject, newObject) in
+                if oldSchemaVersion < 3 {
+                    newObject?["id"] = oldObject!["time"]
                 }
             }
         }
@@ -34,6 +42,10 @@ class StoreManager {
     
     func getTodayRecord() -> DayRecord? {
         return realm.objects(DayRecord.self).filter("date == %@", AppState.shared.today).first?.copy() as? DayRecord
+    }
+    
+    func getRecord(date: String) -> DayRecord {
+        return realm.objects(DayRecord.self).filter("date == %@", date).first?.copy() as! DayRecord
     }
     
     func setTodayRecord(_ record: DayRecord) {

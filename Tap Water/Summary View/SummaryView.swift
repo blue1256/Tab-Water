@@ -27,38 +27,45 @@ private extension SummaryView {
     
     var dayInfoSection: some View {
         GeometryReader { geometry in
-            HStack {
-                Text("\(self.summaryViewModel.selectedDateInString)")
-                    .multilineTextAlignment(.leading)
-                    .frame(width: geometry.size.width*0.25)
-                    .font(.system(size: 18, weight: .semibold))
-                    .padding(.trailing, -8)
-                Divider()
-                VStack(alignment: .leading) {
-                    if let selectedRecord = self.summaryViewModel.selectedRecord, selectedRecord.drankToday != 0.0 {
-                        let drankToday = selectedRecord.drankToday
-                        let dailyGoal = selectedRecord.dailyGoal
-                        
-                        Text("\(Utils.shared.floorDouble(num: drankToday / dailyGoal * 100))%")
-                            .font(.system(size: 20, weight: .semibold))
-                            .foregroundColor(waterColor)
-                            .padding(.bottom, 1)
-                        Text("\("Drank".localized): \(Utils.shared.floorDouble(num: drankToday))L")
-                            .foregroundColor(.gray)
-                            .font(.system(size: 14))
-                        Text("\("Goal".localized): \(Utils.shared.floorDouble(num: dailyGoal))L")
-                            .foregroundColor(.gray)
-                            .font(.system(size: 14))
-                    } else {
-                        Text("NoRecord".localized)
-                            .padding(.bottom, 2)
-                        Text("NoRecordContent".localized)
-                            .font(.system(size: 12))
-                            .foregroundColor(.gray)
+            Button(action: {
+                summaryViewModel.showDetail.toggle()
+            }) {
+                HStack {
+                    Text("\(self.summaryViewModel.selectedDateInString)")
+                        .multilineTextAlignment(.leading)
+                        .frame(width: geometry.size.width*0.25)
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(.black)
+                        .padding(.trailing, -8)
+                    Divider()
+                    VStack(alignment: .leading) {
+                        if let selectedRecord = self.summaryViewModel.selectedRecord, selectedRecord.drankToday != 0.0 {
+                            let drankToday = selectedRecord.drankToday
+                            let dailyGoal = selectedRecord.dailyGoal
+                            
+                            Text("\(Utils.shared.floorDouble(num: drankToday / dailyGoal * 100))%")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(waterColor)
+                                .padding(.bottom, 1)
+                            Text("\("Drank".localized): \(Utils.shared.floorDouble(num: drankToday))L")
+                                .foregroundColor(.gray)
+                                .font(.system(size: 14))
+                            Text("\("Goal".localized): \(Utils.shared.floorDouble(num: dailyGoal))L")
+                                .foregroundColor(.gray)
+                                .font(.system(size: 14))
+                        } else {
+                            Text("NoRecord".localized)
+                                .padding(.bottom, 2)
+                                .foregroundColor(.black)
+                            Text("NoRecordContent".localized)
+                                .font(.system(size: 12))
+                                .foregroundColor(.gray)
+                        }
                     }
+                    Spacer()
                 }
-                Spacer()
             }
+            .disabled((summaryViewModel.selectedRecord?.drankToday ?? 0) == 0)
         }
     }
 }
@@ -82,8 +89,12 @@ struct SummaryView: View {
                     .padding(.bottom, 10)
             }
         }
-        .sheet(isPresented: self.$summaryViewModel.showStats) {
-            StatsView()
+        .sheet(isPresented: self.$summaryViewModel.showSheet) {
+            if summaryViewModel.showDetail {
+                RecordDetailView(record: self.summaryViewModel.selectedRecord!)
+            } else if summaryViewModel.showStats {
+                StatsView()
+            }
         }
         .onAppear {
             summaryViewModel.refreshToday()

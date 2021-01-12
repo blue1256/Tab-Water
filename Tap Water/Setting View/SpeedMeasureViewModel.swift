@@ -22,6 +22,10 @@ class SpeedMeasureViewModel: ObservableObject {
     @Published var speed: Double = 0
     @Published var startTime: Date? = nil
     @Published var showPopover: Bool = false
+    @Published var gotVolume: Bool = false
+    @Published var manualInput: Bool = false
+    @Published var showKeyboard: Bool = false
+    @Published var showGuide: Bool = true
     
     init(){
         self.$saveSpeed
@@ -44,6 +48,9 @@ class SpeedMeasureViewModel: ObservableObject {
                 self?.measuredCups = 0
                 self?.reset = false
                 self?.speed = 0.0
+                self?.gotVolume = false
+                self?.manualInput = false
+                self?.showGuide = true
             }
             .store(in: &cancellables)
         
@@ -73,6 +80,12 @@ class SpeedMeasureViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        
+        self.$manualInput
+            .filter { $0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showKeyboard = true
+            }
+            .store(in: &cancellables)
     }
 }

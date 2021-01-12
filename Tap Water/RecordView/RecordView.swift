@@ -61,6 +61,17 @@ struct RecordView: View {
                 WaterBackground(percentage: min(self.recordViewModel.percentage, 1))
             }
             VStack {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        recordViewModel.showDetail.toggle()
+                    }) {
+                        Image(systemName: "ellipsis")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 22, weight: .bold))
+                    }
+                    .padding(24)
+                }
                 Spacer()
                 
                 mainInfoText
@@ -81,8 +92,12 @@ struct RecordView: View {
             self.recordViewModel.initializeRecord()
             AppState.shared.requestNotification()
         })
-        .sheet(isPresented: self.$recordViewModel.showCompleted) {
-            CompletedView(recordViewModel: self.recordViewModel)
+        .sheet(isPresented: self.$recordViewModel.showSheet) {
+            if recordViewModel.showDetail {
+                RecordDetailView(recordViewModel: self.recordViewModel, record: self.recordViewModel.todayRecord!, isToday: true)
+            } else if recordViewModel.showCompleted {
+                CompletedView(recordViewModel: self.recordViewModel)
+            }
         }
         .alert(isPresented: self.$recordViewModel.showAlert) {
             Alert(

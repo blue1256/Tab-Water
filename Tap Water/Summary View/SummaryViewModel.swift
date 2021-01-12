@@ -27,6 +27,8 @@ class SummaryViewModel: ObservableObject {
     @Published var selectedDateInString: String = ""
     @Published var calendar: JTACMonthView? = nil
     @Published var showStats: Bool = false
+    @Published var showDetail: Bool = false
+    @Published var showSheet: Bool = false
     
     init() {
         formatter.timeZone = .autoupdatingCurrent
@@ -71,6 +73,31 @@ class SummaryViewModel: ObservableObject {
                 guard let self = self else { return }
                 self.records.removeAll()
                 AppState.shared.deleteCalendar = false
+            }
+            .store(in: &cancellables)
+        
+        self.$showStats
+            .filter { $0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showSheet = true
+            }
+            .store(in: &cancellables)
+        
+        self.$showDetail
+            .filter { $0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showSheet = true
+            }
+            .store(in: &cancellables)
+        
+        self.$showSheet
+            .filter { !$0 }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.showStats = false
+                self.showDetail = false
             }
             .store(in: &cancellables)
     }

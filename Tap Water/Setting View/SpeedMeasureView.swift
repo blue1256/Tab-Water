@@ -10,37 +10,29 @@ import SwiftUI
 
 
 private extension SpeedMeasureView {
-    var waterColor: Color {
-        Color.init(red: 125/255, green: 175/255, blue: 235/255)
-    }
-    
     var animation: Animation {
         return Animation.easeInOut(duration: 2).repeatForever()
     }
     
     var inputField: some View {
-        VStack {
-            HStack {
-                TextField("VolumeToDrink".localized, text: self.$speedMeasureViewModel.fieldInput)
-                    .textFieldStyle(DefaultTextFieldStyle())
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.decimalPad)
-                    .frame(width: 250)
-                    .font(.custom("", size: 24))
-                    .disabled(self.speedMeasureViewModel.measuredCups > 0)
-                
-                Button(action: {
-                    self.speedMeasureViewModel.showPopover = true
-                }) {
-                    Image(systemName: "info.circle")
-                        .foregroundColor(.gray)
-                        .font(.system(size: 20))
-                        .frame(width: 30, height: 30)
-                }
-                .disabled(self.speedMeasureViewModel.measuredCups > 0)
+        ZStack(alignment: .bottom) {
+            Button(action: {
+                self.speedMeasureViewModel.showPopover = true
+            }) {
+                Color.clear
             }
+            .frame(width: 250, height: 30)
+            .disabled(self.speedMeasureViewModel.manualInput)
             
-            Divider().frame(width: 300)
+            TextFieldView("VolumeToDrink".localized, text: self.$speedMeasureViewModel.fieldInput, showKeyboard: self.$speedMeasureViewModel.showKeyboard)
+                .viewKeyboardType(.numberPad)
+                .viewFont(UIFont.systemFont(ofSize: 24))
+                .viewTextAlignment(.center)
+                .frame(width: 250, height: 30)
+                .disabled(!self.speedMeasureViewModel.manualInput)
+                .padding(.bottom, 4)
+            
+            Divider().frame(width: 250)
         }
     }
     
@@ -60,6 +52,7 @@ private extension SpeedMeasureView {
             }
             .disabled(self.speedMeasureViewModel.fieldInput.isEmpty || self.speedMeasureViewModel.measuredCups != 0)
             .padding(.leading, 30)
+            .scaleEffect(speedMeasureViewModel.measuredCups==0 ? 1.15 : 1)
             
             Spacer()
             
@@ -75,6 +68,7 @@ private extension SpeedMeasureView {
                     .frame(width: 80)
             }
             .disabled(self.speedMeasureViewModel.fieldInput.isEmpty || self.speedMeasureViewModel.measuredCups != 1)
+            .scaleEffect(speedMeasureViewModel.measuredCups==1 ? 1.15 : 1)
             
             Spacer()
             
@@ -91,6 +85,7 @@ private extension SpeedMeasureView {
             }
             .disabled(self.speedMeasureViewModel.fieldInput.isEmpty || self.speedMeasureViewModel.measuredCups != 2)
             .padding(.trailing, 30)
+            .scaleEffect(speedMeasureViewModel.measuredCups==2 ? 1.15 : 1)
         }
         .transition(.opacity)
     }
@@ -108,7 +103,7 @@ private extension SpeedMeasureView {
                 .animation(self.animation)
                 .onAppear{
                     self.isAnimating.toggle()
-            }
+                }
             Text("DrinkWater".localized)
                 .font(.custom("", size: 25))
                 .foregroundColor(.white)
@@ -120,7 +115,6 @@ private extension SpeedMeasureView {
     var speedIndicatorText: some View {
         Text("SpeedFormat".localized(self.speedMeasureViewModel.speed))
             .font(.custom("", size: 24))
-            .foregroundColor(.init(white: 117/256))
     }
     
     var stopMeasureButton: some View {
@@ -130,7 +124,7 @@ private extension SpeedMeasureView {
             }
         }) {
             Text("Done".localized)
-                .font(.custom("", size: 20))
+                .font(.custom("", size: 22))
                 .foregroundColor(self.waterColor)
         }
     }
@@ -152,26 +146,22 @@ private extension SpeedMeasureView {
             Image(systemName: "checkmark")
                 .foregroundColor(self.waterColor)
             Text("MeasuringComplete".localized)
-                .font(.custom("", size: 20))
+                .font(.custom("", size: 22))
                 .foregroundColor(self.waterColor)
         }
     }
     
-    var guideText: some View {
-        Text("MeasureGuideText".localized)
-            .foregroundColor(.init(white: 117/256))
-            .multilineTextAlignment(.leading)
-    }
-    
     var resetButton: some View {
         Button(action: {
-            self.speedMeasureViewModel.reset = true
+            withAnimation(.spring(dampingFraction: 0.75)) {
+                self.speedMeasureViewModel.reset = true
+            }
         }) {
             HStack{
                 Image(systemName: "arrow.clockwise")
                     .foregroundColor(self.waterColor)
                 Text("MeasureAgain".localized)
-                    .font(.custom("", size: 20))
+                    .font(.custom("", size: 22))
                     .foregroundColor(self.waterColor)
                     .padding(.top, 5)
             }
@@ -189,9 +179,99 @@ private extension SpeedMeasureView {
             }
         }).foregroundColor(self.waterColor)
     }
+    
+    var guideView: some View {
+        VStack(alignment: .leading) {
+            Text("SpeedMeasureGuide".localized)
+                .padding([.leading, .trailing], 16)
+            
+            Spacer()
+            
+            HStack {
+                Spacer()
+                Button(action: {
+                    withAnimation(.spring(dampingFraction: 0.75)) {
+                        self.speedMeasureViewModel.showGuide = false
+                    }
+                }, label: {
+                    HStack {
+                        Text("Next".localized)
+                        Image(systemName: "chevron.right")
+                    }
+                    .font(.system(size: 22))
+                    .foregroundColor(waterColor)
+                })
+                .padding([.bottom, .trailing])
+            }
+        }
+    }
+    
+    var volumeInputView: some View {
+        VStack {
+            HStack {
+                Text("VolumeGuide".localized)
+                    .padding([.leading, .trailing], 16)
+                Spacer()
+            }
+            Spacer()
+            inputField
+            Spacer()
+            
+            HStack {
+                Spacer()
+                Button(action: {
+                    withAnimation(.spring(dampingFraction: 0.75)) {
+                        self.speedMeasureViewModel.gotVolume = true
+                    }
+                }, label: {
+                    HStack {
+                        Text("SetVolume".localized)
+                            .font(.custom("", size: 22))
+                        Image(systemName: "chevron.right")
+                    }
+                    .foregroundColor(speedMeasureViewModel.fieldInput == "" ? .gray : waterColor)
+                })
+                .padding([.bottom, .trailing])
+                .disabled(self.speedMeasureViewModel.fieldInput == "")
+            }
+        }
+    }
+    
+    var cupTouchView: some View {
+        VStack {
+            HStack {
+                Text("MeasureGuideText".localized)
+                    .padding([.leading, .trailing], 16)
+                Spacer()
+            }
+            Spacer()
+            
+            if !self.speedMeasureViewModel.measuring {
+                cupButtonView
+            } else {
+                waitingView
+            }
+            
+            Spacer()
+            
+            if !self.speedMeasureViewModel.measuring && self.speedMeasureViewModel.speed != 0  {
+                speedIndicatorText.padding(.bottom, 20)
+            }
+            
+            if self.speedMeasureViewModel.measuring {
+                stopMeasureButton.padding(.bottom, 10)
+            } else if self.speedMeasureViewModel.measuredCups == 3 {
+                measureCompleteButton.padding(.bottom, 10)
+            }
+            
+            resetButton.padding(.bottom, 32)
+        }
+    }
 }
 
 struct SpeedMeasureView: View {
+    private let waterColor = Color.init(red: 125/255, green: 175/255, blue: 235/255)
+    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     @Environment(\.presentationMode) private var presentationMode
     @State var isAnimating = false
@@ -202,38 +282,33 @@ struct SpeedMeasureView: View {
     var bodyWithSafeArea: some View {
         GeometryReader { geometry in
             VStack(alignment: .center) {
-                inputField.padding(.top, 30)
+                HStack {
+                    Text("SpeedMeasure".localized)
+                        .font(.system(size: 30, weight: .bold))
+                        .padding(.leading, 16)
+                    Spacer()
+                }
+                .padding([.top, .bottom], 16)
                 
-                Spacer()
-                
-                if !self.speedMeasureViewModel.measuring {
-                    cupButtonView
+                if speedMeasureViewModel.showGuide {
+                    guideView
+                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))
+                } else if speedMeasureViewModel.gotVolume {
+                    cupTouchView
+                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 } else {
-                    waitingView
+                    volumeInputView
+                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 }
-                
-                Spacer()
-                
-                if !self.speedMeasureViewModel.measuring && self.speedMeasureViewModel.speed != 0  {
-                    speedIndicatorText.padding(.bottom, 20)
-                }
-                
-                if self.speedMeasureViewModel.measuring {
-                    stopMeasureButton.padding(.bottom, 10)
-                } else if self.speedMeasureViewModel.measuredCups == 3 {
-                    measureCompleteButton.padding(.bottom, 10)
-                } else {
-                    guideText.padding(.bottom, 10)
-                }
-                
-                resetButton.padding(.bottom, 32)
             }
-            .sheet(isPresented: self.$speedMeasureViewModel.showPopover, title: "HelpTitle".localized, height: 400)  {
+            .sheet(isPresented: self.$speedMeasureViewModel.showPopover, title: "CupVolume".localized, height: 380)  {
                 SpeedMeasureHelpView(speedMeasureViewModel: self.speedMeasureViewModel)
             }
             .background(Color.white.onTapGesture {
                 UIApplication.shared.endEditing()
+                speedMeasureViewModel.manualInput = false
             })
+            .navigationBarTitle(Text(""), displayMode: .inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: backButton)
         }
@@ -252,6 +327,6 @@ struct SpeedMeasureView: View {
 
 struct SpeedMeasureView_Previews: PreviewProvider {
     static var previews: some View {
-        SpeedMeasureView(settingViewModel: SettingViewModel())
+        SpeedMeasureView(settingViewModel: SettingViewModel(), onNavigation: true)
     }
 }
