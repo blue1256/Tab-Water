@@ -96,7 +96,7 @@ class RecordViewModel: ObservableObject {
                 guard let self = self, let record = self.todayRecord else { return }
                 record.drankToday += self.drankNow
                 
-                self.formatter.dateFormat = "hh:mm:ss"
+                self.formatter.dateFormat = "HH:mm:ss"
                 record.drinkLog.append(DrinkLogItem(time: self.formatter.string(from: Date()), volume: self.drankNow))
                 
                 self.drankNow = 0

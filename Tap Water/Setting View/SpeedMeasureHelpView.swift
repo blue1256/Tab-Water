@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SpeedMeasureHelpView: View {
+    private let waterColor = Color.init(red: 125/255, green: 175/255, blue: 235/255)
     @ObservedObject var speedMeasureViewModel: SpeedMeasureViewModel
     
     @GestureState private var scrollOffset: CGFloat = 0
@@ -40,13 +41,23 @@ struct SpeedMeasureHelpView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
-                Text("HelpDetail".localized)
-                    .font(.system(size: 15))
-                    .padding()
+                Button(action: {
+                    self.speedMeasureViewModel.manualInput = true
+                    self.speedMeasureViewModel.showPopover = false
+                }) {
+                    HStack {
+                        Image(systemName: "pencil")
+                            .font(.custom("", size: 20))
+                        Text("ManualInput".localized)
+                            .font(.custom("", size: 20))
+                    }
+                    .foregroundColor(.gray)
+                }
+                .padding([.leading, .top])
                 
                 Text("CupSelector".localized)
                     .font(.headline)
-                    .padding([.leading, .trailing])
+                    .padding([.top, .leading, .trailing])
                 
                 ScrollView(.horizontal) {
                     HStack {

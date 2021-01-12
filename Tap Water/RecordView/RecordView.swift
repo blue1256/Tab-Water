@@ -68,7 +68,7 @@ struct RecordView: View {
                     }) {
                         Image(systemName: "ellipsis")
                             .foregroundColor(.gray)
-                            .font(.system(size: 17, weight: .bold))
+                            .font(.system(size: 22, weight: .bold))
                     }
                     .padding(24)
                 }

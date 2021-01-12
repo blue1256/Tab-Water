@@ -101,7 +101,7 @@ struct RecordDetailView: View {
     
     init(recordViewModel: RecordViewModel? = nil, record: DayRecord, isToday: Bool = false) {
         self.recordViewModel = recordViewModel
-        viewModel = RecordDetailViewModel(record: record, isToday: true)
+        viewModel = RecordDetailViewModel(record: record, isToday: isToday)
         self.isToday = isToday
     }
     
@@ -135,10 +135,10 @@ struct RecordDetailView: View {
                 ScrollView {
                     if viewModel.showChart {
                         chartView(geometry: geometry)
-                            .transition(.scale)
+                            .transition(AnyTransition.scale.combined(with: .opacity))
                     } else {
                         listView
-                            .transition(.scale)
+                            .transition(AnyTransition.scale.combined(with: .opacity))
                     }
                 }
                 if isToday {
@@ -152,7 +152,7 @@ struct RecordDetailView: View {
                             }
                             .foregroundColor(.red)
                         }
-                        .padding(.bottom, 32)
+                        .padding(.bottom, 16)
                     }
                     .frame(maxWidth: .infinity)
                 }

@@ -33,6 +33,7 @@
 		1EA8279425ACA30600504363 /* LogListViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8279325ACA30600504363 /* LogListViewItem.swift */; };
 		1EA8279825ACDAA800504363 /* OpenSourceLicensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8279725ACDAA800504363 /* OpenSourceLicensesView.swift */; };
 		1EA8279C25ACDF0600504363 /* OpenSourceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA8279B25ACDF0600504363 /* OpenSourceDetailView.swift */; };
+		1EB78B3325ADA13B0067C93E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB78B3225ADA13B0067C93E /* TextFieldView.swift */; };
 		1EBC271524FFB11A008F2ED1 /* SpeedMeasureHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBC271424FFB11A008F2ED1 /* SpeedMeasureHelpView.swift */; };
 		1EC7372B2438846A00A33EB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */; };
 		1EC7372D2439B8AD00A33EB7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC7372C2439B8AD00A33EB7 /* Networking.swift */; };
@@ -102,6 +103,7 @@
 		1EA8279325ACA30600504363 /* LogListViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListViewItem.swift; sourceTree = "<group>"; };
 		1EA8279725ACDAA800504363 /* OpenSourceLicensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLicensesView.swift; sourceTree = "<group>"; };
 		1EA8279B25ACDF0600504363 /* OpenSourceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceDetailView.swift; sourceTree = "<group>"; };
+		1EB78B3225ADA13B0067C93E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		1EBC271424FFB11A008F2ED1 /* SpeedMeasureHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedMeasureHelpView.swift; sourceTree = "<group>"; };
 		1EC7372A2438846A00A33EB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EC7372C2439B8AD00A33EB7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				1EA8272A25AAD30400504363 /* PageControl.swift */,
 				1EA8272E25AAD9BD00504363 /* PageView.swift */,
 				1EA8273225AADA0300504363 /* PageViewController.swift */,
+				1EB78B3225ADA13B0067C93E /* TextFieldView.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				1EA8272B25AAD30400504363 /* PageControl.swift in Sources */,
 				1EE30BB9240408B100AB6DDF /* SummaryView.swift in Sources */,
 				1EA8271B25A9B6BB00504363 /* StatsViewModel.swift in Sources */,
+				1EB78B3325ADA13B0067C93E /* TextFieldView.swift in Sources */,
 				1E54699124388106003F1E30 /* DayRecord.swift in Sources */,
 				1EE30BBE240691C500AB6DDF /* UserProfile.swift in Sources */,
 				1E69DB1825A59E5500ACCCC9 /* BottomModalView.swift in Sources */,

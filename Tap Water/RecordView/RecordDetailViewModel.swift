@@ -42,7 +42,7 @@ class RecordDetailViewModel: ObservableObject {
         self.record = record
         self.isToday = isToday
         formatter.timeZone = .autoupdatingCurrent
-        formatter.dateFormat = "hh"
+        formatter.dateFormat = "HH"
         
         lastTime = isToday ? (Int(formatter.string(from: Date())) ?? 0)+1 : 24
         selectedTime = lastTime

@@ -16,11 +16,13 @@ struct DayLineChart: UIViewRepresentable {
 
     var viewModel: RecordDetailViewModel
     var chart = LineChartView()
+    var isToday: Bool
     var lastTime: Int
     
     init(viewModel: RecordDetailViewModel) {
         self.viewModel = viewModel
         self.lastTime = viewModel.lastTime
+        self.isToday = viewModel.isToday
     }
     
     func makeCoordinator() -> Coordinator {
@@ -35,7 +37,7 @@ struct DayLineChart: UIViewRepresentable {
         chart.scaleYEnabled = false
         chart.delegate = context.coordinator
         
-        let xAxisFormatter = DayXAxisFormatter(size: lastTime)
+        let xAxisFormatter = DayXAxisFormatter(size: lastTime, isToday: isToday)
         
         let xAxis = chart.xAxis
         xAxis.labelPosition = .bottom
@@ -90,7 +92,7 @@ struct DayLineChart: UIViewRepresentable {
         data.forEach { item in
             let endIndex = item.time.index(item.time.startIndex, offsetBy: 1)
             let time = Int(item.time[...endIndex]) ?? Int.max
-            if time < values.count {
+            if time+1 < values.count {
                 values[time+1].y += item.volume
             }
         }
@@ -145,11 +147,13 @@ struct DayLineChart: UIViewRepresentable {
 
 class DayXAxisFormatter: IAxisValueFormatter {
     var size: Int
-    init(size: Int) {
+    var isToday: Bool
+    init(size: Int, isToday: Bool) {
         self.size = size
+        self.isToday = isToday
     }
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        if Int(value) == size {
+        if Int(value) == size && isToday {
             return "Now".localized
         }
         return String(format: "ChartTimeFormat".localized, Int(value))

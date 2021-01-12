@@ -27,10 +27,12 @@ final class Utils {
     }
     
     func convertTimeFormat(time: Int) -> String {
+        var time = time
         let formatter = DateFormatter()
         formatter.locale = .autoupdatingCurrent
         
-        formatter.dateFormat = "hh"
+        formatter.dateFormat = "HH"
+        if time == 24 { time = 0 }
         let d = formatter.date(from: "\(time)")
         
         formatter.dateFormat = "TimeFormat".localized
