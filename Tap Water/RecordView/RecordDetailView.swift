@@ -95,14 +95,14 @@ extension RecordDetailView {
 }
 
 struct RecordDetailView: View {
-    var isToday: Bool = false
+    var showDelete: Bool = false
     @ObservedObject var viewModel: RecordDetailViewModel
     var recordViewModel: RecordViewModel?
     
     init(recordViewModel: RecordViewModel? = nil, record: DayRecord, isToday: Bool = false) {
         self.recordViewModel = recordViewModel
-        viewModel = RecordDetailViewModel(record: record, isToday: isToday)
-        self.isToday = isToday
+        viewModel = RecordDetailViewModel(record: record)
+        self.showDelete = isToday
     }
     
     var body: some View {
@@ -141,7 +141,7 @@ struct RecordDetailView: View {
                             .transition(AnyTransition.scale.combined(with: .opacity))
                     }
                 }
-                if isToday {
+                if showDelete {
                     HStack {
                         Button(action: {
                             viewModel.showRecordDeletionSheet.toggle()

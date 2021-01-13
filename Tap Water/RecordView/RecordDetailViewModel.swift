@@ -38,13 +38,16 @@ class RecordDetailViewModel: ObservableObject {
         rerenderChart = true
     }
     
-    init(record: DayRecord, isToday: Bool = false) {
+    init(record: DayRecord) {
         self.record = record
-        self.isToday = isToday
         formatter.timeZone = .autoupdatingCurrent
+        
+        formatter.dateFormat = "yyyyMMdd"
+        self.isToday = (record.date == formatter.string(from: Date()))
+        
         formatter.dateFormat = "HH"
         
-        lastTime = isToday ? (Int(formatter.string(from: Date())) ?? 0)+1 : 24
+        lastTime = self.isToday ? (Int(formatter.string(from: Date())) ?? 0)+1 : 24
         selectedTime = lastTime
         
         self.$record
@@ -90,7 +93,7 @@ class RecordDetailViewModel: ObservableObject {
             .removeDuplicates()
             .sink { [weak self] time in
                 guard let self = self else { return }
-                if time < self.lastTime || !isToday {
+                if time < self.lastTime || !self.isToday {
                     self.selectedTimeFormatted = Utils.shared.convertTimeFormat(time: time)
                 } else {
                     self.selectedTimeFormatted = "Now".localized
