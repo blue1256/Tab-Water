@@ -51,7 +51,7 @@ class RecordViewModel: ObservableObject {
         comps.hour = 0
         
         let date = Calendar.current.nextDate(after: Date(), matching: comps, matchingPolicy: .nextTime, direction: .forward)
-        let timer = Timer(fireAt: date!, interval: 86400, target: self, selector: #selector(getNewRecord), userInfo: nil, repeats: true)
+        let timer = Timer(fireAt: date!, interval: 86400, target: self, selector: #selector(getNewRecord), userInfo: nil, repeats: false)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
         
         initializeRecord()
@@ -181,12 +181,21 @@ class RecordViewModel: ObservableObject {
                 self.showDetail = false
             }
             .store(in: &cancellables)
+        
+        AppState.shared.$refreshRecord
+            .filter { $0 }
+            .sink{ [weak self] _ in
+                guard let self = self else { return }
+                self.initializeRecord()
+                AppState.shared.refreshRecord = false
+            }
+            .store(in: &cancellables)
     }
     
     func initializeRecord() {
         todayRecord = StoreManager.shared.getTodayRecord()
         formatter.dateFormat = "yyyyMMdd"
-        let today = formatter.string(from: Date())
+        let today = AppState.shared.today
         
         if let record = todayRecord, today == record.date {
             drankToday = record.drankToday
@@ -199,6 +208,10 @@ class RecordViewModel: ObservableObject {
     @objc func getNewRecord(){
         let today = AppState.shared.today
         let userDefault = UserDefaults.standard
+        
+        if today == todayRecord?.date {
+            return
+        }
         
         userDefault.set(0.0, forKey: "drankToday")
         userDefault.set(false, forKey: "completedToday")

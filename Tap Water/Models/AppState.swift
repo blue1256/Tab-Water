@@ -30,6 +30,8 @@ final class AppState: ObservableObject {
     @Published var remindingTime: Int = 1
     @Published var launchedBefore: Bool = true
     
+    @Published var refreshRecord: Bool = false
+    
     var version: String = ""
     
     var appStoreVersion: String = ""
